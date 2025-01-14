@@ -19,6 +19,10 @@
   margin: 0px;
 }
 
+body {
+  overflow: hidden;
+}
+
 @font-face {
   font-family: kanit;
   src: url("../fonts/Kanit-ExtraBold.ttf");
@@ -69,6 +73,7 @@ div {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100vw;
   box-shadow: var(--soft-shadow);
 }
 
@@ -112,6 +117,6 @@ div {
   justify-content: flex-start;
   align-items: center;
   width: 60px;
-  height: calc(100vh - 90px);
+  height: calc(100vh - 70px);
   border-top: none;
 }
