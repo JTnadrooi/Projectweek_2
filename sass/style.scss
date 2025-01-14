@@ -71,6 +71,7 @@ div
     border-radius: 12px;
     color: rgba(black, 0.6);
     padding: 10px;
+    height: 30px;
     font-family: inter;
     font-size: 22px;
     text-align: left;
@@ -106,11 +107,35 @@ div
 {
     height: 50px;
     width: 50px;
-    background: url("../media/icons/user.png") no-repeat white;
+    background: url("../media/icons/folderAdd.png") no-repeat white;
     border: 0px solid;
     background-size: 30px;
     background-position: center;
     border-radius: 100%;
-    margin: 0px 10px;
+    margin: 10px 10px;
     box-shadow: var(--soft-shadow);
+}
+
+.iconEnd
+{
+    margin-top: auto;
+}
+
+#mainDisplay
+{
+    display: flex;
+    height: 100%;
+}
+
+#sideIconContainer
+{
+    display: flex;
+    flex-direction: column;
+    background-color: var(--c3);
+    border: 1px solid var(--c6);
+    justify-content: flex-start;
+    align-items: center;
+    width: 60px;
+    height: calc(100vh - 90px);
+    border-top: none;
 }
