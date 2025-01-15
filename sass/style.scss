@@ -188,18 +188,12 @@ div
 {
     height: calc(100vh - 71px);
     margin: 0 auto;
-    /* Centers the container horizontally */
     width: 95%;
-    /* Made wider to accommodate more tiles */
     display: flex;
     flex-direction: column;
-    /* Stacks subcontainers vertically */
     gap: 20px;
-    /* Adds spacing between subcontainers */
     padding: 20px;
-    /* Adds some padding inside the container */
     box-sizing: border-box;
-    /* Ensures padding doesn't affect dimensions */
 }
 
 .subcontainer
@@ -207,95 +201,54 @@ div
     background-color: var(--c3);
     box-shadow: var(--soft-shadow);
     border-radius: 30px;
-    padding: 20px;
-    /* Adds inner spacing */
+    padding-left: 20px;
+    padding-bottom: 40px;
     display: flex;
     flex-direction: column;
-    /* Keeps the header and tiles separate */
     align-items: flex-start;
-    /* Aligns content to the left */
     justify-content: flex-start;
-    /* Aligns content to the top */
     width: 100%;
-    /* Full width to match the container */
     max-width: none;
-    /* Removes width limit for wider layout */
     margin: 0 auto;
-    /* Centers subcontainers */
     box-sizing: border-box;
-    /* Consistent sizing */
-}
-
-.subcontainer>div
-{
-    width: 100%;
-    /* Ensures header spans the width */
-    text-align: left;
-    /* Aligns the header to the left */
-    font-weight: bold;
-    /* Highlights the header */
-    margin-bottom: 10px;
-    /* Adds spacing below the header */
+    max-height: 280px;
 }
 
 .quizTile
 {
     background-color: #ffffff;
-    /* Tile background color */
     box-shadow: var(--soft-shadow);
-    /* Consistent shadow */
     border-radius: 20px;
-    /* Slightly smaller radius for tiles */
-    width: 300px;
-    /* Fixed width for tiles */
-    height: 300px;
-    /* Fixed height for tiles */
+    width: 180px;
+    height: 180px;
     display: flex;
-    /* Flexbox for content alignment */
     justify-content: center;
-    /* Centers content horizontally */
     align-items: center;
-    /* Centers content vertically */
     text-align: center;
-    /* Centers text */
     padding: 10px;
-    /* Adds inner spacing */
     margin: 10px;
-    /* Adds spacing between tiles */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    /* Smooth hover effect */
     box-sizing: border-box;
-    /* Consistent sizing */
     cursor: pointer;
-    /* Indicates interactivity */
 }
 
 .quizTile:hover
 {
     transform: translateY(-5px);
-    /* Slight lift on hover */
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
-    /* Enhanced shadow */
 }
 
 .quizTile:active
 {
     transform: scale(0.95);
-    /* Slight shrink on click */
     box-shadow: var(--soft-shadow);
-    /* Reset shadow */
 }
 
 .quizTileContainer
 {
     display: flex;
-    /* Aligns tiles horizontally */
     flex-wrap: wrap;
-    /* Allows wrapping on smaller screens */
     justify-content: flex-start;
-    /* Aligns tiles to the left */
     gap: 20px;
-    /* Adds spacing between tiles */
     width: 100%;
-    /* Full width */
 }
