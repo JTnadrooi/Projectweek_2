@@ -1,5 +1,5 @@
 const debugStream = new AsitDebugStream(undefined, "QUIZZA");
-
+let currentQuizId = 0;
 debugStream.log("initializing page..");
 debugStream.log("creating buttons..");
 const buttons = [
@@ -39,7 +39,7 @@ function createButtons() {
         const baseButton = document.createElement("button");
         baseButton.classList.add("icon");
         baseButton.id = buttonName + "Icon";
-        baseButton.style.background = 'url("../media/icons/' + buttonName + '.png") no-repeat center var(--c1)';
+        baseButton.style.background = 'url("media/icons/' + buttonName + '.png") no-repeat center var(--c1)';
         baseButton.style.backgroundSize = buttonName === "account" ? "60%" : "80%";
 
         if (Array.isArray(position)) position.forEach(pos => appendButtonToContainer(pos, baseButton));
@@ -50,4 +50,17 @@ function createButtons() {
 debugStream.log("<succes");
 debugStream.log("<succes");
 
-document.addEventListener("DOMContentLoaded", createButtons);
+document.addEventListener("DOMContentLoaded", () => {
+    createButtons();
+
+    const quizButtons = document.querySelectorAll(".quizTile"); // Hier selecteer je alle knopjes, de quizzes dus.
+    quizButtons.forEach(buttonQuizStart => { // Voor elke button voer je code uit
+        buttonQuizStart.addEventListener("click", () => { // Als er op een knopje klikt word je gestuurd naar de php quiz pagina en wordt je quizid mee gegeven
+            const quizId = buttonQuizStart.id.replace("question-", ""); // Hier haal je de quizid uit de id van de knop
+            window.location.href = `quiz.php?quizid=${quizId}`;
+        });
+    });
+
+});
+
+    
