@@ -143,6 +143,10 @@ div
 .iconEnd
 {
     margin-top: auto;
+}
+
+.iconRight
+{
     margin-left: auto;
 }
 
@@ -178,4 +182,25 @@ div
     bottom: 0;
     left: 0;
     box-shadow: var(--soft-shadow);
+}
+
+#masterQuizContainer
+{
+    border: red solid 1px;
+    height: calc(100vh - 71px);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    /* Adds spacing between flex items */
+}
+.subcontainer
+{
+    border: green solid 1px;
+    background-color: var(--c3);
+    margin: 50px;
+    box-shadow: var(--soft-shadow);
+    border-radius: 10px;
 }

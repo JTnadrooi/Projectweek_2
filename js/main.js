@@ -10,17 +10,11 @@ const buttons = [
     ["folderAdd", "side"],
     ["leaderbord", "side"],
     ["help", "side_bottom"],
-    ["help", "bottom_left"],
-    ["help", "bottom_right"],
+    ["help", ["bottom_right", "bottom_left"]],
 ]
-
 function createButtons() {
     buttons.forEach(([buttonName, position]) => {
-        const button = document.createElement("button");
-        button.classList.add("icon");
-        button.id = buttonName + "Icon";
-
-        function getContainer(position) {
+        function getContainer(pos) {
             const containers = {
                 top: "iconsContainer",
                 side: "sideIconContainer",
@@ -28,18 +22,31 @@ function createButtons() {
                 bottom_left: "bottomIconContainer",
                 bottom_right: "bottomIconContainer",
             };
-            return document.getElementById(containers[position]) || null;
+            return document.getElementById(containers[pos]) || null;
         }
-        button.style.background = 'url("../media/icons/' + buttonName + '.png") no-repeat center var(--c1)';
-        button.style.backgroundSize = buttonName == "account" ? "60%" : "80%";
 
-        const container = getContainer(position);
-        container?.appendChild(button);
-        debugStream.log("processed: " + button);
-        if (position == "side_bottom") button.classList.add("iconEnd");
-        if (position == "bottom_right") button.classList.add("iconEnd");
+        function appendButtonToContainer(pos, btn) {
+            const container = getContainer(pos);
+            if (container) {
+                const button = btn.cloneNode(true);
+                container.appendChild(button);
+                debugStream.log("processed: " + button);
+                if (pos === "side_bottom") button.classList.add("iconEnd");
+                else if (pos === "bottom_right") button.classList.add("iconRight");
+            }
+        }
+
+        const baseButton = document.createElement("button");
+        baseButton.classList.add("icon");
+        baseButton.id = buttonName + "Icon";
+        baseButton.style.background = 'url("../media/icons/' + buttonName + '.png") no-repeat center var(--c1)';
+        baseButton.style.backgroundSize = buttonName === "account" ? "60%" : "80%";
+
+        if (Array.isArray(position)) position.forEach(pos => appendButtonToContainer(pos, baseButton));
+        else appendButtonToContainer(position, baseButton);
     });
 };
+
 debugStream.log("<succes");
 debugStream.log("<succes");
 
