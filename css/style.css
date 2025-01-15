@@ -131,6 +131,9 @@ div {
   width: 60px;
   height: calc(100vh - 70px);
   border-top: none;
+  box-shadow: var(--soft-shadow);
+  position: fixed;
+  left: 0;
 }
 
 #bottomIconContainer {
