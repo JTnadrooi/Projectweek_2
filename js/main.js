@@ -10,6 +10,8 @@ const buttons = [
     ["folderAdd", "side"],
     ["leaderbord", "side"],
     ["help", "side_bottom"],
+    ["help", "bottom_left"],
+    ["help", "bottom_right"],
 ]
 
 function createButtons() {
@@ -22,7 +24,9 @@ function createButtons() {
             const containers = {
                 top: "iconsContainer",
                 side: "sideIconContainer",
-                side_bottom: "sideIconContainer"
+                side_bottom: "sideIconContainer",
+                bottom_left: "bottomIconContainer",
+                bottom_right: "bottomIconContainer",
             };
             return document.getElementById(containers[position]) || null;
         }
@@ -31,7 +35,9 @@ function createButtons() {
 
         const container = getContainer(position);
         container?.appendChild(button);
+        debugStream.log("processed: " + button);
         if (position == "side_bottom") button.classList.add("iconEnd");
+        if (position == "bottom_right") button.classList.add("iconEnd");
     });
 };
 debugStream.log("<succes");
