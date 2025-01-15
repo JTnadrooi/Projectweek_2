@@ -131,9 +131,6 @@ div {
   width: 60px;
   height: calc(100vh - 70px);
   border-top: none;
-  box-shadow: var(--soft-shadow);
-  position: fixed;
-  left: 0;
 }
 
 #bottomIconContainer {
@@ -153,41 +150,51 @@ div {
 #masterQuizContainer {
   height: calc(100vh - 71px);
   margin: 0 auto;
-  /* Centers the container horizontally */
   width: 95%;
-  /* Made wider to accommodate more tiles */
   display: flex;
   flex-direction: column;
-  /* Stacks subcontainers vertically */
   gap: 20px;
-  /* Adds spacing between subcontainers */
   padding: 20px;
-  /* Adds some padding inside the container */
   box-sizing: border-box;
-  /* Ensures padding doesn't affect dimensions */
+  overflow-y: auto; 
 }
 
+/* Custom scrollbar styles */
+#masterQuizContainer::-webkit-scrollbar {
+  width: 12px; /* Width of the scrollbar */
+}
+
+#masterQuizContainer::-webkit-scrollbar-track {
+  background: var(--c5); /* Background of the scrollbar track */
+  border-radius: 10px; /* Rounded corners for the track */
+}
+
+#masterQuizContainer::-webkit-scrollbar-thumb {
+  background-color: var(--c3); /* Color of the scrollbar thumb */
+  border-radius: 10px; /* Rounded corners for the thumb */
+  border: 3px solid var(--c5); /* Adds padding around the thumb */
+}
+
+#masterQuizContainer::-webkit-scrollbar-thumb {
+  background-color: var(--c3); /* Color of the scrollbar thumb */
+  border-radius: 10px; /* Rounded corners for the thumb */
+  height: 60px; /* Set the height of the scrollbar thumb */
+  border: 3px solid var(--c5); /* Adds padding around the thumb */
+}
 .subcontainer {
   background-color: var(--c3);
   box-shadow: var(--soft-shadow);
   border-radius: 30px;
   padding: 20px;
-  /* Adds inner spacing */
   display: flex;
   flex-direction: column;
-  /* Keeps the header and tiles separate */
   align-items: flex-start;
-  /* Aligns content to the left */
   justify-content: flex-start;
-  /* Aligns content to the top */
-  width: 100%;
-  /* Full width to match the container */
+  width: 100%; /* Reduced width */
   max-width: none;
-  /* Removes width limit for wider layout */
   margin: 0 auto;
-  /* Centers subcontainers */
   box-sizing: border-box;
-  /* Consistent sizing */
+  font-size: 20px; /* Reduced font size */
 }
 
 .subcontainer > div {
@@ -197,7 +204,7 @@ div {
   /* Aligns the header to the left */
   font-weight: bold;
   /* Highlights the header */
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   /* Adds spacing below the header */
 }
 
@@ -208,10 +215,8 @@ div {
   /* Consistent shadow */
   border-radius: 20px;
   /* Slightly smaller radius for tiles */
-  width: 300px;
-  /* Fixed width for tiles */
-  height: 300px;
-  /* Fixed height for tiles */
+  width: 200px; /* Reduced width */
+  height: 200px; /* Reduced height */
   display: flex;
   /* Flexbox for content alignment */
   justify-content: center;
@@ -220,10 +225,8 @@ div {
   /* Centers content vertically */
   text-align: center;
   /* Centers text */
-  padding: 10px;
-  /* Adds inner spacing */
-  margin: 10px;
-  /* Adds spacing between tiles */
+  padding: 5px; /* Adjusted padding */
+  margin: 5px; /* Adjusted margin */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   /* Smooth hover effect */
   box-sizing: border-box;
