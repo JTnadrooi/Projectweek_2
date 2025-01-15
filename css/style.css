@@ -5,6 +5,9 @@
   --c5: #555867;
   --c6: #000000;
   --soft-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+  --icon-bg: #007bff;
+  --click-scale: 0.9;
+  --click-bg: #0056b3;
 }
 
 * {
@@ -19,20 +22,30 @@
   margin: 0px;
 }
 
+body {
+  overflow: hidden;
+}
+
 @font-face {
   font-family: kanit;
   src: url("../fonts/Kanit-ExtraBold.ttf");
 }
 @font-face {
   font-family: inter;
-  src: url("../fonts/Inter_24pt-Regular.ttf");
+  src: url("../fonts/Inter_18pt-Regular.ttf");
 }
-div {
+textarea {
+  resize: none;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  outline: none;
   width: 100%;
   height: 100%;
 }
 
-.ghost {
+div {
+  width: 100%;
+  height: 100%;
   background-color: transparent;
 }
 
@@ -41,20 +54,26 @@ div {
   border-radius: 12px;
   color: rgba(0, 0, 0, 0.6);
   padding: 10px;
+  margin-bottom: 10px;
   height: 30px;
   font-family: inter;
   font-size: 22px;
   text-align: left;
   width: 80%;
   box-shadow: var(--soft-shadow);
+  overflow: hidden;
+  white-space: nowrap;
+  outline: none;
+  border-color: transparent;
 }
 
 #topContainer {
   background-color: var(--c3);
   border: 1px solid var(--c6);
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
+  width: 100vw;
   box-shadow: var(--soft-shadow);
 }
 
@@ -73,17 +92,28 @@ div {
 .icon {
   height: 50px;
   width: 50px;
-  background: url("../media/icons/folderAdd.png") no-repeat var(--c1);
-  border: 0px solid;
+  background-color: var(--icon-bg);
+  border: 0;
   background-size: 30px;
   background-position: center;
   border-radius: 100%;
   margin: 10px 10px;
   box-shadow: var(--soft-shadow);
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.icon:active {
+  transform: scale(var(--click-scale));
+  background-color: var(--click-bg);
 }
 
 .iconEnd {
   margin-top: auto;
+}
+
+.iconRight {
+  margin-left: auto;
 }
 
 #mainDisplay {
@@ -99,6 +129,129 @@ div {
   justify-content: flex-start;
   align-items: center;
   width: 60px;
-  height: calc(100vh - 90px);
+  height: calc(100vh - 70px);
   border-top: none;
+}
+
+#bottomIconContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--c3);
+  border: 1px solid var(--c6);
+  width: 100vw;
+  height: 70px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  box-shadow: var(--soft-shadow);
+}
+
+#masterQuizContainer {
+  height: calc(100vh - 71px);
+  margin: 0 auto;
+  /* Centers the container horizontally */
+  width: 95%;
+  /* Made wider to accommodate more tiles */
+  display: flex;
+  flex-direction: column;
+  /* Stacks subcontainers vertically */
+  gap: 20px;
+  /* Adds spacing between subcontainers */
+  padding: 20px;
+  /* Adds some padding inside the container */
+  box-sizing: border-box;
+  /* Ensures padding doesn't affect dimensions */
+}
+
+.subcontainer {
+  background-color: var(--c3);
+  box-shadow: var(--soft-shadow);
+  border-radius: 30px;
+  padding: 20px;
+  /* Adds inner spacing */
+  display: flex;
+  flex-direction: column;
+  /* Keeps the header and tiles separate */
+  align-items: flex-start;
+  /* Aligns content to the left */
+  justify-content: flex-start;
+  /* Aligns content to the top */
+  width: 100%;
+  /* Full width to match the container */
+  max-width: none;
+  /* Removes width limit for wider layout */
+  margin: 0 auto;
+  /* Centers subcontainers */
+  box-sizing: border-box;
+  /* Consistent sizing */
+}
+
+.subcontainer > div {
+  width: 100%;
+  /* Ensures header spans the width */
+  text-align: left;
+  /* Aligns the header to the left */
+  font-weight: bold;
+  /* Highlights the header */
+  margin-bottom: 10px;
+  /* Adds spacing below the header */
+}
+
+.quizTile {
+  background-color: #ffffff;
+  /* Tile background color */
+  box-shadow: var(--soft-shadow);
+  /* Consistent shadow */
+  border-radius: 20px;
+  /* Slightly smaller radius for tiles */
+  width: 300px;
+  /* Fixed width for tiles */
+  height: 300px;
+  /* Fixed height for tiles */
+  display: flex;
+  /* Flexbox for content alignment */
+  justify-content: center;
+  /* Centers content horizontally */
+  align-items: center;
+  /* Centers content vertically */
+  text-align: center;
+  /* Centers text */
+  padding: 10px;
+  /* Adds inner spacing */
+  margin: 10px;
+  /* Adds spacing between tiles */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  /* Smooth hover effect */
+  box-sizing: border-box;
+  /* Consistent sizing */
+  cursor: pointer;
+  /* Indicates interactivity */
+}
+
+.quizTile:hover {
+  transform: translateY(-5px);
+  /* Slight lift on hover */
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+  /* Enhanced shadow */
+}
+
+.quizTile:active {
+  transform: scale(0.95);
+  /* Slight shrink on click */
+  box-shadow: var(--soft-shadow);
+  /* Reset shadow */
+}
+
+.quizTileContainer {
+  display: flex;
+  /* Aligns tiles horizontally */
+  flex-wrap: wrap;
+  /* Allows wrapping on smaller screens */
+  justify-content: flex-start;
+  /* Aligns tiles to the left */
+  gap: 20px;
+  /* Adds spacing between tiles */
+  width: 100%;
+  /* Full width */
 }
