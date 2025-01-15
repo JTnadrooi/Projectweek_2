@@ -39,7 +39,7 @@ function createButtons() {
         const baseButton = document.createElement("button");
         baseButton.classList.add("icon");
         baseButton.id = buttonName + "Icon";
-        baseButton.style.background = 'url("../media/icons/' + buttonName + '.png") no-repeat center var(--c1)';
+        baseButton.style.background = 'url("media/icons/' + buttonName + '.png") no-repeat center var(--c1)';
         baseButton.style.backgroundSize = buttonName === "account" ? "60%" : "80%";
 
         if (Array.isArray(position)) position.forEach(pos => appendButtonToContainer(pos, baseButton));

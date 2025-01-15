@@ -1,254 +1,184 @@
-$type: debug;
-$type: nodebug; // comment this line to enable debug mode.
-
+// Theme Variables
 :root
 {
-    --c1: #ffffff;
-    --c2: #ffb0a3;
-    --c3: #00b9be;
-    --c5: #555867;
-    --c6: #000000;
-    --soft-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+    --background-light: #ffffff;
+    --primary-accent: #ffb0a3;
+    --secondary-accent: #00b9be;
+    --text-dark: #000000;
+    --text-muted: #555867;
+    --soft-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+    --hover-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+    --active-scale: 0.95;
     --icon-bg: #007bff;
-    --click-scale: 0.9;
-    --click-bg: #0056b3;
+    --hover-color: #0056b3;
 }
 
+// Global Styles
 *
 {
-    font-family: kanit;
-    font-weight: normal;
-    color: var(--c6);
-    background-color: var(--c5);
-    // -webkit-font-smoothing: none;
-    // text-rendering: optimizeLegibility !important;
-    // image-rendering: pixelated;
-    // image-rendering: -moz-crisp-edges;
-    // image-rendering: crisp-edges;
-    // -webkit-font-smoothing: none;
-    // -moz-osx-font-smoothing: grayscale;
-
-    font-size: 40px;
-    font-smooth: never;
+    font-family: 'Kanit', sans-serif;
+    font-weight: 400;
+    color: var(--text-dark);
+    background-color: var(--text-muted);
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    line-height: 1.5;
     text-overflow: ellipsis;
-    padding: 0px;
-    margin: 0px;
 }
 
+// Body
 body
 {
     overflow: hidden;
+    background-color: var(--background-light);
 }
 
+// Font Imports
 @font-face
 {
-    font-family: kanit;
+    font-family: 'Kanit';
     src: url('../fonts/Kanit-ExtraBold.ttf');
 }
 
 @font-face
 {
-    font-family: inter;
+    font-family: 'Inter';
     src: url('../fonts/Inter_18pt-Regular.ttf');
 }
 
+// Mixins
+@mixin hover-effect
+{
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover
+    {
+        transform: translateY(-3px);
+        box-shadow: var(--hover-shadow);
+    }
+
+    &:active
+    {
+        transform: scale(var(--active-scale));
+        box-shadow: var(--soft-shadow);
+    }
+}
+
+@mixin responsive
+{
+    @media (max-width: 768px)
+    {
+        font-size: 14px;
+    }
+
+    @media (max-width: 480px)
+    {
+        font-size: 12px;
+    }
+}
+
+// Elements
 textarea
 {
     resize: none;
     white-space: pre-wrap;
-    word-wrap: break-word;
     outline: none;
     width: 100%;
     height: 100%;
-}
-
-div
-{
-    @if $type ==debug
-    {
-        border: 1px solid red;
-    }
-
-    width: 100%;
-    height: 100%;
-    background-color: transparent;
+    padding: 10px;
+    border: 1px solid var(--text-muted);
+    border-radius: 8px;
+    box-shadow: var(--soft-shadow);
 }
 
 #searchBar
 {
-    background-color: var(--c1);
+    background-color: var(--background-light);
     border-radius: 12px;
-    color: rgba(black, 0.6);
-    padding: 10px;
-    margin-bottom: 10px;
-    height: 30px;
-    font-family: inter;
-    font-size: 22px;
-    text-align: left;
-    width: 80%;
-    box-shadow: var(--soft-shadow);
-    overflow: hidden;
-    white-space: nowrap;
+    color: var(--text-muted);
+    padding: 10px 20px;
+    margin-bottom: 15px;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
     outline: none;
-    border-color: transparent;
-}
-
-#topContainer
-{
-    background-color: var(--c3);
-    border: 1px solid var(--c6);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
+    border: 1px solid transparent;
     box-shadow: var(--soft-shadow);
+    transition: all 0.3s ease;
+
+    &:focus
+    {
+        border-color: var(--secondary-accent);
+        box-shadow: 0 0 8px var(--secondary-accent);
+    }
 }
 
-#logo
-{
-    margin: 0px 0px 0px 10px;
-}
-
-#iconsContainer
-{
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
-    height: 100%;
-    width: 100%;
-}
-
-
+// Components
 .icon
 {
     height: 50px;
     width: 50px;
     background-color: var(--icon-bg);
-    border: 0;
-    background-size: 30px;
-    background-position: center;
-    border-radius: 100%;
-    margin: 10px 10px;
+    border-radius: 50%;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     box-shadow: var(--soft-shadow);
     cursor: pointer;
-    transition: transform 0.2s ease, background-color 0.2s ease;
-}
-
-.icon:active
-{
-    transform: scale(var(--click-scale));
-    background-color: var(--click-bg);
-}
-
-.iconEnd
-{
-    margin-top: auto;
-}
-
-.iconRight
-{
-    margin-left: auto;
-}
-
-#mainDisplay
-{
-    display: flex;
-    height: 100%;
-}
-
-#sideIconContainer
-{
-    display: flex;
-    flex-direction: column;
-    background-color: var(--c3);
-    border: 1px solid var(--c6);
-    justify-content: flex-start;
-    align-items: center;
-    width: 60px;
-    height: calc(100vh - 70px);
-    border-top: none;
-}
-
-#bottomIconContainer
-{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--c3);
-    border: 1px solid var(--c6);
-    width: 100vw;
-    height: 70px;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    box-shadow: var(--soft-shadow);
-}
-
-#masterQuizContainer
-{
-    height: calc(100vh - 71px);
-    margin: 0 auto;
-    width: 95%;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    padding: 20px;
-    box-sizing: border-box;
-}
-
-.subcontainer
-{
-    background-color: var(--c3);
-    box-shadow: var(--soft-shadow);
-    border-radius: 30px;
-    padding-left: 20px;
-    padding-bottom: 40px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    width: 100%;
-    max-width: none;
-    margin: 0 auto;
-    box-sizing: border-box;
-    max-height: 280px;
+    @include hover-effect;
 }
 
 .quizTile
 {
-    background-color: #ffffff;
+    background-color: var(--background-light);
+    border-radius: 16px;
     box-shadow: var(--soft-shadow);
-    border-radius: 20px;
-    width: 180px;
-    height: 180px;
+    padding: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;
-    padding: 10px;
-    margin: 10px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-sizing: border-box;
     cursor: pointer;
-}
+    text-align: center;
+    font-size: 1rem;
+    @include hover-effect;
 
-.quizTile:hover
-{
-    transform: translateY(-5px);
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
-}
-
-.quizTile:active
-{
-    transform: scale(0.95);
-    box-shadow: var(--soft-shadow);
+    &:hover
+    {
+        background-color: var(--primary-accent);
+        color: var(--background-light);
+    }
 }
 
 .quizTileContainer
 {
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;
     gap: 20px;
-    width: 100%;
 }
+
+// Layouts
+#topContainer
+{
+    background-color: var(--secondary-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    box-shadow: var(--soft-shadow);
+}
+
+#masterQuizContainer
+{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    margin: 0 auto;
+    width: 95%;
+    box-sizing: border-box;
+}
+
+// Responsive Design
+@include responsive;
