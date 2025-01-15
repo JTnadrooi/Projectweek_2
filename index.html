@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/style.css">
 
     <!-- The main script. -->
+    <script src="js/lib/asitdebug.js"></script>
     <script src="js/main.js"></script>
     <meta charset="utf8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,34 +23,29 @@
 <body>
     <div id="page">
         <div id="topContainer">
-            <div class="ghost" id="logo">
-                QUIZZA
-            </div>
-            <div class="ghost">
-                <div id="searchBar">
-                    Search..
-                </div>
-            </div>
-            <div class="ghost" id="iconsContainer">
-                <button class="icon" id="accountIcon">
-
-                </button>
-                <button class="icon" id="">
-
-                </button>
-            </div>
+            <div id="logo">QUIZZA</div>
+            <input type="text" id="searchBar" placeholder="Search..">
+            <div id="iconsContainer"></div>
         </div>
         <div id="mainDisplay">
-            <div id="sideIconContainer">
-                <button class="icon" id="accountIcon">
-
-                </button>
-                <button class="icon" id="accountIcon">
-
-                </button>
-                <button class="icon iconEnd" id="accountIcon">
-
-                </button>
+            <div id="sideIconContainer"></div>
+            <div id="masterQuizContainer">
+                <div class="subcontainer">
+                    <div>CREATE</div>
+                    <div class="quizTileContainer">
+                        <div class="quizTile">foo</div>
+                        <div class="quizTile">bar</div>
+                        <div class="quizTile">baz</div>
+                    </div>
+                </div>
+                <div class="subcontainer">
+                    <div>EXPLORE</div>
+                    <div class="quizTileContainer">
+                        <div class="quizTile">quiz 1</div>
+                        <div class="quizTile">quiz 2</div>
+                        <div class="quizTile">quiz 3</div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
