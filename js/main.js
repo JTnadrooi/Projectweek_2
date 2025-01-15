@@ -7,6 +7,7 @@ const buttons = [
     ["account", "top"],
 
     ["home", "side"],
+    ["folderAdd", "side"],
     ["leaderbord", "side"],
     ["help", "side_bottom"],
 ]
@@ -33,15 +34,7 @@ function createButtons() {
         if (position == "side_bottom") button.classList.add("iconEnd");
     });
 };
-
-function limitTextLength(event) {
-    const maxLength = 32;
-    const currentText = event.target.innerText;
-
-    if (currentText.length > maxLength) {
-        event.target.innerText = currentText.substring(0, maxLength);
-    }
-}
-
+debugStream.log("<succes");
+debugStream.log("<succes");
 
 document.addEventListener("DOMContentLoaded", createButtons);
