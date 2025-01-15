@@ -214,6 +214,7 @@ div {
   max-width: none;
   margin: 0 auto;
   box-sizing: border-box;
+  margin-top: 20px;
 }
 
 .subcontainer-quiz > div {
@@ -314,6 +315,19 @@ div {
 }
 
 .quizTileContainer {
+  display: flex;
+  /* Aligns tiles horizontally */
+  flex-wrap: wrap;
+  /* Allows wrapping on smaller screens */
+  justify-content: center;
+  /* Aligns tiles to the left */
+  gap: 20px;
+  /* Adds spacing between tiles */
+  width: 100%;
+  /* Full width */
+}
+
+.homeTitleContainer {
   display: flex;
   /* Aligns tiles horizontally */
   flex-wrap: wrap;
