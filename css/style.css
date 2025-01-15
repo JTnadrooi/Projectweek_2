@@ -198,6 +198,31 @@ div {
   /* Adds spacing below the header */
 }
 
+.subcontainer-quiz {
+  background-color: #ffffff;
+  box-shadow: var(--soft-shadow);
+  border-radius: 30px;
+  padding: 20px;
+  /* Adds inner spacing */
+  display: flex;
+  flex-direction: column;
+  /* Keeps the header and tiles separate */
+  align-items: flex-start;
+  /* Aligns content to the left */
+  justify-content: flex-start;
+  width: 70%;
+  max-width: none;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.subcontainer-quiz > div {
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
 .quizTile {
   background-color: #ffffff;
   /* Tile background color */
@@ -243,6 +268,51 @@ div {
   /* Reset shadow */
 }
 
+.answerTile {
+  background-color: #ffffff;
+  /* Tile background color */
+  box-shadow: var(--soft-shadow);
+  /* Consistent shadow */
+  border-radius: 20px;
+  /* Slightly smaller radius for tiles */
+  width: 300px;
+  /* Fixed width for tiles */
+  height: 300px;
+  /* Fixed height for tiles */
+  display: flex;
+  /* Flexbox for content alignment */
+  justify-content: center;
+  /* Centers content horizontally */
+  align-items: center;
+  /* Centers content vertically */
+  text-align: center;
+  /* Centers text */
+  padding: 10px;
+  /* Adds inner spacing */
+  margin: 10px;
+  /* Adds spacing between tiles */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  /* Smooth hover effect */
+  box-sizing: border-box;
+  /* Consistent sizing */
+  cursor: pointer;
+  /* Indicates interactivity */
+}
+
+.answerTile:hover {
+  transform: translateY(-5px);
+  /* Slight lift on hover */
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+  /* Enhanced shadow */
+}
+
+.answerTile:active {
+  transform: scale(0.95);
+  /* Slight shrink on click */
+  box-shadow: var(--soft-shadow);
+  /* Reset shadow */
+}
+
 .quizTileContainer {
   display: flex;
   /* Aligns tiles horizontally */
@@ -254,4 +324,49 @@ div {
   /* Adds spacing between tiles */
   width: 100%;
   /* Full width */
+}
+
+.answerButton {
+  background-color: #ffffff;
+  /* Tile background color */
+  box-shadow: var(--soft-shadow);
+  /* Consistent shadow */
+  border-radius: 20px;
+  /* Slightly smaller radius for tiles */
+  width: 300px;
+  /* Fixed width for tiles */
+  height: 300px;
+  /* Fixed height for tiles */
+  display: flex;
+  /* Flexbox for content alignment */
+  justify-content: center;
+  /* Centers content horizontally */
+  align-items: center;
+  /* Centers content vertically */
+  text-align: center;
+  /* Centers text */
+  padding: 10px;
+  /* Adds inner spacing */
+  margin: 10px;
+  /* Adds spacing between tiles */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  /* Smooth hover effect */
+  box-sizing: border-box;
+  /* Consistent sizing */
+  cursor: pointer;
+  /* Indicates interactivity */
+}
+
+.answerButton:hover {
+  transform: translateY(-5px);
+  /* Slight lift on hover */
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+  /* Enhanced shadow */
+}
+
+.answerButton:active {
+  transform: scale(0.95);
+  /* Slight shrink on click */
+  box-shadow: var(--soft-shadow);
+  /* Reset shadow */
 }
