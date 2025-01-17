@@ -1,6 +1,3 @@
-$type: debug;
-$type: nodebug; // comment this line to enable debug mode.
-
 :root
 {
     --c1: #ffffff;
@@ -20,14 +17,6 @@ $type: nodebug; // comment this line to enable debug mode.
     font-weight: normal;
     color: var(--c6);
     background-color: var(--c5);
-    // -webkit-font-smoothing: none;
-    // text-rendering: optimizeLegibility !important;
-    // image-rendering: pixelated;
-    // image-rendering: -moz-crisp-edges;
-    // image-rendering: crisp-edges;
-    // -webkit-font-smoothing: none;
-    // -moz-osx-font-smoothing: grayscale;
-
     font-size: 40px;
     font-smooth: never;
     text-overflow: ellipsis;
@@ -40,16 +29,33 @@ body
     overflow: hidden;
 }
 
+@mixin hover-effect
+{
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover
+    {
+        transform: translateY(-5px);
+        box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    &:active
+    {
+        transform: scale(var(--click-scale));
+        box-shadow: var(--soft-shadow);
+    }
+}
+
 @font-face
 {
     font-family: kanit;
-    src: url('../fonts/Kanit-ExtraBold.ttf');
+    src: url("../fonts/Kanit-ExtraBold.ttf");
 }
 
 @font-face
 {
     font-family: inter;
-    src: url('../fonts/Inter_18pt-Regular.ttf');
+    src: url("../fonts/Inter_18pt-Regular.ttf");
 }
 
 textarea
@@ -64,11 +70,6 @@ textarea
 
 div
 {
-    @if $type ==debug
-    {
-        border: 1px solid red;
-    }
-
     width: 100%;
     height: 100%;
     background-color: transparent;
@@ -78,7 +79,7 @@ div
 {
     background-color: var(--c1);
     border-radius: 12px;
-    color: rgba(black, 0.6);
+    color: rgba(0, 0, 0, 0.6);
     padding: 10px;
     margin-bottom: 10px;
     height: 30px;
@@ -118,7 +119,6 @@ div
     width: 100%;
 }
 
-
 .icon
 {
     height: 50px;
@@ -131,24 +131,20 @@ div
     margin: 10px 10px;
     box-shadow: var(--soft-shadow);
     cursor: pointer;
-    transition: transform 0.2s ease, background-color 0.2s ease;
+    @include hover-effect;
+
+    &.end
+    {
+        margin-top: auto;
+    }
+
+    &.right
+    {
+        margin-left: auto;
+    }
 }
 
-.icon:active
-{
-    transform: scale(var(--click-scale));
-    background-color: var(--click-bg);
-}
 
-.iconEnd
-{
-    margin-top: auto;
-}
-
-.iconRight
-{
-    margin-left: auto;
-}
 
 #mainDisplay
 {
@@ -188,18 +184,12 @@ div
 {
     height: calc(100vh - 71px);
     margin: 0 auto;
-    /* Centers the container horizontally */
     width: 95%;
-    /* Made wider to accommodate more tiles */
     display: flex;
     flex-direction: column;
-    /* Stacks subcontainers vertically */
     gap: 20px;
-    /* Adds spacing between subcontainers */
     padding: 20px;
-    /* Adds some padding inside the container */
     box-sizing: border-box;
-    /* Ensures padding doesn't affect dimensions */
 }
 
 .subcontainer
@@ -207,95 +197,62 @@ div
     background-color: var(--c3);
     box-shadow: var(--soft-shadow);
     border-radius: 30px;
-    padding: 20px;
-    /* Adds inner spacing */
+    padding-left: 20px;
+    padding-bottom: 40px;
     display: flex;
     flex-direction: column;
-    /* Keeps the header and tiles separate */
     align-items: flex-start;
-    /* Aligns content to the left */
     justify-content: flex-start;
-    /* Aligns content to the top */
     width: 100%;
-    /* Full width to match the container */
     max-width: none;
-    /* Removes width limit for wider layout */
     margin: 0 auto;
-    /* Centers subcontainers */
     box-sizing: border-box;
-    /* Consistent sizing */
-}
-
-.subcontainer>div
-{
-    width: 100%;
-    /* Ensures header spans the width */
-    text-align: left;
-    /* Aligns the header to the left */
-    font-weight: bold;
-    /* Highlights the header */
-    margin-bottom: 10px;
-    /* Adds spacing below the header */
+    max-height: 280px;
 }
 
 .quizTile
 {
     background-color: #ffffff;
-    /* Tile background color */
     box-shadow: var(--soft-shadow);
-    /* Consistent shadow */
     border-radius: 20px;
-    /* Slightly smaller radius for tiles */
-    width: 300px;
-    /* Fixed width for tiles */
-    height: 300px;
-    /* Fixed height for tiles */
+    width: 180px;
+    height: 180px;
     display: flex;
-    /* Flexbox for content alignment */
     justify-content: center;
-    /* Centers content horizontally */
     align-items: center;
-    /* Centers content vertically */
     text-align: center;
-    /* Centers text */
     padding: 10px;
-    /* Adds inner spacing */
     margin: 10px;
-    /* Adds spacing between tiles */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    /* Smooth hover effect */
     box-sizing: border-box;
-    /* Consistent sizing */
     cursor: pointer;
-    /* Indicates interactivity */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    @include hover-effect;
 }
 
-.quizTile:hover
-{
-    transform: translateY(-5px);
-    /* Slight lift on hover */
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
-    /* Enhanced shadow */
-}
 
-.quizTile:active
+.quizTile
 {
-    transform: scale(0.95);
-    /* Slight shrink on click */
+    background-color: #ffffff;
     box-shadow: var(--soft-shadow);
-    /* Reset shadow */
+    border-radius: 20px;
+    width: 180px;
+    height: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+    margin: 10px;
+    box-sizing: border-box;
+    cursor: pointer;
+    @include hover-effect;
 }
 
 .quizTileContainer
 {
     display: flex;
-    /* Aligns tiles horizontally */
     flex-wrap: wrap;
-    /* Allows wrapping on smaller screens */
     justify-content: flex-start;
-    /* Aligns tiles to the left */
     gap: 20px;
-    /* Adds spacing between tiles */
     width: 100%;
-    /* Full width */
 }

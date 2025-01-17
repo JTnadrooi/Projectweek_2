@@ -32,8 +32,8 @@ function createButtons() {
                 const button = btn.cloneNode(true);
                 container.appendChild(button);
                 debugStream.log("processed: " + button);
-                if (pos === "side_bottom") button.classList.add("iconEnd");
-                else if (pos === "bottom_right") button.classList.add("iconRight");
+                if (pos === "side_bottom") button.classList.add("end");
+                else if (pos === "bottom_right") button.classList.add("right");
             }
         }
 
@@ -47,6 +47,8 @@ function createButtons() {
         else appendButtonToContainer(position, baseButton);
     });
 };
+
+
 
 debugStream.log("<succes");
 debugStream.log("<succes");
