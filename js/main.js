@@ -50,30 +50,63 @@ function createButtons() {
 };
 
 function handleSearchInput(event) {
-    const searchValue = event.target.value;
-    console.log(`Search input changed: ${searchValue}`);
+    const searchValue = event.target.value.toLowerCase();
+    // console.log(`Search input changed: ${searchValue}`);
+    const quizTiles = document.querySelectorAll('.quizTile');
+    const quizTileContainers = document.querySelectorAll('.homeTitleContainer');
+    quizTiles.forEach(item => {
+        if (searchValue === '' || item.textContent.toLowerCase().includes(searchValue)) {
+            item.style.display = 'flex';
+        } else {
+            item.style.display = 'none';
+        }
+    });
+    quizTileContainers.forEach(container => {
+        // Check if the container has any visible quizTile
+        const hasVisibleTile = Array.from(container.querySelectorAll('.quizTile')).some(
+            tile => tile.style.display === 'flex'
+        );
+
+        if (hasVisibleTile) {
+            container.style.display = 'flex'; // Show the container
+        } else {
+            container.style.display = 'none'; // Hide the container
+        }
+    });
 }
 
 
 
-document.addEventListener("DOMContentLoaded", () => {
-    debugStream.log("registered DOMLoad event.");
+function handleSearchInput(event) {
+    const searchValue = event.target.value.toLowerCase(); // Convert to lowercase for case-insensitive search
+    debugStream.log(`search input changed: ${searchValue}`);
 
-    createButtons();
+    // Select all elements with the "quizTile" class
+    const quizTiles = document.querySelectorAll('.quizTile');
 
-    const quizButtons = document.querySelectorAll(".quizTile"); // Hier selecteer je alle knopjes, de quizzes dus.
-    quizButtons.forEach(buttonQuizStart => { // Voor elke button voer je code uit
-        buttonQuizStart.addEventListener("click", () => { // Als er op een knopje klikt word je gestuurd naar de php quiz pagina en wordt je quizid mee gegeven
-            const quizId = buttonQuizStart.id.replace("question-", ""); // Hier haal je de quizid uit de id van de knop
-            window.location.href = `quiz.php?quizid=${quizId}`;
-        });
+    // Filter quizTiles based on search input
+    quizTiles.forEach(item => {
+        if (searchValue === '' || item.textContent.toLowerCase().includes(searchValue)) {
+            item.style.display = 'flex'; // Show matching quizTile
+        } else {
+            item.style.display = 'none'; // Hide non-matching quizTile
+        }
     });
 
-    // exit button
-    const exitButton = document.getElementById("exitIcon"); // Hier selecteer je de exit knop
-    exitButton?.addEventListener("click", () => { // Als je op de exit knop klikt word je naar de index.php gestuurd
-        window.location.href = "index.php";
+    // Select all subcontainer elements and update visibility based on their children
+    const subcontainers = document.querySelectorAll('.subcontainer');
+
+    subcontainers.forEach(container => {
+        // Check if the container has any visible quizTile
+        const hasVisibleTile = Array.from(container.querySelectorAll('.quizTile')).some(
+            tile => tile.style.display === 'flex'
+        );
+
+        if (hasVisibleTile) {
+            container.style.display = 'flex'; // Show the subcontainer
+        } else {
+            container.style.display = 'none'; // Hide the subcontainer
+        }
     });
-    debugStream.log("<succes");
-});
+}
 
