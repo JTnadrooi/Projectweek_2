@@ -11,7 +11,7 @@ function getQuestionsData($questionId) {
         $questionsData = json_decode($quizData['questions'], true); // Omdat het een string is decode je het naar een array
         return $questionsData; // Stuur alle data terug naar de quizpagina
     } else {
-        header('Location: index.html?error=noQuiz');
+        header('Location: index.php?error=noQuiz');
     }
 
     $conn = null;

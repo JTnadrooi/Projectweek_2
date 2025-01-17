@@ -70,7 +70,7 @@
             document.getElementsByClassName("textQuestionTitle")[0].innerHTML = questionsData[currentQuestion].question;
         } else {
             alert("Je hebt alle vragen ingevuld, je hebt " + currentStats[1] + " van de " + currentStats[0] + " vragen goed beantwoord.");
-            window.location.href = `index.html`;
+            window.location.href = `index.php`;
         }
 
     }
