@@ -55,7 +55,7 @@
         </div>
     </div>
     <?php if (! checkLogin()) {  ?>
-        <div id="myModal" class="modal">
+        <div id="loginModal" class="modal">
             <!-- Modal content -->
             <div class="modal-content">
                 <h1>QUIZZA</h1>
