@@ -100,19 +100,20 @@ div {
   margin: 10px 10px;
   box-shadow: var(--soft-shadow);
   cursor: pointer;
-  transition: transform 0.2s ease, background-color 0.2s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
+.icon:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+}
 .icon:active {
   transform: scale(var(--click-scale));
-  background-color: var(--click-bg);
+  box-shadow: var(--soft-shadow);
 }
-
-.iconEnd {
+.icon.end {
   margin-top: auto;
 }
-
-.iconRight {
+.icon.right {
   margin-left: auto;
 }
 
@@ -150,55 +151,195 @@ div {
 #masterQuizContainer {
   height: calc(100vh - 71px);
   margin: 0 auto;
-  /* Centers the container horizontally */
   width: 95%;
-  /* Made wider to accommodate more tiles */
   display: flex;
   flex-direction: column;
-  /* Stacks subcontainers vertically */
   gap: 20px;
-  /* Adds spacing between subcontainers */
   padding: 20px;
-  /* Adds some padding inside the container */
   box-sizing: border-box;
-  /* Ensures padding doesn't affect dimensions */
+  overflow-y: auto; 
 }
 
+/* Custom scrollbar styles */
+#masterQuizContainer::-webkit-scrollbar {
+  width: 12px; /* Width of the scrollbar */
+}
+
+#masterQuizContainer::-webkit-scrollbar-track {
+  background: var(--c5); /* Background of the scrollbar track */
+  border-radius: 10px; /* Rounded corners for the track */
+}
+
+#masterQuizContainer::-webkit-scrollbar-thumb {
+  background-color: var(--c3); /* Color of the scrollbar thumb */
+  border-radius: 10px; /* Rounded corners for the thumb */
+  border: 3px solid var(--c5); /* Adds padding around the thumb */
+}
+
+#masterQuizContainer::-webkit-scrollbar-thumb {
+  background-color: var(--c3); /* Color of the scrollbar thumb */
+  border-radius: 10px; /* Rounded corners for the thumb */
+  height: 60px; /* Set the height of the scrollbar thumb */
+  border: 3px solid var(--c5); /* Adds padding around the thumb */
+}
 .subcontainer {
   background-color: var(--c3);
   box-shadow: var(--soft-shadow);
   border-radius: 30px;
-  padding: 20px;
-  /* Adds inner spacing */
+  padding-left: 20px;
+  padding-bottom: 40px;
   display: flex;
   flex-direction: column;
-  /* Keeps the header and tiles separate */
   align-items: flex-start;
-  /* Aligns content to the left */
   justify-content: flex-start;
-  /* Aligns content to the top */
   width: 100%;
-  /* Full width to match the container */
   max-width: none;
-  /* Removes width limit for wider layout */
   margin: 0 auto;
-  /* Centers subcontainers */
   box-sizing: border-box;
-  /* Consistent sizing */
-}
-
-.subcontainer > div {
-  width: 100%;
-  /* Ensures header spans the width */
-  text-align: left;
-  /* Aligns the header to the left */
-  font-weight: bold;
-  /* Highlights the header */
-  margin-bottom: 10px;
-  /* Adds spacing below the header */
+  max-height: 280px;
 }
 
 .quizTile {
+  background-color: #ffffff;
+  box-shadow: var(--soft-shadow);
+  border-radius: 20px;
+  width: 180px;
+  height: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 10px;
+  margin: 10px;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.quizTile:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+}
+.quizTile:active {
+  transform: scale(var(--click-scale));
+  box-shadow: var(--soft-shadow);
+}
+
+.subcontainer-quiz {
+  background-color: #ffffff;
+  box-shadow: var(--soft-shadow);
+  border-radius: 30px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%; /* Reduced width */
+  max-width: none;
+  margin: 0 auto;
+  box-sizing: border-box;
+  font-size: 20px; /* Reduced font size */
+
+}
+
+.subcontainer-quiz > div {
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+  /* Highlights the header */
+  margin-bottom: 5px;
+}
+
+.quizTile {
+  background-color: #ffffff;
+  box-shadow: var(--soft-shadow);
+  border-radius: 20px;
+  width: 180px;
+  height: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 10px;
+  margin: 10px;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.quizTile:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+}
+.quizTile:active {
+  transform: scale(var(--click-scale));
+  box-shadow: var(--soft-shadow);
+}
+
+.answerTile {
+  background-color: #ffffff;
+  /* Tile background color */
+  box-shadow: var(--soft-shadow);
+  /* Consistent shadow */
+  border-radius: 20px;
+  /* Slightly smaller radius for tiles */
+  width: 200px; /* Reduced width */
+  height: 200px; /* Reduced height */
+  display: flex;
+  /* Flexbox for content alignment */
+  justify-content: center;
+  /* Centers content horizontally */
+  align-items: center;
+  /* Centers content vertically */
+  text-align: center;
+  /* Centers text */
+  padding: 5px; /* Adjusted padding */
+  margin: 5px; /* Adjusted margin */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  /* Smooth hover effect */
+  box-sizing: border-box;
+  /* Consistent sizing */
+  cursor: pointer;
+  /* Indicates interactivity */
+}
+
+.answerTile:hover {
+  transform: translateY(-5px);
+  /* Slight lift on hover */
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+  /* Enhanced shadow */
+}
+
+.answerTile:active {
+  transform: scale(0.95);
+  /* Slight shrink on click */
+  box-shadow: var(--soft-shadow);
+  /* Reset shadow */
+}
+
+.quizTileContainer {
+  display: flex;
+  flex-wrap: wrap;
+  /* Allows wrapping on smaller screens */
+  justify-content: center;
+  /* Aligns tiles to the left */
+  gap: 20px;
+  /* Adds spacing between tiles */
+  width: 100%;
+  /* Full width */
+}
+
+.homeTitleContainer {
+  display: flex;
+  /* Aligns tiles horizontally */
+  flex-wrap: wrap;
+  /* Allows wrapping on smaller screens */
+  justify-content: flex-start;
+  gap: 20px;
+  width: 100%;
+  /* Full width */
+}
+
+.answerButton {
   background-color: #ffffff;
   /* Tile background color */
   box-shadow: var(--soft-shadow);
@@ -229,29 +370,16 @@ div {
   /* Indicates interactivity */
 }
 
-.quizTile:hover {
+.answerButton:hover {
   transform: translateY(-5px);
   /* Slight lift on hover */
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
   /* Enhanced shadow */
 }
 
-.quizTile:active {
+.answerButton:active {
   transform: scale(0.95);
   /* Slight shrink on click */
   box-shadow: var(--soft-shadow);
   /* Reset shadow */
-}
-
-.quizTileContainer {
-  display: flex;
-  /* Aligns tiles horizontally */
-  flex-wrap: wrap;
-  /* Allows wrapping on smaller screens */
-  justify-content: flex-start;
-  /* Aligns tiles to the left */
-  gap: 20px;
-  /* Adds spacing between tiles */
-  width: 100%;
-  /* Full width */
 }
