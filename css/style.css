@@ -157,8 +157,31 @@ div {
   gap: 20px;
   padding: 20px;
   box-sizing: border-box;
+  overflow-y: auto; 
 }
 
+/* Custom scrollbar styles */
+#masterQuizContainer::-webkit-scrollbar {
+  width: 12px; /* Width of the scrollbar */
+}
+
+#masterQuizContainer::-webkit-scrollbar-track {
+  background: var(--c5); /* Background of the scrollbar track */
+  border-radius: 10px; /* Rounded corners for the track */
+}
+
+#masterQuizContainer::-webkit-scrollbar-thumb {
+  background-color: var(--c3); /* Color of the scrollbar thumb */
+  border-radius: 10px; /* Rounded corners for the thumb */
+  border: 3px solid var(--c5); /* Adds padding around the thumb */
+}
+
+#masterQuizContainer::-webkit-scrollbar-thumb {
+  background-color: var(--c3); /* Color of the scrollbar thumb */
+  border-radius: 10px; /* Rounded corners for the thumb */
+  height: 60px; /* Set the height of the scrollbar thumb */
+  border: 3px solid var(--c5); /* Adds padding around the thumb */
+}
 .subcontainer {
   background-color: var(--c3);
   box-shadow: var(--soft-shadow);
@@ -207,25 +230,24 @@ div {
   box-shadow: var(--soft-shadow);
   border-radius: 30px;
   padding: 20px;
-  /* Adds inner spacing */
   display: flex;
   flex-direction: column;
-  /* Keeps the header and tiles separate */
   align-items: flex-start;
-  /* Aligns content to the left */
   justify-content: flex-start;
-  width: 70%;
+  width: 100%; /* Reduced width */
   max-width: none;
   margin: 0 auto;
   box-sizing: border-box;
-  margin-top: 20px;
+  font-size: 20px; /* Reduced font size */
+
 }
 
 .subcontainer-quiz > div {
   width: 100%;
   text-align: center;
   font-weight: bold;
-  margin-bottom: 10px;
+  /* Highlights the header */
+  margin-bottom: 5px;
 }
 
 .quizTile {
@@ -260,10 +282,8 @@ div {
   /* Consistent shadow */
   border-radius: 20px;
   /* Slightly smaller radius for tiles */
-  width: 300px;
-  /* Fixed width for tiles */
-  height: 300px;
-  /* Fixed height for tiles */
+  width: 200px; /* Reduced width */
+  height: 200px; /* Reduced height */
   display: flex;
   /* Flexbox for content alignment */
   justify-content: center;
@@ -272,10 +292,8 @@ div {
   /* Centers content vertically */
   text-align: center;
   /* Centers text */
-  padding: 10px;
-  /* Adds inner spacing */
-  margin: 10px;
-  /* Adds spacing between tiles */
+  padding: 5px; /* Adjusted padding */
+  margin: 5px; /* Adjusted margin */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   /* Smooth hover effect */
   box-sizing: border-box;
