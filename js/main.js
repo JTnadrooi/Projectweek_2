@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // exit button
     const exitButton = document.getElementById("exitIcon"); // Hier selecteer je de exit knop
     exitButton.addEventListener("click", () => { // Als je op de exit knop klikt word je naar de index.html gestuurd
-        window.location.href = "index.html";
+        window.location.href = "index.php";
     });
 });
 
