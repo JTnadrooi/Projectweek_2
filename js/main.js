@@ -58,7 +58,12 @@ document.addEventListener("DOMContentLoaded", () => {
     quizButtons.forEach(buttonQuizStart => { // Voor elke button voer je code uit
         buttonQuizStart.addEventListener("click", () => { // Als er op een knopje klikt word je gestuurd naar de php quiz pagina en wordt je quizid mee gegeven
             const quizId = buttonQuizStart.id.replace("question-", ""); // Hier haal je de quizid uit de id van de knop
-            window.location.href = `quiz.php?quizid=${quizId}`;
+            if (quizId === 'create') {
+                // create quiz
+
+            } else {
+                window.location.href = `quiz.php?quizid=${quizId}`;
+            }
         });
     });
 

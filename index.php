@@ -1,5 +1,6 @@
 <?php
-include 'php/db-connect.php';
+    include 'php/db-connect.php';
+    include 'php/functions.php';
 ?>
 
 <!DOCTYPE html>
@@ -38,14 +39,14 @@ include 'php/db-connect.php';
                     <div>CREATE</div>
                     <div class="homeTitleContainer">
                         <div class="quizTile" id="question-create">+</div>
-                        <div class="quizTile" id="personal-1">Persoonlijk 1</div>
-                        <div class="quizTile" id="personal-2">Persoonlijk 2</div>
+                        <div class="quizTile" id="personal-1">1</div>
+                        <div class="quizTile" id="personal-2">2</div>
                     </div>
                 </div>
                 <div class="subcontainer">
                     <div>EXPLORE</div>
                     <div class="homeTitleContainer">
-                        <div class="quizTile" id="question-1">Automerken</div>
+                        <div class="quizTile" id="question-1">Auto</div>
                         <div class="quizTile" id="question-2">Films</div>
                         <div class="quizTile" id="question-3">Vlaggen</div>
                     </div>
@@ -53,6 +54,25 @@ include 'php/db-connect.php';
             </div>
         </div>
     </div>
+    <?php if (! checkLogin()) {  ?>
+        <div id="myModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <h1>QUIZZA</h1>
+                <form action="php/login.php" method="post">
+                    <input required type="email" name="email"  placeholder="example@gmail.com" style="margin-bottom: 20px;" ><br>
+                    <input required type="password" name="wachtwoord"  placeholder="Password" style="margin-bottom: 40px;"><br>
+                    <hr>
+                    <input type="submit" class="loginButton" name="submit" value="Login">
+                    <input type="submit" class="registerButton" name="submit" value="Registreren">
+                </form>            
+            </div>
+
+        </div>
+    <?php } ?>
 </body>
 
 </html>
+
+
+</body>
