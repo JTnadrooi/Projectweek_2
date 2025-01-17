@@ -1,7 +1,6 @@
 const debugStream = new AsitDebugStream(undefined, "QUIZZA");
 let currentQuizId = 0;
 debugStream.log("initializing page..");
-debugStream.log("creating buttons..");
 const buttons = [
     ["share", "top"],
     ["account", "top"],
@@ -14,6 +13,7 @@ const buttons = [
     ["exit", "bottom_left"]
 ]
 function createButtons() {
+    debugStream.log("creating buttons..");
     buttons.forEach(([buttonName, position]) => {
         function getContainer(pos) {
             const containers = {
@@ -46,14 +46,12 @@ function createButtons() {
         if (Array.isArray(position)) position.forEach(pos => appendButtonToContainer(pos, baseButton));
         else appendButtonToContainer(position, baseButton);
     });
+    debugStream.log("<succes");
 };
 
-
-
-debugStream.log("<succes");
-debugStream.log("<succes");
-
 document.addEventListener("DOMContentLoaded", () => {
+    debugStream.log("registered DOMLoad event.");
+
     createButtons();
 
     const quizButtons = document.querySelectorAll(".quizTile"); // Hier selecteer je alle knopjes, de quizzes dus.
@@ -69,7 +67,25 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-
-
+    // exit button
+    const exitButton = document.getElementById("exitIcon"); // Hier selecteer je de exit knop
+    exitButton?.addEventListener("click", () => { // Als je op de exit knop klikt word je naar de index.php gestuurd
+        window.location.href = "index.php";
+    });
+    debugStream.log("<succes");
 });
 
+
+function handleSearchInput(event) {
+    const searchValue = event.target.value.trim().toLowerCase();
+    const quizTiles = document.querySelectorAll('.quizTile');
+    quizTiles.forEach(tile => {
+        tile.style.display = tile.textContent.toLowerCase().includes(searchValue) ? 'flex' : 'none';
+    });
+    const subcontainers = document.querySelectorAll('.subcontainer');
+    subcontainers.forEach(container => {
+        const hasVisibleTile = Array.from(container.querySelectorAll('.quizTile'))
+            .some(tile => tile.style.display === 'flex');
+        container.style.display = hasVisibleTile ? 'flex' : 'none';
+    });
+}
