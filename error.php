@@ -1,3 +1,3 @@
 <?php
 
-echo 'Database error, het kan niet laden.'
+echo 'Database error, het kan niet laden.';
