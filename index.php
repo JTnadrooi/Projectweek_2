@@ -1,5 +1,5 @@
-<?php 
-    include 'php/db-connect.php';
+<?php
+include 'php/db-connect.php';
 ?>
 
 <!DOCTYPE html>
@@ -28,7 +28,7 @@
     <div id="page">
         <div id="topContainer">
             <div id="logo">QUIZZA</div>
-            <input type="text" id="searchBar" placeholder="Search..">
+            <input type="text" id="searchBar" placeholder="Search.." oninput="handleSearchInput(event)">
             <div id="iconsContainer"></div>
         </div>
         <div id="mainDisplay">
