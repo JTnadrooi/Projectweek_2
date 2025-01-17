@@ -78,35 +78,15 @@ function handleSearchInput(event) {
 
 
 function handleSearchInput(event) {
-    const searchValue = event.target.value.toLowerCase(); // Convert to lowercase for case-insensitive search
-    debugStream.log(`search input changed: ${searchValue}`);
-
-    // Select all elements with the "quizTile" class
+    const searchValue = event.target.value.trim().toLowerCase();
     const quizTiles = document.querySelectorAll('.quizTile');
-
-    // Filter quizTiles based on search input
-    quizTiles.forEach(item => {
-        if (searchValue === '' || item.textContent.toLowerCase().includes(searchValue)) {
-            item.style.display = 'flex'; // Show matching quizTile
-        } else {
-            item.style.display = 'none'; // Hide non-matching quizTile
-        }
+    quizTiles.forEach(tile => {
+        tile.style.display = tile.textContent.toLowerCase().includes(searchValue) ? 'flex' : 'none';
     });
-
-    // Select all subcontainer elements and update visibility based on their children
     const subcontainers = document.querySelectorAll('.subcontainer');
-
     subcontainers.forEach(container => {
-        // Check if the container has any visible quizTile
-        const hasVisibleTile = Array.from(container.querySelectorAll('.quizTile')).some(
-            tile => tile.style.display === 'flex'
-        );
-
-        if (hasVisibleTile) {
-            container.style.display = 'flex'; // Show the subcontainer
-        } else {
-            container.style.display = 'none'; // Hide the subcontainer
-        }
+        const hasVisibleTile = Array.from(container.querySelectorAll('.quizTile'))
+            .some(tile => tile.style.display === 'flex');
+        container.style.display = hasVisibleTile ? 'flex' : 'none';
     });
 }
-
