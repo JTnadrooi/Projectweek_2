@@ -1,6 +1,3 @@
-$type: debug;
-$type: nodebug; // comment this line to enable debug mode.
-
 :root
 {
     --c1: #ffffff;
@@ -9,6 +6,9 @@ $type: nodebug; // comment this line to enable debug mode.
     --c5: #555867;
     --c6: #000000;
     --soft-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+    --icon-bg: #007bff;
+    --click-scale: 0.9;
+    --click-bg: #0056b3;
 }
 
 *
@@ -17,14 +17,6 @@ $type: nodebug; // comment this line to enable debug mode.
     font-weight: normal;
     color: var(--c6);
     background-color: var(--c5);
-    // -webkit-font-smoothing: none;
-    // text-rendering: optimizeLegibility !important;
-    // image-rendering: pixelated;
-    // image-rendering: -moz-crisp-edges;
-    // image-rendering: crisp-edges;
-    // -webkit-font-smoothing: none;
-    // -moz-osx-font-smoothing: grayscale;
-
     font-size: 40px;
     font-smooth: never;
     text-overflow: ellipsis;
@@ -32,36 +24,54 @@ $type: nodebug; // comment this line to enable debug mode.
     margin: 0px;
 }
 
+body
+{
+    overflow: hidden;
+}
+
+@mixin hover-effect
+{
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover
+    {
+        transform: translateY(-5px);
+        box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    &:active
+    {
+        transform: scale(var(--click-scale));
+        box-shadow: var(--soft-shadow);
+    }
+}
+
 @font-face
 {
     font-family: kanit;
-    src: url('../fonts/Kanit-ExtraBold.ttf');
+    src: url("../fonts/Kanit-ExtraBold.ttf");
 }
 
 @font-face
 {
     font-family: inter;
-    src: url('../fonts/Inter_24pt-Regular.ttf');
+    src: url("../fonts/Inter_18pt-Regular.ttf");
 }
 
-div
+textarea
 {
-    @if $type ==debug
-    {
-        border: 1px solid red;
-    }
-
+    resize: none;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    outline: none;
     width: 100%;
     height: 100%;
 }
 
-// @mixin icon
-// {
-//     border: 16px solid transparent;
-// }
-
-.ghost
+div
 {
+    width: 100%;
+    height: 100%;
     background-color: transparent;
 }
 
@@ -69,14 +79,19 @@ div
 {
     background-color: var(--c1);
     border-radius: 12px;
-    color: rgba(black, 0.6);
+    color: rgba(0, 0, 0, 0.6);
     padding: 10px;
+    margin-bottom: 10px;
     height: 30px;
     font-family: inter;
     font-size: 22px;
     text-align: left;
     width: 80%;
     box-shadow: var(--soft-shadow);
+    overflow: hidden;
+    white-space: nowrap;
+    outline: none;
+    border-color: transparent;
 }
 
 #topContainer
@@ -84,8 +99,9 @@ div
     background-color: var(--c3);
     border: 1px solid var(--c6);
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
+    width: 100vw;
     box-shadow: var(--soft-shadow);
 }
 
@@ -107,19 +123,28 @@ div
 {
     height: 50px;
     width: 50px;
-    background: url("../media/icons/folderAdd.png") no-repeat var(--c1);
-    border: 0px solid;
+    background-color: var(--icon-bg);
+    border: 0;
     background-size: 30px;
     background-position: center;
     border-radius: 100%;
     margin: 10px 10px;
     box-shadow: var(--soft-shadow);
+    cursor: pointer;
+    @include hover-effect;
+
+    &.end
+    {
+        margin-top: auto;
+    }
+
+    &.right
+    {
+        margin-left: auto;
+    }
 }
 
-.iconEnd
-{
-    margin-top: auto;
-}
+
 
 #mainDisplay
 {
@@ -136,6 +161,98 @@ div
     justify-content: flex-start;
     align-items: center;
     width: 60px;
-    height: calc(100vh - 90px);
+    height: calc(100vh - 70px);
     border-top: none;
+}
+
+#bottomIconContainer
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--c3);
+    border: 1px solid var(--c6);
+    width: 100vw;
+    height: 70px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    box-shadow: var(--soft-shadow);
+}
+
+#masterQuizContainer
+{
+    height: calc(100vh - 71px);
+    margin: 0 auto;
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.subcontainer
+{
+    background-color: var(--c3);
+    box-shadow: var(--soft-shadow);
+    border-radius: 30px;
+    padding-left: 20px;
+    padding-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+    max-width: none;
+    margin: 0 auto;
+    box-sizing: border-box;
+    max-height: 280px;
+}
+
+.quizTile
+{
+    background-color: #ffffff;
+    box-shadow: var(--soft-shadow);
+    border-radius: 20px;
+    width: 180px;
+    height: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+    margin: 10px;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    @include hover-effect;
+}
+
+
+.quizTile
+{
+    background-color: #ffffff;
+    box-shadow: var(--soft-shadow);
+    border-radius: 20px;
+    width: 180px;
+    height: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+    margin: 10px;
+    box-sizing: border-box;
+    cursor: pointer;
+    @include hover-effect;
+}
+
+.quizTileContainer
+{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 20px;
+    width: 100%;
 }
