@@ -132,17 +132,19 @@ div
     box-shadow: var(--soft-shadow);
     cursor: pointer;
     @include hover-effect;
+
+    &.end
+    {
+        margin-top: auto;
+    }
+
+    &.right
+    {
+        margin-left: auto;
+    }
 }
 
-.iconEnd
-{
-    margin-top: auto;
-}
 
-.iconRight
-{
-    margin-left: auto;
-}
 
 #mainDisplay
 {

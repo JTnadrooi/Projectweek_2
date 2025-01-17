@@ -110,12 +110,10 @@ div {
   transform: scale(var(--click-scale));
   box-shadow: var(--soft-shadow);
 }
-
-.iconEnd {
+.icon.end {
   margin-top: auto;
 }
-
-.iconRight {
+.icon.right {
   margin-left: auto;
 }
 
