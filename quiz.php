@@ -8,8 +8,6 @@
     }
 ?>
 
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -44,18 +42,16 @@
     </div>
     <div id="bottomIconContainer"></div>
     <div id="feedbackModal-correct" class="modal" style="display:none">
-            <!-- Modal content -->
-            <div class="modal-content">
-                <img src="media/correct.png" alt="">
-                <p>Vraag goed... </p>                    
-            </div>
+        <div class="modal-content">
+            <img src="media/correct.png" alt="">
+            <p>Vraag goed... </p>                    
+        </div>
     </div>
     <div id="feedbackModal-incorrect" class="modal" style="display:none">
-            <!-- Modal content -->
-            <div class="modal-content">
-                <img src="media/incorrect.png" alt="">
-                <p>Vraag fout... </p>                    
-            </div>
+        <div class="modal-content">
+            <img src="media/incorrect.png" alt="">
+            <p>Vraag fout... </p>                    
+        </div>
     </div>
 </body>
 
