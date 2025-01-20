@@ -45,7 +45,7 @@ textarea {
 
 div {
   width: 100%;
-  height: 30%;
+  height: 100%;
   background-color: transparent;
 }
 
@@ -183,18 +183,13 @@ div {
   border: 3px solid var(--c5); /* Voegt padding toe rond de thumb */
 }
 .subcontainer {
-  background-color: var(--c3);
   box-shadow: var(--soft-shadow);
   border-radius: 30px;
-  padding-left: 20px;
-  padding-bottom: 40px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  width: 100%;
   max-width: none;
-  margin: 0 auto;
   box-sizing: border-box;
   max-height: 280px;
 }
@@ -328,7 +323,8 @@ div {
 }
 
 .answerRow:first-child {
-  margin-top: 150px;
+  height: 30%;
+  margin-top: 220px;
 }
 
 .answerRow { 
