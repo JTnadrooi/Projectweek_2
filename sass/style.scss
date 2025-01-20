@@ -1,79 +1,7 @@
-:root
-{
-    --c1: #ffffff;
-    --c2: #ffb0a3;
-    --c3: #00b9be;
-    --c5: #555867;
-    --c6: #000000;
-    --soft-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
-    --icon-bg: #007bff;
-    --click-scale: 0.9;
-    --click-bg: #0056b3;
-}
-
-*
-{
-    font-family: kanit;
-    font-weight: normal;
-    color: var(--c6);
-    background-color: var(--c5);
-    font-size: 40px;
-    font-smooth: never;
-    text-overflow: ellipsis;
-    padding: 0px;
-    margin: 0px;
-}
-
-body
-{
-    overflow: hidden;
-}
-
-@mixin hover-effect
-{
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-
-    &:hover
-    {
-        transform: translateY(-5px);
-        box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
-    }
-
-    &:active
-    {
-        transform: scale(var(--click-scale));
-        box-shadow: var(--soft-shadow);
-    }
-}
-
-@font-face
-{
-    font-family: kanit;
-    src: url("../fonts/Kanit-ExtraBold.ttf");
-}
-
-@font-face
-{
-    font-family: inter;
-    src: url("../fonts/Inter_18pt-Regular.ttf");
-}
-
-textarea
-{
-    resize: none;
-    white-space: pre-wrap;
-    word-wrap: break-word;
-    outline: none;
-    width: 100%;
-    height: 100%;
-}
-
-div
-{
-    width: 100%;
-    height: 100%;
-    background-color: transparent;
-}
+@use 'initial';
+@use 'fonts';
+@use 'variables';
+@use 'effects';
 
 #searchBar
 {
@@ -131,20 +59,19 @@ div
     margin: 10px 10px;
     box-shadow: var(--soft-shadow);
     cursor: pointer;
-    @include hover-effect;
-
-    &.end
-    {
-        margin-top: auto;
-    }
-
-    &.right
-    {
-        margin-left: auto;
-    }
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    @include effects.hover-effect;
 }
 
+.icon.end
+{
+    margin-top: auto;
+}
 
+.icon.right
+{
+    margin-left: auto;
+}
 
 #mainDisplay
 {
@@ -191,43 +118,32 @@ div
     padding: 20px;
     box-sizing: border-box;
     overflow-y: auto;
-}
 
-/* Custom scrollbar styles */
-#masterQuizContainer::-webkit-scrollbar
-{
-    width: 12px;
-    /* Width of the scrollbar */
-}
+    ::-webkit-scrollbar
+    {
+        width: 12px;
+    }
 
-#masterQuizContainer::-webkit-scrollbar-track
-{
-    background: var(--c5);
-    /* Background of the scrollbar track */
-    border-radius: 10px;
-    /* Rounded corners for the track */
-}
+    ::-webkit-scrollbar-track
+    {
+        background: var(--c5);
+        border-radius: 10px;
+    }
 
-#masterQuizContainer::-webkit-scrollbar-thumb
-{
-    background-color: var(--c3);
-    /* Color of the scrollbar thumb */
-    border-radius: 10px;
-    /* Rounded corners for the thumb */
-    border: 3px solid var(--c5);
-    /* Adds padding around the thumb */
-}
+    ::-webkit-scrollbar-thumb
+    {
+        background-color: var(--c3);
+        border-radius: 10px;
+        border: 3px solid var(--c5);
+    }
 
-#masterQuizContainer::-webkit-scrollbar-thumb
-{
-    background-color: var(--c3);
-    /* Color of the scrollbar thumb */
-    border-radius: 10px;
-    /* Rounded corners for the thumb */
-    height: 60px;
-    /* Set the height of the scrollbar thumb */
-    border: 3px solid var(--c5);
-    /* Adds padding around the thumb */
+    ::-webkit-scrollbar-thumb
+    {
+        background-color: var(--c3);
+        border-radius: 10px;
+        height: 60px;
+        border: 3px solid var(--c5);
+    }
 }
 
 .subcontainer
@@ -264,26 +180,33 @@ div
     box-sizing: border-box;
     cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    @include hover-effect;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    @include effects.hover-effect;
 }
 
-
-.quizTile
+.subcontainer-quiz
 {
     background-color: #ffffff;
     box-shadow: var(--soft-shadow);
-    border-radius: 20px;
-    width: 180px;
-    height: 180px;
+    border-radius: 30px;
+    padding: 20px;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 10px;
-    margin: 10px;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+    max-width: none;
+    margin: 0 auto;
     box-sizing: border-box;
-    cursor: pointer;
-    @include hover-effect;
+    font-size: 20px;
+
+    >div
+    {
+        width: 100%;
+        text-align: center;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
 }
 
 .quizTileContainer
@@ -300,8 +223,8 @@ div
     background-color: #ffffff;
     box-shadow: var(--soft-shadow);
     border-radius: 20px;
-    width: 200px;
-    height: 200px;
+    width: 500px;
+    height: 120px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -311,16 +234,31 @@ div
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     box-sizing: border-box;
     cursor: pointer;
-    @include hover-effect;
+    position: relative;
+    bottom: -20px;
+    @include effects.hover-effect;
 }
 
 .quizTileContainer
 {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
-    gap: 20px;
-    width: 100%;
+    height: calc(100vh - 140px);
+    padding: 10px;
+}
+
+.answerRow:first-child
+{
+    margin-top: 150px;
+}
+
+.answerRow
+{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
 }
 
 .homeTitleContainer
@@ -343,34 +281,15 @@ div
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 10px;
-    margin: 10px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     box-sizing: border-box;
     cursor: pointer;
-    @include hover-effect;
+    @include effects.hover-effect;
 }
 
-.subcontainer-quiz
+.answerText-0
 {
-    background-color: #ffffff;
-    box-shadow: var(--soft-shadow);
-    border-radius: 30px;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    width: 100%;
-    max-width: none;
-    margin: 0 auto;
-    box-sizing: border-box;
-    font-size: 20px;
-
-    &>div
-    {
-        text-align: center;
-        font-weight: bold;
-        margin-bottom: 5px;
-    }
+    color: #000000;
+    font-size: 24px;
+    font-weight: bold;
 }

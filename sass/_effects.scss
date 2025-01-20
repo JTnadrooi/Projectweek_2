@@ -1,0 +1,16 @@
+@mixin hover-effect
+{
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover
+    {
+        transform: translateY(-5px);
+        box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    &:active
+    {
+        transform: scale(var(--click-scale));
+        box-shadow: var(--soft-shadow);
+    }
+}
