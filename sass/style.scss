@@ -190,6 +190,44 @@ div
     gap: 20px;
     padding: 20px;
     box-sizing: border-box;
+    overflow-y: auto;
+}
+
+/* Custom scrollbar styles */
+#masterQuizContainer::-webkit-scrollbar
+{
+    width: 12px;
+    /* Width of the scrollbar */
+}
+
+#masterQuizContainer::-webkit-scrollbar-track
+{
+    background: var(--c5);
+    /* Background of the scrollbar track */
+    border-radius: 10px;
+    /* Rounded corners for the track */
+}
+
+#masterQuizContainer::-webkit-scrollbar-thumb
+{
+    background-color: var(--c3);
+    /* Color of the scrollbar thumb */
+    border-radius: 10px;
+    /* Rounded corners for the thumb */
+    border: 3px solid var(--c5);
+    /* Adds padding around the thumb */
+}
+
+#masterQuizContainer::-webkit-scrollbar-thumb
+{
+    background-color: var(--c3);
+    /* Color of the scrollbar thumb */
+    border-radius: 10px;
+    /* Rounded corners for the thumb */
+    height: 60px;
+    /* Set the height of the scrollbar thumb */
+    border: 3px solid var(--c5);
+    /* Adds padding around the thumb */
 }
 
 .subcontainer
@@ -255,4 +293,84 @@ div
     justify-content: flex-start;
     gap: 20px;
     width: 100%;
+}
+
+.answerTile
+{
+    background-color: #ffffff;
+    box-shadow: var(--soft-shadow);
+    border-radius: 20px;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 5px;
+    margin: 5px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-sizing: border-box;
+    cursor: pointer;
+    @include hover-effect;
+}
+
+.quizTileContainer
+{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+}
+
+.homeTitleContainer
+{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 20px;
+    width: 100%;
+}
+
+.answerButton
+{
+    background-color: #ffffff;
+    box-shadow: var(--soft-shadow);
+    border-radius: 20px;
+    width: 300px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+    margin: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-sizing: border-box;
+    cursor: pointer;
+    @include hover-effect;
+}
+
+.subcontainer-quiz
+{
+    background-color: #ffffff;
+    box-shadow: var(--soft-shadow);
+    border-radius: 30px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+    max-width: none;
+    margin: 0 auto;
+    box-sizing: border-box;
+    font-size: 20px;
+
+    &>div
+    {
+        text-align: center;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
 }
