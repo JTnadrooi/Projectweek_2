@@ -26,14 +26,12 @@ body {
   overflow: hidden;
 }
 
-@font-face {
-  font-family: kanit;
-  src: url("../fonts/Kanit-ExtraBold.ttf");
+div {
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
 }
-@font-face {
-  font-family: inter;
-  src: url("../fonts/Inter_18pt-Regular.ttf");
-}
+
 textarea {
   resize: none;
   white-space: pre-wrap;
@@ -43,12 +41,14 @@ textarea {
   height: 100%;
 }
 
-div {
-  width: 100%;
-  height: 100%;
-  background-color: transparent;
+@font-face {
+  font-family: kanit;
+  src: url("../fonts/Kanit-ExtraBold.ttf");
 }
-
+@font-face {
+  font-family: inter;
+  src: url("../fonts/Inter_18pt-Regular.ttf");
+}
 #searchBar {
   background-color: var(--c1);
   border-radius: 12px;
@@ -110,9 +110,11 @@ div {
   transform: scale(var(--click-scale));
   box-shadow: var(--soft-shadow);
 }
+
 .icon.end {
   margin-top: auto;
 }
+
 .icon.right {
   margin-left: auto;
 }
@@ -157,31 +159,27 @@ div {
   gap: 20px;
   padding: 20px;
   box-sizing: border-box;
-  overflow-y: auto; 
+  overflow-y: auto;
+}
+#masterQuizContainer ::-webkit-scrollbar {
+  width: 12px;
+}
+#masterQuizContainer ::-webkit-scrollbar-track {
+  background: var(--c5);
+  border-radius: 10px;
+}
+#masterQuizContainer ::-webkit-scrollbar-thumb {
+  background-color: var(--c3);
+  border-radius: 10px;
+  border: 3px solid var(--c5);
+}
+#masterQuizContainer ::-webkit-scrollbar-thumb {
+  background-color: var(--c3);
+  border-radius: 10px;
+  height: 60px;
+  border: 3px solid var(--c5);
 }
 
-/* Custom scrollbar styles */
-#masterQuizContainer::-webkit-scrollbar {
-  width: 12px; /* Width of the scrollbar */
-}
-
-#masterQuizContainer::-webkit-scrollbar-track {
-  background: var(--c5); /* Background of the scrollbar track */
-  border-radius: 10px; /* Rounded corners for the track */
-}
-
-#masterQuizContainer::-webkit-scrollbar-thumb {
-  background-color: var(--c3); /* Color of the scrollbar thumb */
-  border-radius: 10px; /* Rounded corners for the thumb */
-  border: 3px solid var(--c5); /* Adds padding around the thumb */
-}
-
-#masterQuizContainer::-webkit-scrollbar-thumb {
-  background-color: var(--c3); /* Color of the scrollbar thumb */
-  border-radius: 10px; /* Rounded corners for the thumb */
-  height: 60px; /* Set the height of the scrollbar thumb */
-  border: 3px solid var(--c5); /* Adds padding around the thumb */
-}
 .subcontainer {
   background-color: var(--c3);
   box-shadow: var(--soft-shadow);
@@ -199,187 +197,111 @@ div {
   max-height: 280px;
 }
 
-.quizTile {
-  background-color: #ffffff;
-  box-shadow: var(--soft-shadow);
-  border-radius: 20px;
-  width: 180px;
-  height: 180px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 10px;
-  margin: 10px;
-  box-sizing: border-box;
-  cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.quizTile:hover {
-  transform: translateY(-5px);
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
-}
-.quizTile:active {
-  transform: scale(var(--click-scale));
-  box-shadow: var(--soft-shadow);
-}
-
 .subcontainer-quiz {
   background-color: #ffffff;
   box-shadow: var(--soft-shadow);
-  border-radius: 30px;
+  border-radius: 10px;
   padding: 20px;
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  width: 100%; /* Reduced width */
-  max-width: none;
-  margin: 0 auto;
+  width: 80%;
   box-sizing: border-box;
-  font-size: 20px; /* Reduced font size */
-
+  font-size: 20px;
+  position: relative;
+  top: 30px;
+  margin: 0 auto;
 }
-
 .subcontainer-quiz > div {
   width: 100%;
   text-align: center;
   font-weight: bold;
-  /* Highlights the header */
   margin-bottom: 5px;
 }
 
 .quizTile {
   background-color: #ffffff;
   box-shadow: var(--soft-shadow);
-  border-radius: 20px;
-  width: 180px;
-  height: 180px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 10px;
-  margin: 10px;
-  box-sizing: border-box;
-  cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.quizTile:hover {
-  transform: translateY(-5px);
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
-}
-.quizTile:active {
-  transform: scale(var(--click-scale));
-  box-shadow: var(--soft-shadow);
 }
 
 .answerTile {
   background-color: #ffffff;
-  /* Tile background color */
   box-shadow: var(--soft-shadow);
-  /* Consistent shadow */
   border-radius: 20px;
-  /* Slightly smaller radius for tiles */
-  width: 200px; /* Reduced width */
-  height: 200px; /* Reduced height */
+  width: 500px;
+  height: 120px;
   display: flex;
-  /* Flexbox for content alignment */
   justify-content: center;
-  /* Centers content horizontally */
   align-items: center;
-  /* Centers content vertically */
   text-align: center;
-  /* Centers text */
-  padding: 5px; /* Adjusted padding */
-  margin: 5px; /* Adjusted margin */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  /* Smooth hover effect */
+  padding: 5px;
+  margin: 5px;
   box-sizing: border-box;
-  /* Consistent sizing */
   cursor: pointer;
-  /* Indicates interactivity */
+  position: relative;
+  bottom: -20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
 .answerTile:hover {
   transform: translateY(-5px);
-  /* Slight lift on hover */
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
-  /* Enhanced shadow */
 }
-
 .answerTile:active {
-  transform: scale(0.95);
-  /* Slight shrink on click */
+  transform: scale(var(--click-scale));
   box-shadow: var(--soft-shadow);
-  /* Reset shadow */
 }
 
 .quizTileContainer {
   display: flex;
-  flex-wrap: wrap;
-  /* Allows wrapping on smaller screens */
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  /* Aligns tiles to the left */
+  height: calc(100vh - 140px);
+  padding: 10px;
+}
+
+.answerRow:first-child {
+  height: 30%;
+  margin-top: 230px;
+}
+
+.answerRow {
+  display: flex;
+  justify-content: center;
   gap: 20px;
-  /* Adds spacing between tiles */
-  width: 100%;
-  /* Full width */
 }
 
 .homeTitleContainer {
   display: flex;
-  /* Aligns tiles horizontally */
   flex-wrap: wrap;
-  /* Allows wrapping on smaller screens */
   justify-content: flex-start;
   gap: 20px;
   width: 100%;
-  /* Full width */
 }
 
 .answerButton {
   background-color: #ffffff;
-  /* Tile background color */
   box-shadow: var(--soft-shadow);
-  /* Consistent shadow */
   border-radius: 20px;
-  /* Slightly smaller radius for tiles */
   width: 300px;
-  /* Fixed width for tiles */
   height: 300px;
-  /* Fixed height for tiles */
   display: flex;
-  /* Flexbox for content alignment */
   justify-content: center;
-  /* Centers content horizontally */
   align-items: center;
-  /* Centers content vertically */
   text-align: center;
-  /* Centers text */
-  padding: 10px;
-  /* Adds inner spacing */
-  margin: 10px;
-  /* Adds spacing between tiles */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  /* Smooth hover effect */
   box-sizing: border-box;
-  /* Consistent sizing */
   cursor: pointer;
-  /* Indicates interactivity */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
 .answerButton:hover {
   transform: translateY(-5px);
-  /* Slight lift on hover */
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
-  /* Enhanced shadow */
+}
+.answerButton:active {
+  transform: scale(var(--click-scale));
+  box-shadow: var(--soft-shadow);
 }
 
-.answerButton:active {
-  transform: scale(0.95);
-  /* Slight shrink on click */
-  box-shadow: var(--soft-shadow);
-  /* Reset shadow */
+.answerText-0 {
+  color: #000000;
+  font-size: 24px;
+  font-weight: bold;
 }
