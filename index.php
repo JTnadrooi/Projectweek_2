@@ -1,6 +1,10 @@
 <?php
     include 'php/db-connect.php';
     include 'php/functions.php';
+    // if (checkLogin()) {
+    //     updateData();
+    // }
+    session_start();
 ?>
 
 <!DOCTYPE html>
@@ -38,9 +42,14 @@
                 <div class="subcontainer">
                     <div>CREATE</div>
                     <div class="homeTitleContainer">
-                        <div class="quizTile" id="question-create">+</div>
-                        <div class="quizTile" id="personal-1">1</div>
-                        <div class="quizTile" id="personal-2">2</div>
+                        <?php if (isset($_SESSION['accountData']) && $_SESSION['accountData'] == 'teacher') { ?>
+                            <div class="quizTile" id="question-create">+</div>
+                        <?php } else {?>
+                            <div class="quizTile" id="personal-1">1</div>
+                        <?php }?>
+                            <div class="quizTile" id="personal-2">2</div>
+                            <div class="quizTile" id="personal-3">3</div>
+
                     </div>
                 </div>
                 <div class="subcontainer">

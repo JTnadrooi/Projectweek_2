@@ -18,7 +18,9 @@ function getQuestionsData($questionId) {
 }
 
 function checkLogin() {
-    session_start();
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
     if (!isset($_SESSION['accountData'])) {
         return false;
     } else {
