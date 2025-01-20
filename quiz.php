@@ -30,7 +30,7 @@
     
         <div id="time">
                     <div class="circle" style="--clr:#ff2972;">
-                        <div class="dots sec_dot"></div>
+                        <div class="dots sec_dot" id="sec_dot"></div>
                         <svg>
                             <circle cx="70" cy="70" r="70"></circle>
                             <circle cx="70" cy="70" r="70" id="ss"></circle>
@@ -123,38 +123,48 @@
 
     }
 
+    window.onload = function() {
     let secondsElement = document.getElementById('seconds');
-let ss = document.getElementById('ss');
-let secDot = document.getElementById('sec_dot'); // Corrected selector
+    let ss = document.getElementById('ss');
+    let secDot = document.getElementById('sec_dot'); // Corrected selector
 
-const fullDashArray = 440; // Full circle stroke length
+    if (!secDot) {
+        console.error('sec_dot element not found');
+        return; // Stop execution if sec_dot is not found
+    }
 
-// Function to start the countdown
-function startCountdown(totalSeconds) {
-    let remainingSeconds = totalSeconds;
+    const fullDashArray = 440; // Full circle stroke length
 
-    const interval = setInterval(() => {
-        // Update the seconds element on the page
-        secondsElement.innerHTML = remainingSeconds;
-        console.log(remainingSeconds);
+    // Function to start the countdown
+    function startCountdown(totalSeconds) {
+        let remainingSeconds = totalSeconds;
 
-        // Calculate the stroke-dashoffset for the circular progress
-        const dashOffset = fullDashArray - (fullDashArray * remainingSeconds) / totalSeconds;
-        ss.style.strokeDashoffset = dashOffset;
+        const interval = setInterval(() => {
+            // Update the seconds element on the page
+            secondsElement.innerHTML = remainingSeconds;
+            console.log(remainingSeconds);
 
-        // Decrement the remaining seconds
-        remainingSeconds--;
+            // Calculate the stroke-dashoffset for the circular progress
+            const dashOffset = fullDashArray - (fullDashArray * remainingSeconds) / totalSeconds;
+            ss.style.strokeDashoffset = dashOffset;
 
-        // Stop the countdown when it reaches zero
-        if (remainingSeconds < 0) {
-            clearInterval(interval);
-            secondsElement.innerHTML = "00"; // Display 00 when time is up
-        }
-    }, 1000); // Update every second
-}
+            // Update the rotation of the dot
+            const rotation = (remainingSeconds / totalSeconds) * 360;
+            secDot.style.transform = `rotateZ(${rotation}deg)`; // Rotate dot accordingly
 
-// Start the countdown when the page loads
-window.onload = function () {
-    startCountdown(60); // Start countdown with 60 seconds
+            // Decrement the remaining seconds
+            remainingSeconds--;
+
+            // Stop the countdown when it reaches zero
+            if (remainingSeconds < 0) {
+                clearInterval(interval);
+                secondsElement.innerHTML = "00"; // Display 00 when time is up
+            }
+        }, 1000); // Update every second
+    }
+
+    // Start the countdown with 60 seconds
+    startCountdown(60);
 };
+
 </script>
