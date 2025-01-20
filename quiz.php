@@ -39,12 +39,23 @@ if (! checkLogin()) {
                     <button class="answerTile" onClick="answered(2)" id="answerText-2"><?php echo $questionsData[0]['answers'][2] ?></button>
                     <button class="answerTile" onClick="answered(3)" id="answerText-3"><?php echo $questionsData[0]['answers'][3] ?></button>
                 </div>
+                <div id="time">
+                    <div class="circle" style="--clr:#ff2972;">
+                        <div class="dots sec_dot" id="sec_dot"></div>
+                        <svg>
+                            <circle cx="70" cy="70" r="70"></circle>
+                            <circle cx="70" cy="70" r="70" id="ss"></circle>
+                        </svg>
+                        <div id="seconds">60</div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
     <div id="bottomIconContainer"></div>
+    <!-- Modal content -->
     <div id="feedbackModal-correct" class="modal" style="display:none">
-        <!-- Modal content -->
         <div class="modal-content">
             <img src="media/correct.png" alt="">
             <p>Vraag goed! </p>
@@ -54,7 +65,7 @@ if (! checkLogin()) {
         <!-- Modal content -->
         <div class="modal-content">
             <img src="media/incorrect.png" alt="">
-            <p>Vraag fout. </p>
+            <p>Vraag fout. </p>                
         </div>
     </div>
 </body>
@@ -75,6 +86,7 @@ echo '<script> let questionsData = ' . json_encode($questionsData) . '</script>'
     ]
 
     function answered(num) {
+        stopCountdown();
         if (questionsData[currentQuestion].correctAnswer == questionsData[currentQuestion].answers[num]) {
             currentStats[0]++;
             currentStats[1]++;
@@ -82,6 +94,7 @@ echo '<script> let questionsData = ' . json_encode($questionsData) . '</script>'
             modal.style.display = "block";
             setTimeout(() => {
                 modal.style.display = "none";
+                startCountdown(60);
             }, 5000);
         } else {
             currentStats[0]++;
@@ -90,6 +103,7 @@ echo '<script> let questionsData = ' . json_encode($questionsData) . '</script>'
             modal.style.display = "block";
             setTimeout(() => {
                 modal.style.display = "none";
+                startCountdown(60);
             }, 5000);
         }
         currentQuestion++;
@@ -106,4 +120,41 @@ echo '<script> let questionsData = ' . json_encode($questionsData) . '</script>'
         }
 
     }
+
+    let secondsElement = document.getElementById('seconds');
+    let ss = document.getElementById('ss');
+    let secDot = document.getElementById('sec_dot'); 
+    let interval;
+    const fullDashArray = 440; 
+
+    function startCountdown(totalSeconds) {
+        let remainingSeconds = totalSeconds;
+        document.getElementById("time").style.opacity = "100%";
+
+        interval = setInterval(() => {
+            remainingSeconds--;
+            secondsElement.innerHTML = remainingSeconds;
+
+            const dashOffset = fullDashArray - (fullDashArray * remainingSeconds) / totalSeconds;
+            ss.style.strokeDashoffset = dashOffset;
+
+            // secdot has to go with offset
+            secDot.style.transform = `rotate(${(fullDashArray - dashOffset) / fullDashArray * 360}deg)`;
+
+
+            if (remainingSeconds == 0) {
+                clearInterval(interval);
+                answered(-1);
+            }
+        }, 100); 
+    }
+
+    function stopCountdown() {
+        document.getElementById("time").style.opacity = "0%";
+        clearInterval(interval);
+    }
+
+    window.onload = function () {
+        startCountdown(60); 
+    };
 </script>
