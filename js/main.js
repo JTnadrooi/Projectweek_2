@@ -9,8 +9,8 @@ const buttons = [
     ["folderAdd", "side"],
     ["leaderbord", "side"],
     ["help", "side_bottom"],
-    ["help", "bottom_right"],
-    ["exit", "bottom_left"]
+    ["help", "bottom_left"],
+    ["exit", "bottom_right"]
 ]
 function createButtons() {
     debugStream.log("creating buttons..");
@@ -58,12 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
     quizButtons.forEach(buttonQuizStart => { // Voor elke button voer je code uit
         buttonQuizStart.addEventListener("click", () => { // Als er op een knopje klikt word je gestuurd naar de php quiz pagina en wordt je quizid mee gegeven
             const quizId = buttonQuizStart.id.replace("question-", ""); // Hier haal je de quizid uit de id van de knop
-            if (quizId === 'create') {
-                // create quiz
-
-            } else {
-                window.location.href = `quiz.php?quizid=${quizId}`;
-            }
+            window.location.href = `quiz.php?quizid=${quizId}`;
         });
     });
 
