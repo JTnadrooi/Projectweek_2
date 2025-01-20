@@ -1,8 +1,0 @@
-@function random-color()
-{
-    $random-red: random(256);
-    $random-green: random(256);
-    $random-blue: random(256);
-
-    @return rgb($random-red, $random-green, $random-blue);
-}

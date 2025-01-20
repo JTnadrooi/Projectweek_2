@@ -3,8 +3,6 @@
 @use 'variables';
 @use 'effects';
 
-$debug: true;
-// $debug: false;
 
 #searchBar
 {
@@ -23,7 +21,6 @@ $debug: true;
     white-space: nowrap;
     outline: none;
     border-color: transparent;
-
 }
 
 #topContainer
@@ -64,16 +61,16 @@ $debug: true;
     box-shadow: var(--soft-shadow);
     cursor: pointer;
     @include effects.hover-effect;
+}
 
-    .end
-    {
-        margin-top: auto;
-    }
+.icon.end
+{
+    margin-top: auto;
+}
 
-    .right
-    {
-        margin-left: auto;
-    }
+.icon.right
+{
+    margin-left: auto;
 }
 
 #mainDisplay
@@ -122,25 +119,25 @@ $debug: true;
     box-sizing: border-box;
     overflow-y: auto;
 
-    &::-webkit-scrollbar
+    ::-webkit-scrollbar
     {
         width: 12px;
     }
 
-    &::-webkit-scrollbar-track
+    ::-webkit-scrollbar-track
     {
         background: var(--c5);
         border-radius: 10px;
     }
 
-    &::-webkit-scrollbar-thumb
+    ::-webkit-scrollbar-thumb
     {
         background-color: var(--c3);
         border-radius: 10px;
         border: 3px solid var(--c5);
     }
 
-    &::-webkit-scrollbar-thumb
+    ::-webkit-scrollbar-thumb
     {
         background-color: var(--c3);
         border-radius: 10px;
