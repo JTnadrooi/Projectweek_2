@@ -26,6 +26,22 @@
 
 <body>
     <div id="quiz-container">
+    
+    
+        <div id="time">
+                    <div class="circle" style="--clr:#ff2972;">
+                        <div class="dots sec_dot"></div>
+                        <svg>
+                            <circle cx="70" cy="70" r="70"></circle>
+                            <circle cx="70" cy="70" r="70" id="ss"></circle>
+                        </svg>
+                        <div id="seconds">60</div>
+                    </div>
+        </div>
+
+
+
+
         <div id="main-container">
             <div class="subcontainer-quiz">
                 <div class="textQuestionTitle"><?php echo $questionsData[0]['question'] ?></div>
@@ -106,4 +122,39 @@
         }
 
     }
+
+    let secondsElement = document.getElementById('seconds');
+let ss = document.getElementById('ss');
+let secDot = document.getElementById('sec_dot'); // Corrected selector
+
+const fullDashArray = 440; // Full circle stroke length
+
+// Function to start the countdown
+function startCountdown(totalSeconds) {
+    let remainingSeconds = totalSeconds;
+
+    const interval = setInterval(() => {
+        // Update the seconds element on the page
+        secondsElement.innerHTML = remainingSeconds;
+        console.log(remainingSeconds);
+
+        // Calculate the stroke-dashoffset for the circular progress
+        const dashOffset = fullDashArray - (fullDashArray * remainingSeconds) / totalSeconds;
+        ss.style.strokeDashoffset = dashOffset;
+
+        // Decrement the remaining seconds
+        remainingSeconds--;
+
+        // Stop the countdown when it reaches zero
+        if (remainingSeconds < 0) {
+            clearInterval(interval);
+            secondsElement.innerHTML = "00"; // Display 00 when time is up
+        }
+    }, 1000); // Update every second
+}
+
+// Start the countdown when the page loads
+window.onload = function () {
+    startCountdown(60); // Start countdown with 60 seconds
+};
 </script>
