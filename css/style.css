@@ -102,17 +102,21 @@ div {
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
 .icon:hover {
   transform: translateY(-5px);
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
 }
+
 .icon:active {
   transform: scale(var(--click-scale));
   box-shadow: var(--soft-shadow);
 }
+
 .icon.end {
   margin-top: auto;
 }
+
 .icon.right {
   margin-left: auto;
 }
@@ -157,7 +161,7 @@ div {
   gap: 20px;
   padding: 20px;
   box-sizing: border-box;
-  overflow-y: auto; 
+  overflow-y: auto;
 }
 
 #masterQuizContainer::-webkit-scrollbar {
@@ -181,42 +185,22 @@ div {
   height: 60px;
   border: 3px solid var(--c5);
 }
+
 .subcontainer {
+  background-color: var(--c3);
   box-shadow: var(--soft-shadow);
   border-radius: 30px;
+  padding-left: 20px;
+  padding-bottom: 40px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
+  width: 100%;
   max-width: none;
+  margin: 0 auto;
   box-sizing: border-box;
   max-height: 280px;
-}
-
-.quizTile {
-  background-color: #ffffff;
-  box-shadow: var(--soft-shadow);
-  border-radius: 20px;
-  width: 180px;
-  height: 180px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 10px;
-  margin: 10px;
-  box-sizing: border-box;
-  cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.quizTile:hover {
-  transform: translateY(-5px);
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
-}
-.quizTile:active {
-  transform: scale(var(--click-scale));
-  box-shadow: var(--soft-shadow);
 }
 
 .subcontainer-quiz {
@@ -229,8 +213,8 @@ div {
   box-sizing: border-box;
   font-size: 20px;
   position: relative;
-  top: 50px; 
-  margin: 0 auto; 
+  top: 50px;
+  margin: 0 auto;
 }
 
 .subcontainer-quiz > div {
@@ -242,26 +226,6 @@ div {
 
 .quizTile {
   background-color: #ffffff;
-  box-shadow: var(--soft-shadow);
-  border-radius: 20px;
-  width: 180px;
-  height: 180px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 10px;
-  margin: 10px;
-  box-sizing: border-box;
-  cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.quizTile:hover {
-  transform: translateY(-5px);
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
-}
-.quizTile:active {
-  transform: scale(var(--click-scale));
   box-shadow: var(--soft-shadow);
 }
 
@@ -308,7 +272,7 @@ div {
   margin-top: 150px;
 }
 
-.answerRow { 
+.answerRow {
   display: flex;
   justify-content: center;
   gap: 10px;
