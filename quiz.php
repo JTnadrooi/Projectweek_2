@@ -1,11 +1,11 @@
 <?php
-    include 'php/functions.php';
-    $quizId = $_GET['quizid'];
-    $questionsData = getQuestionsData($quizId);
-    include 'php/db-connect.php';
-    if (! checkLogin()) {
-        header('Location: index.php');
-    }
+include 'php/functions.php';
+$quizId = $_GET['quizid'];
+$questionsData = getQuestionsData($quizId);
+include 'php/db-connect.php';
+if (! checkLogin()) {
+    header('Location: index.php');
+}
 ?>
 
 
@@ -58,21 +58,22 @@
     <div id="feedbackModal-correct" class="modal" style="display:none">
         <div class="modal-content">
             <img src="media/correct.png" alt="">
-            <p>Vraag goed... </p>                    
+            <p>Vraag goed! </p>
         </div>
     </div>
     <div id="feedbackModal-incorrect" class="modal" style="display:none">
+        <!-- Modal content -->
         <div class="modal-content">
             <img src="media/incorrect.png" alt="">
-            <p>Vraag fout... </p>                    
+            <p>Vraag fout. </p>                
         </div>
     </div>
 </body>
 
 </html>
 
-<?php 
-    echo '<script> let questionsData = ' . json_encode($questionsData) . '</script>';
+<?php
+echo '<script> let questionsData = ' . json_encode($questionsData) . '</script>';
 ?>
 
 <script>
