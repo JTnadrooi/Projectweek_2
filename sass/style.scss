@@ -1,7 +1,67 @@
-@use 'initial';
-@use 'fonts';
-@use 'variables';
-@use 'effects';
+// @use 'initial';
+// @use 'fonts';
+// @use 'variables';
+// @use 'effects';
+
+:root
+{
+    --c1: #ffffff;
+    --c2: #ffb0a3;
+    --c3: #00b9be;
+    --c5: #555867;
+    --c6: #000000;
+    --soft-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+    --icon-bg: #007bff;
+    --click-scale: 0.9;
+    --click-bg: #0056b3;
+}
+
+*
+{
+    font-family: kanit;
+    font-weight: normal;
+    color: var(--c6);
+    background-color: var(--c5);
+    font-size: 40px;
+    font-smooth: never;
+    text-overflow: ellipsis;
+    padding: 0px;
+    margin: 0px;
+}
+
+body
+{
+    overflow: hidden;
+}
+
+@font-face
+{
+    font-family: kanit;
+    src: url("../fonts/Kanit-ExtraBold.ttf");
+}
+
+@font-face
+{
+    font-family: inter;
+    src: url("../fonts/Inter_18pt-Regular.ttf");
+}
+
+textarea
+{
+    resize: none;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    outline: none;
+    width: 100%;
+    height: 100%;
+}
+
+div
+{
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+}
 
 #searchBar
 {
@@ -60,7 +120,18 @@
     box-shadow: var(--soft-shadow);
     cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    @include effects.hover-effect;
+}
+
+.icon:hover
+{
+    transform: translateY(-5px);
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.icon:active
+{
+    transform: scale(var(--click-scale));
+    box-shadow: var(--soft-shadow);
 }
 
 .icon.end
@@ -118,32 +189,32 @@
     padding: 20px;
     box-sizing: border-box;
     overflow-y: auto;
+}
 
-    ::-webkit-scrollbar
-    {
-        width: 12px;
-    }
+#masterQuizContainer::-webkit-scrollbar
+{
+    width: 12px;
+}
 
-    ::-webkit-scrollbar-track
-    {
-        background: var(--c5);
-        border-radius: 10px;
-    }
+#masterQuizContainer::-webkit-scrollbar-track
+{
+    background: var(--c5);
+    border-radius: 10px;
+}
 
-    ::-webkit-scrollbar-thumb
-    {
-        background-color: var(--c3);
-        border-radius: 10px;
-        border: 3px solid var(--c5);
-    }
+#masterQuizContainer::-webkit-scrollbar-thumb
+{
+    background-color: var(--c3);
+    border-radius: 10px;
+    border: 3px solid var(--c5);
+}
 
-    ::-webkit-scrollbar-thumb
-    {
-        background-color: var(--c3);
-        border-radius: 10px;
-        height: 60px;
-        border: 3px solid var(--c5);
-    }
+#masterQuizContainer::-webkit-scrollbar-thumb
+{
+    background-color: var(--c3);
+    border-radius: 10px;
+    height: 60px;
+    border: 3px solid var(--c5);
 }
 
 .subcontainer
@@ -164,58 +235,33 @@
     max-height: 280px;
 }
 
-.quizTile
-{
-    background-color: #ffffff;
-    box-shadow: var(--soft-shadow);
-    border-radius: 20px;
-    width: 180px;
-    height: 180px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 10px;
-    margin: 10px;
-    box-sizing: border-box;
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    @include effects.hover-effect;
-}
-
 .subcontainer-quiz
 {
     background-color: #ffffff;
     box-shadow: var(--soft-shadow);
-    border-radius: 30px;
+    border-radius: 10px;
     padding: 20px;
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    width: 100%;
-    max-width: none;
-    margin: 0 auto;
+    width: 80%;
     box-sizing: border-box;
     font-size: 20px;
-
-    >div
-    {
-        width: 100%;
-        text-align: center;
-        font-weight: bold;
-        margin-bottom: 5px;
-    }
+    position: relative;
+    top: 50px;
+    margin: 0 auto;
 }
 
-.quizTileContainer
+.subcontainer-quiz>div
 {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    gap: 20px;
     width: 100%;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.quizTile
+{
+    background-color: #ffffff;
+    box-shadow: var(--soft-shadow);
 }
 
 .answerTile
@@ -236,7 +282,18 @@
     cursor: pointer;
     position: relative;
     bottom: -20px;
-    @include effects.hover-effect;
+}
+
+.answerTile:hover
+{
+    transform: translateY(-5px);
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.answerTile:active
+{
+    transform: scale(0.95);
+    box-shadow: var(--soft-shadow);
 }
 
 .quizTileContainer
@@ -251,6 +308,7 @@
 
 .answerRow:first-child
 {
+    height: 30%;
     margin-top: 150px;
 }
 
@@ -284,7 +342,18 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     box-sizing: border-box;
     cursor: pointer;
-    @include effects.hover-effect;
+}
+
+.answerButton:hover
+{
+    transform: translateY(-5px);
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.answerButton:active
+{
+    transform: scale(0.95);
+    box-shadow: var(--soft-shadow);
 }
 
 .answerText-0
