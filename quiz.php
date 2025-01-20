@@ -64,7 +64,7 @@
         <!-- Modal content -->
         <div class="modal-content">
             <img src="media/incorrect.png" alt="">
-            <p>Vraag fout. </p>                
+            <p>Vraag fout. </p>
         </div>
     </div>
 </body>

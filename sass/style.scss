@@ -2,9 +2,11 @@
 @use 'fonts';
 @use 'variables';
 @use 'effects';
+@use 'time';
 
 $media-mobile: 600px;
 $media-mobile-2: $media-mobile * 1.5;
+$debug: false;
 
 #searchBar
 {
@@ -204,6 +206,13 @@ $media-mobile-2: $media-mobile * 1.5;
         text-align: center;
         font-weight: bold;
         margin-bottom: 5px;
+
+    }
+
+    @media (max-width: $media-mobile)
+    {
+        padding: 10px;
+        margin: 0 auto;
     }
 }
 
@@ -242,7 +251,24 @@ $media-mobile-2: $media-mobile * 1.5;
     cursor: pointer;
     position: relative;
     bottom: -20px;
+
+    @media (max-width: $media-mobile)
+    {
+        padding-left: 15px;
+        padding-bottom: 30px;
+        height: 200px;
+        width: 200px;
+    }
+
     @include effects.hover-effect;
+}
+
+.main-container
+{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
 }
 
 
@@ -254,6 +280,12 @@ $media-mobile-2: $media-mobile * 1.5;
     justify-content: center;
     height: calc(100vh - 140px);
     padding: 10px;
+    width: auto;
+
+    @media (max-width: $media-mobile)
+    {
+        margin-top: -100px;
+    }
 }
 
 .answerRow:first-child
@@ -269,7 +301,6 @@ $media-mobile-2: $media-mobile * 1.5;
     justify-content: center;
     gap: 20px;
 }
-
 
 .homeTitleContainer
 {
@@ -296,10 +327,17 @@ $media-mobile-2: $media-mobile * 1.5;
     @include effects.hover-effect;
 }
 
-
 .answerText-0
 {
     color: #000000;
     font-size: 24px;
     font-weight: bold;
+}
+
+*
+{
+    @if $debug
+    {
+        border: 1px solid red;
+    }
 }
