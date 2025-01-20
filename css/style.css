@@ -180,6 +180,15 @@ textarea {
 }
 
 .subcontainer {
+  box-shadow: var(--soft-shadow);
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  max-width: none;
+  box-sizing: border-box;
+  max-height: 280px;
     background-color: var(--c3);
     box-shadow: var(--soft-shadow);
     border-radius: 30px;
@@ -224,6 +233,17 @@ textarea {
 }
 
 .subcontainer-quiz {
+  background-color: #ffffff;
+  box-shadow: var(--soft-shadow);
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  width: 80%;
+  box-sizing: border-box;
+  font-size: 20px;
+  position: relative;
+  top: 50px; 
+  margin: 0 auto; 
     background-color: #ffffff;
     box-shadow: var(--soft-shadow);
     border-radius: 30px;
@@ -239,6 +259,10 @@ textarea {
     font-size: 20px;
 }
 .subcontainer-quiz > div {
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 5px;
     width: 100%;
     text-align: center;
     font-weight: bold;
@@ -254,6 +278,22 @@ textarea {
 }
 
 .answerTile {
+  background-color: #ffffff;
+  box-shadow: var(--soft-shadow);
+  border-radius: 20px;
+  width: 500px;
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 5px;
+  margin: 5px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-sizing: border-box;
+  cursor: pointer;
+  position: relative;
+  bottom: -20px;
     background-color: #ffffff;
     box-shadow: var(--soft-shadow);
     border-radius: 20px;
@@ -291,6 +331,8 @@ textarea {
 }
 
 .answerRow:first-child {
+  height: 30%;
+  margin-top: 150px;
     margin-top: 150px;
 }
 
@@ -309,6 +351,18 @@ textarea {
 }
 
 .answerButton {
+  background-color: #ffffff;
+  box-shadow: var(--soft-shadow);
+  border-radius: 20px;
+  width: 300px;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-sizing: border-box;
+  cursor: pointer;
     background-color: #ffffff;
     box-shadow: var(--soft-shadow);
     border-radius: 20px;
