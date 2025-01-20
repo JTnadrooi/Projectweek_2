@@ -160,27 +160,26 @@ div {
   overflow-y: auto; 
 }
 
-/* Aangepaste scrollbar-stijlen */
 #masterQuizContainer::-webkit-scrollbar {
-  width: 12px; /* Breedte van de scrollbar */
+  width: 12px;
 }
 
 #masterQuizContainer::-webkit-scrollbar-track {
-  background: var(--c5); /* Achtergrond van de scrollbar-track */
-  border-radius: 10px; /* Afgeronde hoeken voor de track */
+  background: var(--c5);
+  border-radius: 10px;
 }
 
 #masterQuizContainer::-webkit-scrollbar-thumb {
-  background-color: var(--c3); /* Kleur van de scrollbar-thumb */
-  border-radius: 10px; /* Afgeronde hoeken voor de thumb */
-  border: 3px solid var(--c5); /* Voegt padding toe rond de thumb */
+  background-color: var(--c3);
+  border-radius: 10px;
+  border: 3px solid var(--c5);
 }
 
 #masterQuizContainer::-webkit-scrollbar-thumb {
-  background-color: var(--c3); /* Kleur van de scrollbar-thumb */
-  border-radius: 10px; /* Afgeronde hoeken voor de thumb */
-  height: 60px; /* Stel de hoogte van de scrollbar-thumb in */
-  border: 3px solid var(--c5); /* Voegt padding toe rond de thumb */
+  background-color: var(--c3);
+  border-radius: 10px;
+  height: 60px;
+  border: 3px solid var(--c5);
 }
 .subcontainer {
   box-shadow: var(--soft-shadow);
@@ -223,25 +222,21 @@ div {
 .subcontainer-quiz {
   background-color: #ffffff;
   box-shadow: var(--soft-shadow);
-  border-radius: 30px;
+  border-radius: 10px;
   padding: 20px;
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  width: 100%; /* Verminderde breedte */
-  max-width: none;
-  margin: 0 auto;
+  width: 80%;
   box-sizing: border-box;
-  font-size: 20px; /* Verminderde lettergrootte */
-
+  font-size: 20px;
+  position: relative;
+  top: 50px; 
+  margin: 0 auto; 
 }
 
 .subcontainer-quiz > div {
   width: 100%;
   text-align: center;
   font-weight: bold;
-  /* Markeert de kop */
   margin-bottom: 5px;
 }
 
@@ -272,45 +267,31 @@ div {
 
 .answerTile {
   background-color: #ffffff;
-  /* Tegel achtergrondkleur */
   box-shadow: var(--soft-shadow);
-  /* Consistente schaduw */
   border-radius: 20px;
-  /* Iets kleinere radius voor tegels */
-  width: 500px; /* Verminderde breedte */
-  height: 120px; /* Verminderde hoogte */
+  width: 500px;
+  height: 120px;
   display: flex;
-  /* Flexbox voor inhoudsuitlijning */
   justify-content: center;
-  /* Centreert inhoud horizontaal */
   align-items: center;
-  /* Centreert inhoud verticaal */
   text-align: center;
-  /* Centreert tekst */
-  padding: 5px; /* Aangepaste padding */
-  margin: 5px; /* Aangepaste marge */
+  padding: 5px;
+  margin: 5px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  /* Soepel hover-effect */
   box-sizing: border-box;
-  /* Consistente grootte */
   cursor: pointer;
-  /* Geeft interactiviteit aan */
   position: relative;
-  bottom: -20px; /* Pas deze waarde aan indien nodig om de antwoorden dichter bij de onderste dock te plaatsen */
+  bottom: -20px;
 }
 
 .answerTile:hover {
   transform: translateY(-5px);
-  /* Lichte lift bij hover */
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
-  /* Versterkte schaduw */
 }
 
 .answerTile:active {
   transform: scale(0.95);
-  /* Lichte krimp bij klikken */
   box-shadow: var(--soft-shadow);
-  /* Reset schaduw */
 }
 
 .quizTileContainer {
@@ -318,78 +299,56 @@ div {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: calc(100vh - 140px); /* Pas de hoogte aan om boven de footer te positioneren */
-  padding: 10px; /* Kleine padding */
+  height: calc(100vh - 140px);
+  padding: 10px;
 }
 
 .answerRow:first-child {
   height: 30%;
-  margin-top: 220px;
+  margin-top: 150px;
 }
 
 .answerRow { 
   display: flex;
-  justify-content: center; /* Horizontaal centreren */
-  gap: 10px; /* Pas de afstand tussen antwoordtegels aan */
+  justify-content: center;
+  gap: 10px;
 }
 
 .homeTitleContainer {
   display: flex;
-  /* Lijnt tegels horizontaal uit */
   flex-wrap: wrap;
-  /* Staat inpakken toe op kleinere schermen */
   justify-content: flex-start;
   gap: 20px;
   width: 100%;
-  /* Volledige breedte */
 }
 
 .answerButton {
   background-color: #ffffff;
-  /* Tegel achtergrondkleur */
   box-shadow: var(--soft-shadow);
-  /* Consistente schaduw */
   border-radius: 20px;
-  /* Iets kleinere radius voor tegels */
   width: 300px;
-  /* Vaste breedte voor tegels */
   height: 300px;
-  /* Vaste hoogte voor tegels */
   display: flex;
-  /* Flexbox voor inhoudsuitlijning */
   justify-content: center;
-  /* Centreert inhoud horizontaal */
   align-items: center;
-  /* Centreert inhoud verticaal */
   text-align: center;
-  /* Centreert tekst */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  /* Soepel hover-effect */
   box-sizing: border-box;
-  /* Consistente grootte */
   cursor: pointer;
-  /* Geeft interactiviteit aan */
 }
 
 .answerButton:hover {
   transform: translateY(-5px);
-  /* Lichte lift bij hover */
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
-  /* Versterkte schaduw */
 }
 
 .answerButton:active {
   transform: scale(0.95);
-  /* Lichte krimp bij klikken */
   box-shadow: var(--soft-shadow);
-  /* Reset schaduw */
 }
 
 .answerText-0 {
   color: #000000;
-  /* Zwarte tekst */
   font-size: 24px;
-  /* Grotere lettergrootte */
   font-weight: bold;
-  /* Vette tekst */
 }
