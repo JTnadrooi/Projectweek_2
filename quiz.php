@@ -65,7 +65,7 @@ if (! checkLogin()) {
         <!-- Modal content -->
         <div class="modal-content">
             <img src="media/incorrect.png" alt="">
-            <p>Vraag fout. </p>                
+            <p>Vraag fout. </p>
         </div>
     </div>
 </body>
@@ -123,9 +123,9 @@ echo '<script> let questionsData = ' . json_encode($questionsData) . '</script>'
 
     let secondsElement = document.getElementById('seconds');
     let ss = document.getElementById('ss');
-    let secDot = document.getElementById('sec_dot'); 
+    let secDot = document.getElementById('sec_dot');
     let interval;
-    const fullDashArray = 440; 
+    const fullDashArray = 440;
 
     function startCountdown(totalSeconds) {
         let remainingSeconds = totalSeconds;
@@ -146,7 +146,7 @@ echo '<script> let questionsData = ' . json_encode($questionsData) . '</script>'
                 clearInterval(interval);
                 answered(-1);
             }
-        }, 100); 
+        }, 1000);
     }
 
     function stopCountdown() {
@@ -154,7 +154,7 @@ echo '<script> let questionsData = ' . json_encode($questionsData) . '</script>'
         clearInterval(interval);
     }
 
-    window.onload = function () {
-        startCountdown(60); 
+    window.onload = function() {
+        startCountdown(60);
     };
 </script>
