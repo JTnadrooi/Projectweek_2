@@ -3,6 +3,8 @@
 @use 'variables';
 @use 'effects';
 
+$media-mobile: 600px;
+$media-mobile-2: $media-mobile * 1.5;
 
 #searchBar
 {
@@ -158,10 +160,28 @@
     align-items: flex-start;
     justify-content: flex-start;
     width: 100%;
-    max-width: none;
     margin: 0 auto;
     box-sizing: border-box;
     max-height: 280px;
+
+
+    @media (max-width: $media-mobile-2)
+    {
+        padding-left: 15px;
+        padding-bottom: 30px;
+        height: auto;
+        max-height: none;
+        width: 480px;
+    }
+
+    @media (max-width: $media-mobile)
+    {
+        padding-left: 15px;
+        padding-bottom: 30px;
+        height: auto;
+        max-height: none;
+        width: 240px;
+    }
 }
 
 .subcontainer-quiz
@@ -244,7 +264,7 @@
 
 .answerRow
 {
-    
+
     display: flex;
     justify-content: center;
     gap: 20px;
