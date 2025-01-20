@@ -16,4 +16,25 @@ function getQuestionsData($questionId) {
 
     $conn = null;
 }
+
+function checkLogin() {
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
+    if (!isset($_SESSION['accountData'])) {
+        return false;
+    } else {
+        include 'db-connect.php';
+        $stmt = $conn->prepare("select id from q_users where id = :id");
+        $stmt->execute(['id' => $_SESSION['accountData']['id']]);
+        $listArray = $stmt->fetchAll();
+        if (!$listArray) {
+            return false;
+        } else {
+            return true;
+        }
+        
+    }
+}
+
 ?>

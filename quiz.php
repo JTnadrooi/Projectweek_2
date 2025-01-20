@@ -2,7 +2,13 @@
     include 'php/functions.php';
     $quizId = $_GET['quizid'];
     $questionsData = getQuestionsData($quizId);
+    include 'php/db-connect.php';
+    if (! checkLogin()) {
+        header('Location: index.php');
+    }
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
