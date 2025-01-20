@@ -178,7 +178,7 @@ $debug: true;
     box-sizing: border-box;
     font-size: 20px;
     position: relative;
-    top: 50px;
+    top: 30px;
     margin: 0 auto;
 
     &>div
@@ -242,14 +242,15 @@ $debug: true;
 .answerRow:first-child
 {
     height: 30%;
-    margin-top: 150px;
+    margin-top: 230px;
 }
 
 .answerRow
 {
+    
     display: flex;
     justify-content: center;
-    gap: 10px;
+    gap: 20px;
 }
 
 

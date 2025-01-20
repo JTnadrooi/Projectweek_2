@@ -2,7 +2,13 @@
     include 'php/functions.php';
     $quizId = $_GET['quizid'];
     $questionsData = getQuestionsData($quizId);
+    include 'php/db-connect.php';
+    if (! checkLogin()) {
+        header('Location: index.php');
+    }
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -37,6 +43,20 @@
         </div>
     </div>
     <div id="bottomIconContainer"></div>
+    <div id="feedbackModal-correct" class="modal" style="display:none">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <img src="media/correct.png" alt="">
+                <p>Vraag goed... </p>                    
+            </div>
+    </div>
+    <div id="feedbackModal-incorrect" class="modal" style="display:none">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <img src="media/incorrect.png" alt="">
+                <p>Vraag fout... </p>                    
+            </div>
+    </div>
 </body>
 
 </html>
@@ -58,11 +78,19 @@
         if (questionsData[currentQuestion].correctAnswer == questionsData[currentQuestion].answers[num]) {
             currentStats[0]++;
             currentStats[1]++;
-            alert("Goed");
+            let modal = document.getElementById("feedbackModal-correct");
+            modal.style.display = "block";
+            setTimeout(() => {
+                modal.style.display = "none";
+            }, 5000);
         } else {
             currentStats[0]++;
             currentStats[2]++;
-            alert("Fout");
+            let modal = document.getElementById("feedbackModal-incorrect");
+            modal.style.display = "block";
+            setTimeout(() => {
+                modal.style.display = "none";
+            }, 5000);
         }
         currentQuestion++;
 
