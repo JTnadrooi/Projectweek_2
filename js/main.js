@@ -10,8 +10,8 @@ const buttons = [
     ["folderAdd", "side"],
     ["leaderbord", "side"],
     ["help", "side_bottom"],
-    ["help", "bottom_right"],
-    ["exit", "bottom_left"]
+    ["help", "bottom_left"],
+    ["exit", "bottom_right"]
 ]
 function createButtons() {
     buttons.forEach(([buttonName, position]) => {

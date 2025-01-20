@@ -45,7 +45,7 @@ textarea {
 
 div {
   width: 100%;
-  height: 100%;
+  height: 30%;
   background-color: transparent;
 }
 
@@ -160,27 +160,27 @@ div {
   overflow-y: auto; 
 }
 
-/* Custom scrollbar styles */
+/* Aangepaste scrollbar-stijlen */
 #masterQuizContainer::-webkit-scrollbar {
-  width: 12px; /* Width of the scrollbar */
+  width: 12px; /* Breedte van de scrollbar */
 }
 
 #masterQuizContainer::-webkit-scrollbar-track {
-  background: var(--c5); /* Background of the scrollbar track */
-  border-radius: 10px; /* Rounded corners for the track */
+  background: var(--c5); /* Achtergrond van de scrollbar-track */
+  border-radius: 10px; /* Afgeronde hoeken voor de track */
 }
 
 #masterQuizContainer::-webkit-scrollbar-thumb {
-  background-color: var(--c3); /* Color of the scrollbar thumb */
-  border-radius: 10px; /* Rounded corners for the thumb */
-  border: 3px solid var(--c5); /* Adds padding around the thumb */
+  background-color: var(--c3); /* Kleur van de scrollbar-thumb */
+  border-radius: 10px; /* Afgeronde hoeken voor de thumb */
+  border: 3px solid var(--c5); /* Voegt padding toe rond de thumb */
 }
 
 #masterQuizContainer::-webkit-scrollbar-thumb {
-  background-color: var(--c3); /* Color of the scrollbar thumb */
-  border-radius: 10px; /* Rounded corners for the thumb */
-  height: 60px; /* Set the height of the scrollbar thumb */
-  border: 3px solid var(--c5); /* Adds padding around the thumb */
+  background-color: var(--c3); /* Kleur van de scrollbar-thumb */
+  border-radius: 10px; /* Afgeronde hoeken voor de thumb */
+  height: 60px; /* Stel de hoogte van de scrollbar-thumb in */
+  border: 3px solid var(--c5); /* Voegt padding toe rond de thumb */
 }
 .subcontainer {
   background-color: var(--c3);
@@ -234,11 +234,11 @@ div {
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  width: 100%; /* Reduced width */
+  width: 100%; /* Verminderde breedte */
   max-width: none;
   margin: 0 auto;
   box-sizing: border-box;
-  font-size: 20px; /* Reduced font size */
+  font-size: 20px; /* Verminderde lettergrootte */
 
 }
 
@@ -246,7 +246,7 @@ div {
   width: 100%;
   text-align: center;
   font-weight: bold;
-  /* Highlights the header */
+  /* Markeert de kop */
   margin-bottom: 5px;
 }
 
@@ -277,109 +277,123 @@ div {
 
 .answerTile {
   background-color: #ffffff;
-  /* Tile background color */
+  /* Tegel achtergrondkleur */
   box-shadow: var(--soft-shadow);
-  /* Consistent shadow */
+  /* Consistente schaduw */
   border-radius: 20px;
-  /* Slightly smaller radius for tiles */
-  width: 200px; /* Reduced width */
-  height: 200px; /* Reduced height */
+  /* Iets kleinere radius voor tegels */
+  width: 500px; /* Verminderde breedte */
+  height: 120px; /* Verminderde hoogte */
   display: flex;
-  /* Flexbox for content alignment */
+  /* Flexbox voor inhoudsuitlijning */
   justify-content: center;
-  /* Centers content horizontally */
+  /* Centreert inhoud horizontaal */
   align-items: center;
-  /* Centers content vertically */
+  /* Centreert inhoud verticaal */
   text-align: center;
-  /* Centers text */
-  padding: 5px; /* Adjusted padding */
-  margin: 5px; /* Adjusted margin */
+  /* Centreert tekst */
+  padding: 5px; /* Aangepaste padding */
+  margin: 5px; /* Aangepaste marge */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  /* Smooth hover effect */
+  /* Soepel hover-effect */
   box-sizing: border-box;
-  /* Consistent sizing */
+  /* Consistente grootte */
   cursor: pointer;
-  /* Indicates interactivity */
+  /* Geeft interactiviteit aan */
+  position: relative;
+  bottom: -20px; /* Pas deze waarde aan indien nodig om de antwoorden dichter bij de onderste dock te plaatsen */
 }
 
 .answerTile:hover {
   transform: translateY(-5px);
-  /* Slight lift on hover */
+  /* Lichte lift bij hover */
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
-  /* Enhanced shadow */
+  /* Versterkte schaduw */
 }
 
 .answerTile:active {
   transform: scale(0.95);
-  /* Slight shrink on click */
+  /* Lichte krimp bij klikken */
   box-shadow: var(--soft-shadow);
-  /* Reset shadow */
+  /* Reset schaduw */
 }
 
 .quizTileContainer {
   display: flex;
-  flex-wrap: wrap;
-  /* Allows wrapping on smaller screens */
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  /* Aligns tiles to the left */
-  gap: 20px;
-  /* Adds spacing between tiles */
-  width: 100%;
-  /* Full width */
+  height: calc(100vh - 140px); /* Pas de hoogte aan om boven de footer te positioneren */
+  padding: 10px; /* Kleine padding */
+}
+
+.answerRow:first-child {
+  margin-top: 150px;
+}
+
+.answerRow { 
+  display: flex;
+  justify-content: center; /* Horizontaal centreren */
+  gap: 10px; /* Pas de afstand tussen antwoordtegels aan */
 }
 
 .homeTitleContainer {
   display: flex;
-  /* Aligns tiles horizontally */
+  /* Lijnt tegels horizontaal uit */
   flex-wrap: wrap;
-  /* Allows wrapping on smaller screens */
+  /* Staat inpakken toe op kleinere schermen */
   justify-content: flex-start;
   gap: 20px;
   width: 100%;
-  /* Full width */
+  /* Volledige breedte */
 }
 
 .answerButton {
   background-color: #ffffff;
-  /* Tile background color */
+  /* Tegel achtergrondkleur */
   box-shadow: var(--soft-shadow);
-  /* Consistent shadow */
+  /* Consistente schaduw */
   border-radius: 20px;
-  /* Slightly smaller radius for tiles */
+  /* Iets kleinere radius voor tegels */
   width: 300px;
-  /* Fixed width for tiles */
+  /* Vaste breedte voor tegels */
   height: 300px;
-  /* Fixed height for tiles */
+  /* Vaste hoogte voor tegels */
   display: flex;
-  /* Flexbox for content alignment */
+  /* Flexbox voor inhoudsuitlijning */
   justify-content: center;
-  /* Centers content horizontally */
+  /* Centreert inhoud horizontaal */
   align-items: center;
-  /* Centers content vertically */
+  /* Centreert inhoud verticaal */
   text-align: center;
-  /* Centers text */
-  padding: 10px;
-  /* Adds inner spacing */
-  margin: 10px;
-  /* Adds spacing between tiles */
+  /* Centreert tekst */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  /* Smooth hover effect */
+  /* Soepel hover-effect */
   box-sizing: border-box;
-  /* Consistent sizing */
+  /* Consistente grootte */
   cursor: pointer;
-  /* Indicates interactivity */
+  /* Geeft interactiviteit aan */
 }
 
 .answerButton:hover {
   transform: translateY(-5px);
-  /* Slight lift on hover */
+  /* Lichte lift bij hover */
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
-  /* Enhanced shadow */
+  /* Versterkte schaduw */
 }
 
 .answerButton:active {
   transform: scale(0.95);
-  /* Slight shrink on click */
+  /* Lichte krimp bij klikken */
   box-shadow: var(--soft-shadow);
-  /* Reset shadow */
+  /* Reset schaduw */
+}
+
+.answerText-0 {
+  color: #000000;
+  /* Zwarte tekst */
+  font-size: 24px;
+  /* Grotere lettergrootte */
+  font-weight: bold;
+  /* Vette tekst */
 }
