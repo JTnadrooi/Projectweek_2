@@ -178,7 +178,7 @@
     top: 30px;
     margin: 0 auto;
 
-    >div
+    &>div
     {
         width: 100%;
         text-align: center;
@@ -191,6 +191,18 @@
 {
     background-color: #ffffff;
     box-shadow: var(--soft-shadow);
+    border-radius: 20px;
+    width: 180px;
+    height: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+    margin: 10px;
+    box-sizing: border-box;
+    cursor: pointer;
+    @include effects.hover-effect;
 }
 
 .answerTile
