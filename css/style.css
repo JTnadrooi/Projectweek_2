@@ -51,83 +51,6 @@ textarea {
   font-family: inter;
   src: url("../fonts/Inter_18pt-Regular.ttf");
 }
-/* https://www.w3schools.com/howto/howto_css_modals.asp */
-.modal {
-  display: block;
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  -webkit-backdrop-filter: blur(10px);
-          backdrop-filter: blur(10px);
-  background-color: rgba(85, 88, 103, 0.5);
-  overflow: hidden;
-}
-
-.modal-content {
-  background-color: #ffffff;
-  margin: 8% auto;
-  padding: 20px;
-  border: 1px solid #888;
-  height: 400px;
-  width: 550px;
-  border-radius: 20px;
-  text-align: center;
-}
-
-.modal-content > h1 {
-  background-color: #ffffff;
-  font-size: 50px;
-  text-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25);
-}
-
-.modal-content > form,
-.modal-content > p,
-.modal-content > img {
-  background-color: white;
-}
-
-.modal-content > img {
-  width: 300px;
-  height: 300px;
-}
-
-.modal-content > p {
-  margin-top: 25px;
-}
-
-.modal-content > form > input {
-  margin-top: 25px;
-  background-color: white;
-  text-align: center;
-  border: black 3px solid;
-  border-radius: 5px;
-  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25);
-  width: 90%;
-}
-
-.modal-content > form > input[type=submit] {
-  background-color: #00b9be;
-  width: 200px;
-  height: 70px;
-  display: inline-block;
-  margin: 15px 25px;
-  border-radius: 5px;
-  font-size: smaller;
-  font-weight: normal;
-  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25);
-  text-align: center;
-  line-height: 70px;
-}
-
-.modal-content > form > input[type=submit] {
-  cursor: grab;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  transform: translateY(-5px);
-}
-
 #time {
   display: flex;
   justify-content: center;
@@ -205,6 +128,75 @@ textarea {
   #time {
     display: none;
   }
+}
+
+.modal {
+  display: block;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  background-color: rgba(85, 88, 103, 0.5);
+}
+.modal .modal-content {
+  background-color: #ffffff;
+  margin: 8% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  height: 400px;
+  width: 550px;
+  border-radius: 20px;
+  text-align: center;
+}
+.modal .modal-content h1 {
+  background-color: #ffffff;
+  font-size: 50px;
+  text-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25);
+}
+.modal .modal-content form,
+.modal .modal-content p,
+.modal .modal-content img {
+  background-color: #ffffff;
+}
+.modal .modal-content img {
+  width: 300px;
+  height: 300px;
+}
+.modal .modal-content p {
+  margin-top: 25px;
+}
+.modal .modal-content form input {
+  margin-top: 25px;
+  background-color: white;
+  text-align: center;
+  border: 3px solid black;
+  border-radius: 5px;
+  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25);
+  width: 90%;
+}
+.modal .modal-content form input[type=submit] {
+  background-color: #00b9be;
+  width: 200px;
+  height: 70px;
+  display: inline-block;
+  margin: 15px 25px;
+  border-radius: 5px;
+  font-size: smaller;
+  font-weight: normal;
+  text-align: center;
+  line-height: 70px;
+  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25);
+  cursor: grab;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transform: translateY(-5px);
+}
+.modal .modal-content form input[type=submit]:hover {
+  transform: translateY(-10px);
+  box-shadow: 0px 15px 15px rgba(0, 0, 0, 0.25);
 }
 
 #accountContainer {
