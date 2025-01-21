@@ -238,7 +238,6 @@ textarea {
 }
 #accountContainer.shake {
   animation: shake 0.5s ease-out;
-  /* Shake animation triggered by the shake class */
 }
 #accountContainer > .accountDropDownButton {
   all: unset;
