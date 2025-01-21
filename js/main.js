@@ -2,7 +2,6 @@ const debugStream = new AsitDebugStream(undefined, "QUIZZA");
 let currentQuizId = 0;
 debugStream.log("initializing page..");
 const buttons = [
-    ["share", "top"],
     ["account", "top"],
 
     ["home", "side"],
