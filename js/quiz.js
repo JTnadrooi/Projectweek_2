@@ -32,9 +32,10 @@ function answered(num) {
     currentQuestion++;
 
     if (currentQuestion < questionsData.length) {
+        document.getElementById("questionText").innerHTML = questionsData[currentQuestion].question;
         document.getElementById("answerText-0").innerHTML = questionsData[currentQuestion].answers[0];
         document.getElementById("answerText-1").innerHTML = questionsData[currentQuestion].answers[1];
-        if (questionsData[currentQuestion].answers[2] !== 'undefined') {
+        if (questionsData[currentQuestion].answers[2] !== undefined) {
             if (document.getElementById("answerText-2") === null) {
                 let newButton = document.createElement("button");
                 newButton.id = "answerText-2";
@@ -48,8 +49,8 @@ function answered(num) {
                 document.getElementById("answerText-2").parentNode.removeChild(document.getElementById("answerText-2"));
             }
         }
-        console.log(questionsData[currentQuestion].answers[3] !== 'undefined')
-        if (questionsData[currentQuestion].answers[3] == 'undefined') {
+
+        if (questionsData[currentQuestion].answers[3] != undefined) {
             if (document.getElementById("answerText-3") === null) {
                 let newButton = document.createElement("button");
                 newButton.id = "answerText-3";
