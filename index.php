@@ -32,6 +32,7 @@ session_start();
             <input type="text" id="searchBar" placeholder="Search.." oninput="handleSearchInput(event)">
             <div id="iconsContainer"></div>
         </div>
+        <div id="accountContainer">YO</div>
         <div id="mainDisplay">
             <div id="sideIconContainer"></div>
             <div id="masterQuizContainer">

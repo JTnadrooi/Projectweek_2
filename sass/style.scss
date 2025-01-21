@@ -1,8 +1,8 @@
 @use 'initial';
 @use 'fonts';
-@use 'variables';
-@use 'effects';
+@use 'mixins';
 @use 'time';
+@use 'account';
 
 $media-mobile: 600px;
 $media-mobile-2: $media-mobile * 1.5;
@@ -36,6 +36,7 @@ $debug: false;
     align-items: center;
     width: 100vw;
     box-shadow: var(--soft-shadow);
+    z-index: 40;
 }
 
 #logo
@@ -64,7 +65,7 @@ $debug: false;
     margin: 10px 10px;
     box-shadow: var(--soft-shadow);
     cursor: pointer;
-    @include effects.hover-effect;
+    @include mixins.hover-effect;
 }
 
 .icon.end
@@ -152,20 +153,17 @@ $debug: false;
 
 .subcontainer
 {
+    @include mixins.tile-style;
     background-color: var(--c3);
-    box-shadow: var(--soft-shadow);
     border-radius: 30px;
     padding-left: 20px;
     padding-bottom: 40px;
-    display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
     width: 100%;
     margin: 0 auto;
-    box-sizing: border-box;
     max-height: 280px;
-
 
     @media (max-width: $media-mobile-2)
     {
@@ -188,13 +186,10 @@ $debug: false;
 
 .subcontainer-quiz
 {
-    background-color: #ffffff;
-    box-shadow: var(--soft-shadow);
-    border-radius: 10px;
+    @include mixins.tile-style;
     padding: 20px;
     display: flex;
     width: 80%;
-    box-sizing: border-box;
     font-size: 20px;
     position: relative;
     top: 30px;
@@ -218,39 +213,17 @@ $debug: false;
 
 .quizTile
 {
-    background-color: #ffffff;
-    box-shadow: var(--soft-shadow);
-    border-radius: 20px;
+    @include mixins.tile-style;
     width: 180px;
     height: 180px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 10px;
-    margin: 10px;
-    box-sizing: border-box;
-    cursor: pointer;
-    @include effects.hover-effect;
+    @include mixins.hover-effect;
 }
 
 .answerTile
 {
-    background-color: #ffffff;
-    box-shadow: var(--soft-shadow);
-    border-radius: 20px;
+    @include mixins.tile-style;
     width: 500px;
     height: 120px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 5px;
-    margin: 5px;
-    box-sizing: border-box;
-    cursor: pointer;
-    position: relative;
-    bottom: -20px;
 
     @media (max-width: $media-mobile)
     {
@@ -260,7 +233,7 @@ $debug: false;
         width: 200px;
     }
 
-    @include effects.hover-effect;
+    @include mixins.hover-effect;
 }
 
 .main-container
@@ -323,7 +296,7 @@ $debug: false;
     text-align: center;
     box-sizing: border-box;
     cursor: pointer;
-    @include effects.hover-effect;
+    @include mixins.hover-effect;
 }
 
 .answerText-0

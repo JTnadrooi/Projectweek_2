@@ -48,7 +48,6 @@ if (! checkLogin()) {
                         <div id="seconds">60</div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
