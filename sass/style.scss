@@ -36,7 +36,7 @@ $debug: false;
     align-items: center;
     width: 100vw;
     box-shadow: var(--soft-shadow);
-    z-index: 40;
+    z-index: 140;
 }
 
 #logo
@@ -154,6 +154,8 @@ $debug: false;
 .subcontainer
 {
     @include mixins.tile-style;
+    text-align: left;
+    cursor: auto;
     background-color: var(--c3);
     border-radius: 30px;
     padding-left: 20px;
@@ -194,6 +196,7 @@ $debug: false;
     position: relative;
     top: 30px;
     margin: 0 auto;
+    cursor: auto;
 
     &>div
     {
@@ -238,6 +241,7 @@ $debug: false;
 
 .main-container
 {
+    background-color: red;
     align-items: center;
     justify-content: center;
     display: flex;
@@ -252,6 +256,7 @@ $debug: false;
     justify-content: center;
     height: calc(100vh - 140px);
     padding: 10px;
+    background-color: transparent;
     width: auto;
 
     @media (max-width: $media-mobile)

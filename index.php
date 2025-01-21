@@ -12,17 +12,10 @@ session_start();
         Quizza
     </title>
     <link rel="stylesheet" href="css/style.css">
-
     <script src="js/lib/asitdebug.js"></script>
     <script src="js/main.js"></script>
     <meta charset="utf8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        @font-face {
-            font-family: mainFont;
-            src: url('smollerMono.ttf');
-        }
-    </style>
 </head>
 
 <body>
@@ -32,7 +25,11 @@ session_start();
             <input type="text" id="searchBar" placeholder="Search.." oninput="handleSearchInput(event)">
             <div id="iconsContainer"></div>
         </div>
-        <div id="accountContainer">YO</div>
+        <div id="accountContainer">
+            <img src="media/icons/account.png" alt="accountIcon" width="30px">
+            <h1>USERNAME</h1>
+            <button class="accountDropDownButton">LOGOUT</button>
+        </div>
         <div id="mainDisplay">
             <div id="sideIconContainer"></div>
             <div id="masterQuizContainer">
@@ -46,7 +43,6 @@ session_start();
                             ['id' => 'personal-2', 'label' => '2', 'show' => true],
                             ['id' => 'personal-3', 'label' => '3', 'show' => true],
                         ];
-
                         foreach ($tiles as $tile) {
                             if ($tile['show']) {
                                 echo "<div class='quizTile' id='{$tile['id']}'>{$tile['label']}</div>";
@@ -68,7 +64,6 @@ session_start();
     </div>
     <?php if (! checkLogin()) {  ?>
         <div id="loginModal" class="modal">
-            <!-- Modal content -->
             <div class="modal-content">
                 <h1>QUIZZA</h1>
                 <form action="php/login.php" method="post">

@@ -5,12 +5,84 @@
     @include mixins.tile-style;
     position: absolute;
     top: 72px;
-    left: calc(100vw - 300px);
-    width: 300px;
-    height: 200px;
+    left: calc(100vw - 240px);
+    width: 240px;
+    height: calc(55vh - 72px);
     margin: 0;
     background-color: #ffffff;
-    text-align: center;
-    z-index: 10;
-    border-radius: 0 0 10px 10px;
+    z-index: 1;
+    border-radius: 10px 0 0 10px;
+    transform: translateX(100%);
+    transition: transform 2s cubic-bezier(0.25, 0.8, 0.25, 1);
+    justify-content: flex-start;
+    flex-direction: column;
+
+    &.show
+    {
+        transform: translateX(0);
+    }
+
+    &.shake
+    {
+        animation: shake 0.5s ease-out;
+        /* Shake animation triggered by the shake class */
+    }
+
+    &>.accountDropDownButton
+    {
+        all: unset;
+        @include mixins.tile-style;
+        @include mixins.hover-effect;
+        background-color: var(--c2);
+        border: 1px solid var(--c6);
+        margin-top: auto;
+        padding: 5px 10px;
+    }
+
+
+}
+
+@keyframes shake
+{
+    0%
+    {
+        transform: translateX(0);
+    }
+
+    25%
+    {
+        transform: translateX(-10px);
+    }
+
+    50%
+    {
+        transform: translateX(10px);
+    }
+
+    75%
+    {
+        transform: translateX(-10px);
+    }
+
+    100%
+    {
+        transform: translateX(0);
+    }
+}
+
+#accountIcon
+{
+    position: relative;
+
+    &::before
+    {
+        content: '';
+        position: absolute;
+        top: -15px;
+        left: -15px;
+        right: -15px;
+        bottom: -15px;
+        z-index: -1;
+        background: transparent;
+    }
 }

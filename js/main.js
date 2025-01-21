@@ -67,6 +67,25 @@ document.addEventListener("DOMContentLoaded", () => {
     exitButton?.addEventListener("click", () => { // Als je op de exit knop klikt word je naar de index.php gestuurd
         window.location.href = "index.php";
     });
+
+    const accountIcon = document.getElementById('accountIcon');
+    const accountContainer = document.getElementById('accountContainer');
+    const showContainer = () => {
+        accountContainer.classList.add('show');
+    };
+    const hideContainer = () => {
+        accountContainer.classList.remove('show');
+    };
+    accountIcon.addEventListener('mouseenter', showContainer);
+    accountIcon.addEventListener('mouseleave', hideContainer);
+    accountContainer.addEventListener('mouseenter', showContainer);
+    accountContainer.addEventListener('mouseleave', hideContainer);
+
+    document.getElementById('accountIcon').addEventListener('click', () => {
+        const accountContainer = document.getElementById('accountContainer');
+        accountContainer.classList.add('shake');
+        setTimeout(() => accountContainer.classList.remove('shake'), 500);
+    });
     debugStream.log("<succes");
 });
 
