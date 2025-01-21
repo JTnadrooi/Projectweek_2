@@ -39,13 +39,20 @@ session_start();
                 <div class="subcontainer">
                     <div>CREATE</div>
                     <div class="homeTitleContainer">
-                        <?php if (isset($_SESSION['accountData']) && $_SESSION['accountData'] == 'teacher') { ?>
-                            <div class="quizTile" id="question-create">+</div>
-                        <?php } else { ?>
-                            <div class="quizTile" id="personal-1">1</div>
-                        <?php } ?>
-                        <div class="quizTile" id="personal-2">2</div>
-                        <div class="quizTile" id="personal-3">3</div>
+                        <?php
+                        $tiles = [
+                            ['id' => 'question-create', 'label' => '+', 'show' => isset($_SESSION['userRole']) && $_SESSION['userRole'] === 'teacher'],
+                            ['id' => 'personal-1', 'label' => '1', 'show' => !isset($_SESSION['userRole']) || $_SESSION['userRole'] !== 'teacher'],
+                            ['id' => 'personal-2', 'label' => '2', 'show' => true],
+                            ['id' => 'personal-3', 'label' => '3', 'show' => true],
+                        ];
+
+                        foreach ($tiles as $tile) {
+                            if ($tile['show']) {
+                                echo "<div class='quizTile' id='{$tile['id']}'>{$tile['label']}</div>";
+                            }
+                        }
+                        ?>
                     </div>
                 </div>
                 <div class="subcontainer">
