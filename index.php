@@ -1,10 +1,7 @@
 <?php
-    include 'php/db-connect.php';
-    include 'php/functions.php';
-    // if (checkLogin()) {
-    //     updateData();
-    // }
-    session_start();
+include 'php/db-connect.php';
+include 'php/functions.php';
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +13,6 @@
     </title>
     <link rel="stylesheet" href="css/style.css">
 
-    <!-- The main script. -->
     <script src="js/lib/asitdebug.js"></script>
     <script src="js/main.js"></script>
     <meta charset="utf8">
@@ -44,11 +40,11 @@
                     <div class="homeTitleContainer">
                         <?php if (isset($_SESSION['accountData']) && $_SESSION['accountData'] == 'teacher') { ?>
                             <div class="quizTile" id="question-create">+</div>
-                        <?php } else {?>
+                        <?php } else { ?>
                             <div class="quizTile" id="personal-1">1</div>
-                        <?php }?>
-                            <div class="quizTile" id="personal-2">2</div>
-                            <div class="quizTile" id="personal-3">3</div>
+                        <?php } ?>
+                        <div class="quizTile" id="personal-2">2</div>
+                        <div class="quizTile" id="personal-3">3</div>
                     </div>
                 </div>
                 <div class="subcontainer">
@@ -68,12 +64,12 @@
             <div class="modal-content">
                 <h1>QUIZZA</h1>
                 <form action="php/login.php" method="post">
-                    <input required type="email" name="email"  placeholder="example@gmail.com" style="margin-bottom: 20px;" ><br>
-                    <input required type="password" name="wachtwoord"  placeholder="Password" style="margin-bottom: 40px;"><br>
+                    <input required type="email" name="email" placeholder="example@gmail.com" style="margin-bottom: 20px;"><br>
+                    <input required type="password" name="wachtwoord" placeholder="Password" style="margin-bottom: 40px;"><br>
                     <hr>
                     <input type="submit" class="loginButton" name="submit" value="Login">
                     <input type="submit" class="registerButton" name="submit" value="Registreren">
-                </form>            
+                </form>
             </div>
 
         </div>
