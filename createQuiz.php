@@ -25,12 +25,9 @@
         <div id="mainDisplay">
             <div id="sideIconContainer"></div>
             <div class="masterCreateContainer">
-                <div class="quizHeader-create">
-                    <span>Total: 0</span>
-                    <button class="finishBtn">Finish</button>
-                </div>
                 <div class="quizQuestions">
-                    
+                    <span id="totalQuestions">Total: 0</span>
+                    <button class="finishBtn">Finish</button>
                 </div>
                 <button class="addQuestionBtn">+</button>   
             </div>
@@ -168,7 +165,6 @@
         createModal.style.display = 'none';
         resetModal()
         currentQuestion++;
-        document.querySelector('.quizHeader-create span').innerText = `Total: ${currentQuestion}`;
-
+        document.getElementById('totalQuestions').innerText = `Total: ${currentQuestion}`;
     });
 </script>

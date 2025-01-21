@@ -25,8 +25,32 @@
 .questionItem {
   width: 90%;
   height: 80px;
-  background-color: #555867;
   margin-bottom: 20px;
+  background-color: var(--c5);
+}
+
+
+.questionItem > select {
+  margin: 5px;
+  background-color: #ffffff !important;
+  width: 200px;
+  height: 65px;
+}
+
+.questionItem > select > option {
+  background-color: #ffffff !important;
+}
+
+.quizQuestions > button, .questionItem > select  {
+  float: inline-end;
+}
+
+.quizQuestions > select {
+  background-color: #ffffff;
+}
+
+.questionItem > {
+  align-items: center;
 }
 
 body {
@@ -374,6 +398,23 @@ textarea {
   margin-top: 2%;
   margin-left: 90%;
   
+}
+
+.quizQuestions > span {
+  background-color: #ffffff;
+}
+
+
+.addQuestionBtn {
+  background-color: #ffffff;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .subcontainer {
