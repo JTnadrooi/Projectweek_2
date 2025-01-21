@@ -37,4 +37,19 @@ function checkLogin() {
     }
 }
 
+function updateData() {
+    if (!isset($_SESSION['accountData'])) {
+        return;
+    }
+    include 'db-connect.php';
+    $stmt = $conn->prepare("select id, accountType from q_users where id = :id");
+    $stmt->execute(['id' => $_SESSION['accountData']['id']]);
+    $listArray = $stmt->fetchAll();
+    
+    if ($listArray) {
+        $_SESSION['accountData'] = $listArray[0];
+    } 
+    $conn = null;
+}
+
 ?>

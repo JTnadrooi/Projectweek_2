@@ -34,12 +34,45 @@ function answered(num) {
     if (currentQuestion < questionsData.length) {
         document.getElementById("answerText-0").innerHTML = questionsData[currentQuestion].answers[0];
         document.getElementById("answerText-1").innerHTML = questionsData[currentQuestion].answers[1];
-        document.getElementById("answerText-2").innerHTML = questionsData[currentQuestion].answers[2];
-        document.getElementById("answerText-3").innerHTML = questionsData[currentQuestion].answers[3];
-        document.getElementsByClassName("textQuestionTitle")[0].innerHTML = questionsData[currentQuestion].question;
+        if (questionsData[currentQuestion].answers[2] !== 'undefined') {
+            if (document.getElementById("answerText-2") === null) {
+                let newButton = document.createElement("button");
+                newButton.id = "answerText-2";
+                newButton.className = "answerTile";
+                newButton.setAttribute("onClick", "answered(2)");
+                document.getElementById("answerRow").appendChild(newButton);
+            }
+            document.getElementById("answerText-2").innerHTML = questionsData[currentQuestion].answers[2];
+        } else {
+            if (document.getElementById("answerText-2") !== null) {
+                document.getElementById("answerText-2").parentNode.removeChild(document.getElementById("answerText-2"));
+            }
+        }
+        console.log(questionsData[currentQuestion].answers[3] !== 'undefined')
+        if (questionsData[currentQuestion].answers[3] == 'undefined') {
+            if (document.getElementById("answerText-3") === null) {
+                let newButton = document.createElement("button");
+                newButton.id = "answerText-3";
+                newButton.className = "answerTile";
+                newButton.setAttribute("onClick", "answered(3)");
+                document.getElementById("answerRow").appendChild(newButton);
+            }
+            document.getElementById("answerText-3").innerHTML = questionsData[currentQuestion].answers[3];
+        } else {
+            if (document.getElementById("answerText-3") !== null) {
+                document.getElementById("answerText-3").parentNode.removeChild(document.getElementById("answerText-3"));
+            }
+        }
     } else {
-        alert("Je hebt alle vragen ingevuld, je hebt " + currentStats[1] + " van de " + currentStats[0] + " vragen goed beantwoord.");
-        window.location.href = `index.php`;
+        setInterval(() => {
+            document.getElementById("time").style.opacity = "0%";
+            let modal = document.getElementById("endModal");
+            modal.style.display = "block";
+            document.getElementById("endFeedback").innerHTML = currentStats[0] + " vragen beantwoord <br>" + currentStats[1] + " goed <br>" + currentStats[2] + " fout";
+            setInterval(() => {
+                window.location.href = "index.php";
+            }, 5000);
+        }, 5000);
     }
 
 }

@@ -34,9 +34,14 @@
                     <button class="answerTile" onClick="answered(0)" id="answerText-0"><?php echo $questionsData[0]['answers'][0] ?></button>
                     <button class="answerTile" onClick="answered(1)" id="answerText-1"><?php echo $questionsData[0]['answers'][1] ?></button>
                 </div>
-                <div class="answerRow">
-                    <button class="answerTile" onClick="answered(2)" id="answerText-2"><?php echo $questionsData[0]['answers'][2] ?></button>
-                    <button class="answerTile" onClick="answered(3)" id="answerText-3"><?php echo $questionsData[0]['answers'][3] ?></button>
+                <div class="answerRow" id="answerRow">
+                    <?php if (isset($questionsData[0]['answers'][2]))  {?>
+                        <button class="answerTile" onClick="answered(2)" id="answerText-2"><?php echo $questionsData[0]['answers'][2] ?></button>
+                    <?php } ?>
+
+                    <?php if (isset($questionsData[0]['answers'][3]))  {?>
+                        <button class="answerTile" onClick="answered(3)" id="answerText-3"><?php echo $questionsData[0]['answers'][3] ?></button>
+                    <?php } ?>
                 </div>
                 <div id="time">
                     <div class="circle" style="--clr:#ff2972;">
@@ -65,6 +70,13 @@
         <div class="modal-content">
             <img src="media/incorrect.png" alt="">
             <p id="incorrectFeedback"></p>  
+        </div>
+    </div>
+
+    <div id="endModal" class="modal" style="display:none">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <p id="endFeedback">Feedback: 8/10</p>
         </div>
     </div>
 </body>

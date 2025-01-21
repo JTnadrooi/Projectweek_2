@@ -9,7 +9,7 @@ const buttons = [
     ["folderAdd", "side"],
     ["leaderbord", "side"],
     ["help", "side_bottom"],
-    ["help", "bottom_left"],
+    ["share", "bottom_left"],
     ["exit", "bottom_right"]
 ]
 function createButtons() {
@@ -49,6 +49,11 @@ function createButtons() {
     debugStream.log("<succes");
 };
 
+// function createQuiz() {
+//     let quizModal = document.getElementById("createQuiz");
+//     quizModal.style.display = "block";
+// }
+
 document.addEventListener("DOMContentLoaded", () => {
     debugStream.log("registered DOMLoad event.");
 
@@ -58,6 +63,10 @@ document.addEventListener("DOMContentLoaded", () => {
     quizButtons.forEach(buttonQuizStart => { // Voor elke button voer je code uit
         buttonQuizStart.addEventListener("click", () => { // Als er op een knopje klikt word je gestuurd naar de php quiz pagina en wordt je quizid mee gegeven
             const quizId = buttonQuizStart.id.replace("question-", ""); // Hier haal je de quizid uit de id van de knop
+            if (quizId === "create") {
+                window.location.href = "createQuiz.php";
+                return;
+            };
             window.location.href = `quiz.php?quizid=${quizId}`;
         });
     });
@@ -66,6 +75,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const exitButton = document.getElementById("exitIcon"); // Hier selecteer je de exit knop
     exitButton?.addEventListener("click", () => { // Als je op de exit knop klikt word je naar de index.php gestuurd
         window.location.href = "index.php";
+    });
+
+    const homeButton = document.getElementById("homeIcon"); // Hier selecteer je de home knop
+    homeButton?.addEventListener("click", () => { // Als je op de home knop klikt word je naar de index.php gestuurd
+        window.location.href = "index.php";
+    });
+
+    const accountButton = document.getElementById("shareIcon"); // Hier selecteer je de share knop
+    accountButton?.addEventListener("click", () => { // Als je op de share knop klikt krijg je een pop-up met de link van de pagina
+        const url = window.location.href;
+        alert("De quiz link is gekopieerd naar je klembord!");
+        navigator.clipboard.writeText(url);
     });
     debugStream.log("<succes");
 });

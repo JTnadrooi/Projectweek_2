@@ -1,10 +1,9 @@
 <?php
     include 'php/db-connect.php';
     include 'php/functions.php';
-    // if (checkLogin()) {
-    //     updateData();
-    // }
     session_start();
+
+    updateData();
 ?>
 
 <!DOCTYPE html>
@@ -42,7 +41,7 @@
                 <div class="subcontainer">
                     <div>CREATE</div>
                     <div class="homeTitleContainer">
-                        <?php if (isset($_SESSION['accountData']) && $_SESSION['accountData'] == 'teacher') { ?>
+                        <?php if (isset($_SESSION['accountData']) && $_SESSION['accountData']['accountType'] == 'teacher') { ?>
                             <div class="quizTile" id="question-create">+</div>
                         <?php } else {?>
                             <div class="quizTile" id="personal-1">1</div>
@@ -75,9 +74,23 @@
                     <input type="submit" class="registerButton" name="submit" value="Registreren">
                 </form>            
             </div>
-
         </div>
     <?php } ?>
+    <div id="createQuiz" class="modal" style="display:none">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <h1>QUIZZA</h1>
+            <form action="php/login.php" method="post">
+                <input required type="email" name="email"  placeholder="example@gmail.com" style="margin-bottom: 20px;" ><br>
+                <input required type="password" name="wachtwoord"  placeholder="Password" style="margin-bottom: 40px;"><br>
+                <hr>
+                <input type="submit" class="loginButton" name="submit" value="Login">
+                <input type="submit" class="registerButton" name="submit" value="Registreren">
+            </form>            
+        </div>
+
+    </div>
 </body>
 
 </html>
+
