@@ -27,7 +27,7 @@
     <div id="quiz-container">
         <div id="main-container">
             <div class="subcontainer-quiz">
-                <div class="textQuestionTitle"><?php echo $questionsData[0]['question'] ?></div>
+                <div class="textQuestionTitle" id="questionText"><?php echo $questionsData[0]['question'] ?></div>
             </div>
             <div class="quizTileContainer">
                 <div class="answerRow">
