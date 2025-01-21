@@ -57,7 +57,7 @@ if (! checkLogin()) {
     <div id="feedbackModal-correct" class="modal" style="display:none">
         <div class="modal-content">
             <img src="media/correct.png" alt="">
-            <p>Vraag goed! </p>
+            <p>Splendid! </p>
         </div>
     </div>
     <div id="feedbackModal-incorrect" class="modal" style="display:none">
