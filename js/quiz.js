@@ -22,7 +22,7 @@ function answered(num) {
         currentStats[2]++;
         let modal = document.getElementById("feedbackModal-incorrect");
         incorrectFeedback = document.getElementById("incorrectFeedback");
-        incorrectFeedback.innerHTML = "Fout, " + questionsData[currentQuestion].correctAnswer;
+        incorrectFeedback.innerHTML = "False, " + questionsData[currentQuestion].correctAnswer;
         modal.style.display = "block";
         setTimeout(() => {
             modal.style.display = "none";
