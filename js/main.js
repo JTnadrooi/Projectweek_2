@@ -11,7 +11,8 @@ const buttons = [
     ["help", "side_bottom"],
     ["help", "bottom_left"],
     ["exit", "bottom_right"]
-]
+];
+
 function createButtons() {
     debugStream.log("creating buttons..");
     buttons.forEach(([buttonName, position]) => {
@@ -46,7 +47,7 @@ function createButtons() {
         if (Array.isArray(position)) position.forEach(pos => appendButtonToContainer(pos, baseButton));
         else appendButtonToContainer(position, baseButton);
     });
-    debugStream.log("<succes");
+    debugStream.log("<success");
 };
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -54,22 +55,34 @@ document.addEventListener("DOMContentLoaded", () => {
 
     createButtons();
 
-    const quizButtons = document.querySelectorAll(".quizTile"); // Hier selecteer je alle knopjes, de quizzes dus.
-    quizButtons.forEach(buttonQuizStart => { // Voor elke button voer je code uit
-        buttonQuizStart.addEventListener("click", () => { // Als er op een knopje klikt word je gestuurd naar de php quiz pagina en wordt je quizid mee gegeven
-            const quizId = buttonQuizStart.id.replace("question-", ""); // Hier haal je de quizid uit de id van de knop
+    const quizButtons = document.querySelectorAll(".quizTile"); // Here you select all buttons, the quizzes.
+    quizButtons.forEach(buttonQuizStart => { // For each button, execute code
+        buttonQuizStart.addEventListener("click", () => { // When you click on a button, you are directed to the PHP quiz page and the quiz ID is passed
+            const quizId = buttonQuizStart.id.replace("question-", ""); // Here you extract the quiz ID from the button's ID
             window.location.href = `quiz.php?quizid=${quizId}`;
         });
     });
 
     // exit button
-    const exitButton = document.getElementById("exitIcon"); // Hier selecteer je de exit knop
-    exitButton?.addEventListener("click", () => { // Als je op de exit knop klikt word je naar de index.php gestuurd
+    const exitButton = document.getElementById("exitIcon"); // Here you select the exit button
+    exitButton?.addEventListener("click", () => { // When you click on the exit button, you are directed to index.php
         window.location.href = "index.php";
     });
-    debugStream.log("<succes");
-});
 
+    // leaderboard button
+    const leaderboardButton = document.getElementById("leaderbordIcon"); 
+    if (leaderboardButton) {
+        debugStream.log("Leaderboard button found.");
+        leaderboardButton.addEventListener("click", () => { // When you click on the leaderboard button, you are directed to leaderboard.php
+            debugStream.log("Leaderboard button clicked.");
+            window.location.href = "leaderboard.php";
+        });
+    } else {
+        debugStream.log("Leaderboard button not found.");
+    }
+
+    debugStream.log("<success");
+});
 
 function handleSearchInput(event) {
     const searchValue = event.target.value.trim().toLowerCase();

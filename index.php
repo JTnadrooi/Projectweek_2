@@ -1,26 +1,17 @@
 <?php
     include 'php/db-connect.php';
     include 'php/functions.php';
-    // if (checkLogin()) {
-    //     updateData();
-    // }
     session_start();
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>
-        Quizza
-    </title>
-    <link rel="stylesheet" href="css/style.css">
-
-    <!-- The main script. -->
-    <script src="js/lib/asitdebug.js"></script>
-    <script src="js/main.js"></script>
-    <meta charset="utf8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Quizza</title>
     <style>
         @font-face {
             font-family: mainFont;
@@ -64,7 +55,6 @@
     </div>
     <?php if (! checkLogin()) {  ?>
         <div id="loginModal" class="modal">
-            <!-- Modal content -->
             <div class="modal-content">
                 <h1>QUIZZA</h1>
                 <form action="php/login.php" method="post">
@@ -75,9 +65,10 @@
                     <input type="submit" class="registerButton" name="submit" value="Registreren">
                 </form>            
             </div>
-
         </div>
     <?php } ?>
+    <script src="js/lib/asitdebug.js"></script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>
