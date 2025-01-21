@@ -84,3 +84,4 @@ function handleSearchInput(event) {
         container.style.display = hasVisibleTile ? 'flex' : 'none';
     });
 }
+
