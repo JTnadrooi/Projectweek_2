@@ -389,7 +389,6 @@ textarea {
   width: 100%;
   margin: 0 auto;
   box-sizing: border-box;
-  max-height: 280px;
 }
 @media (max-width: 900px) {
   .subcontainer {
@@ -535,6 +534,7 @@ textarea {
   flex-wrap: wrap;
   justify-content: flex-start;
   gap: 20px;
+  
   width: 100%;
 }
 

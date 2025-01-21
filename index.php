@@ -26,6 +26,7 @@
             src: url('smollerMono.ttf');
         }
     </style>
+
 </head>
 
 <body>
@@ -53,9 +54,12 @@
                 <div class="subcontainer">
                     <div>EXPLORE</div>
                     <div class="homeTitleContainer">
-                        <div class="quizTile" id="question-1">Auto</div>
-                        <div class="quizTile" id="question-2">Films</div>
-                        <div class="quizTile" id="question-3">Vlaggen</div>
+                    <?php 
+                        $quizzes = getQuizzes();
+                        foreach ($quizzes as $quiz) {
+                            echo '<div class="quizTile" id="question-' . $quiz['id'] . '">' . $quiz['title'] . '</div>';
+                        }   
+                    ?>
                     </div>
                 </div>
             </div>

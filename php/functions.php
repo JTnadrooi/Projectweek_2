@@ -52,4 +52,12 @@ function updateData() {
     $conn = null;
 }
 
+function getQuizzes() {
+    include 'db-connect.php';
+    $stmt = $conn->prepare("select * from q_quiz");
+    $stmt->execute();
+    $listArray = $stmt->fetchAll();
+    $conn = null;
+    return $listArray;
+}
 ?>
