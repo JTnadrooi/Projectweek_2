@@ -4,7 +4,7 @@ let currentStats = [
     total = 0,
     correct = 0,
     incorrect = 0
-]
+];
 
 function answered(num) {
     stopCountdown();
@@ -38,7 +38,7 @@ function answered(num) {
         document.getElementById("answerText-3").innerHTML = questionsData[currentQuestion].answers[3];
         document.getElementsByClassName("textQuestionTitle")[0].innerHTML = questionsData[currentQuestion].question;
     } else {
-        alert("Je hebt alle vragen ingevuld, je hebt " + currentStats[1] + " van de " + currentStats[0] + " vragen goed beantwoord.");
+        alert("You have answered all the questions, you got " + currentStats[1] + " out of " + currentStats[0] + " questions correct.");
         window.location.href = `index.php`;
     }
 
@@ -46,13 +46,13 @@ function answered(num) {
 
 
 let interval;
-const fullDashArray = 440; 
+const fullDashArray = 440;
 
 function startCountdown(totalSeconds) {
     let remainingSeconds = totalSeconds;
     let secondsElement = document.getElementById('seconds');
     let ss = document.getElementById('ss');
-    let secDot = document.getElementById('sec_dot');   
+    let secDot = document.getElementById('sec_dot');
     document.getElementById("time").style.opacity = "100%";
 
     interval = setInterval(() => {
@@ -68,7 +68,7 @@ function startCountdown(totalSeconds) {
             clearInterval(interval);
             answered(-1);
         }
-    }, 1000); 
+    }, 1000);
 }
 
 function stopCountdown() {
@@ -77,5 +77,5 @@ function stopCountdown() {
 }
 
 window.onload = function () {
-    startCountdown(60); 
+    startCountdown(60);
 };
