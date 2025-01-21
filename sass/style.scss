@@ -319,3 +319,8 @@ $debug: false;
         border: 1px solid red;
     }
 }
+
+.shake
+{
+    animation: shake 0.5s ease-out;
+}

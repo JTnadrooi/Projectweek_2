@@ -104,3 +104,21 @@ function handleSearchInput(event) {
     });
 }
 
+function modalFeedback() {
+    const modalFeedback = document.querySelector('#modalFeedback');
+    const container = document.querySelector('.modal');
+
+    let feedback = 'NO PASSWORD GIVEN';
+    let succes = false
+
+    modalFeedback.innerHTML = feedback;
+    container.classList.add('shake');
+    modalFeedback.style.color = succes ? 'yellowgreen' : 'red';
+    setTimeout(() => container.classList.remove('shake'), 500);
+}
+function handleLogin() {
+    modalFeedback();
+}
+function handleRegister() {
+    modalFeedback();
+}

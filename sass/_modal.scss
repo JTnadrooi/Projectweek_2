@@ -27,10 +27,15 @@ $shadow-color: rgba(0, 0, 0, 0.25);
         margin: 8% auto;
         padding: 20px;
         border: 1px solid #888;
-        height: 400px;
-        width: 550px;
         border-radius: 20px;
         text-align: center;
+        width: auto;
+        max-width: 50%;
+        min-width: 300px;
+        height: auto;
+        max-height: 90%;
+
+        overflow: auto;
 
         h1
         {
@@ -50,6 +55,8 @@ $shadow-color: rgba(0, 0, 0, 0.25);
         {
             width: 300px;
             height: 300px;
+            max-width: 100%;
+            height: auto;
         }
 
         p
@@ -96,4 +103,12 @@ $shadow-color: rgba(0, 0, 0, 0.25);
             }
         }
     }
+}
+
+#modalFeedback
+{
+    color: red;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
 }

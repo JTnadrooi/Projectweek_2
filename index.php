@@ -28,6 +28,10 @@ session_start();
         <div id="accountContainer">
             <img src="media/icons/account.png" alt="accountIcon" width="30px">
             <h1>USERNAME</h1>
+            <h2>DATA1</h2>
+            <h2>DATA2</h2>
+            <h2>DATA3</h2>
+            <h2>DATA4</h2>
             <button class="accountDropDownButton">LOGOUT</button>
         </div>
         <div id="mainDisplay">
@@ -70,8 +74,9 @@ session_start();
                     <input required type="email" name="email" placeholder="example@gmail.com" style="margin-bottom: 20px;"><br>
                     <input required type="password" name="wachtwoord" placeholder="Password" style="margin-bottom: 40px;"><br>
                     <hr>
-                    <input type="submit" class="loginButton" name="submit" value="Login">
-                    <input type="submit" class="registerButton" name="submit" value="Registreren">
+                    <p id="modalFeedback">&#8203;</p>
+                    <input type="submit" class="loginButton" name="submit" value="Login" onclick="handleLogin()">
+                    <input type="submit" class="registerButton" name="submit" value="Registreren" onclick="handleRegister()">
                 </form>
             </div>
 

@@ -22,11 +22,6 @@
         transform: translateX(0);
     }
 
-    &.shake
-    {
-        animation: shake 0.5s ease-out;
-    }
-
     &>.accountDropDownButton
     {
         all: unset;
@@ -38,7 +33,11 @@
         padding: 5px 10px;
     }
 
-
+    &>h2
+    {
+        font-size: 22px;
+        color: var(--c5);
+    }
 }
 
 @keyframes shake
