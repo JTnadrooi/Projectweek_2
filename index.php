@@ -1,9 +1,9 @@
 <?php
-    include 'php/db-connect.php';
-    include 'php/functions.php';
-    session_start();
+include 'php/db-connect.php';
+include 'php/functions.php';
+session_start();
 
-    updateData();
+updateData();
 ?>
 
 <!DOCTYPE html>
@@ -44,22 +44,22 @@
                     <div class="homeTitleContainer">
                         <?php if (isset($_SESSION['accountData']) && $_SESSION['accountData']['accountType'] == 'teacher') { ?>
                             <div class="quizTile" id="question-create">+</div>
-                        <?php } else {?>
+                        <?php } else { ?>
                             <div class="quizTile" id="personal-1">1</div>
-                        <?php }?>
-                            <div class="quizTile" id="personal-2">2</div>
-                            <div class="quizTile" id="personal-3">3</div>
+                        <?php } ?>
+                        <div class="quizTile" id="personal-2">2</div>
+                        <div class="quizTile" id="personal-3">3</div>
                     </div>
                 </div>
                 <div class="subcontainer">
                     <div>EXPLORE</div>
                     <div class="homeTitleContainer">
-                    <?php 
+                        <?php
                         $quizzes = getQuizzes();
                         foreach ($quizzes as $quiz) {
                             echo '<div class="quizTile" id="question-' . $quiz['id'] . '">' . $quiz['title'] . '</div>';
-                        }   
-                    ?>
+                        }
+                        ?>
                     </div>
                 </div>
             </div>
@@ -85,16 +85,15 @@
         <div class="modal-content">
             <h1>QUIZZA</h1>
             <form action="php/login.php" method="post">
-                <input required type="email" name="email"  placeholder="example@gmail.com" style="margin-bottom: 20px;" ><br>
-                <input required type="password" name="wachtwoord"  placeholder="Password" style="margin-bottom: 40px;"><br>
+                <input id="emailInput" required type="email" name="email" placeholder="example@gmail.com" style="margin-bottom: 20px;"><br>
+                <input id="passwordInput" required type="password" name="wachtwoord" placeholder="Password" style="margin-bottom: 40px;"><br>
                 <hr>
                 <input type="submit" class="loginButton" name="submit" value="Login">
                 <input type="submit" class="registerButton" name="submit" value="Registreren">
-            </form>            
+            </form>
         </div>
 
     </div>
 </body>
 
 </html>
-
