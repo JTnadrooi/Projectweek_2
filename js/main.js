@@ -3,6 +3,7 @@ let currentQuizId = 0;
 debugStream.log("initializing page..");
 const buttons = [
     ["account", "top"],
+
     ["home", "side"],
     ["folderAdd", "side"],
     ["leaderbord", "side"],
@@ -67,25 +68,16 @@ document.addEventListener("DOMContentLoaded", () => {
         window.location.href = "index.php";
     });
 
-    const accountIcon = document.getElementById('accountIcon');
-    const accountContainer = document.getElementById('accountContainer');
-    const showContainer = () => {
-        accountContainer.classList.add('show');
-    };
-    const hideContainer = () => {
-        accountContainer.classList.remove('show');
-    };
-    if (accountIcon && accountContainer) {
-        accountIcon.addEventListener('mouseenter', showContainer);
-        accountIcon.addEventListener('mouseleave', hideContainer);
-        accountContainer.addEventListener('mouseenter', showContainer);
-        accountContainer.addEventListener('mouseleave', hideContainer);
-        
-        document.getElementById('accountIcon').addEventListener('click', () => {
-            const accountContainer = document.getElementById('accountContainer');
-            accountContainer.classList.add('shake');
-            setTimeout(() => accountContainer.classList.remove('shake'), 500);
+    // leaderboard button
+    const leaderboardButton = document.getElementById("leaderbordIcon"); 
+    if (leaderboardButton) {
+        debugStream.log("Leaderboard button found.");
+        leaderboardButton.addEventListener("click", () => { // When you click on the leaderboard button, you are directed to leaderboard.php
+            debugStream.log("Leaderboard button clicked.");
+            window.location.href = "leaderboard.php";
         });
+    } else {
+        debugStream.log("Leaderboard button not found.");
     }
 
     // home button
@@ -98,17 +90,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     } else {
         debugStream.log("Home button not found.");
-    }
-
-    const leaderboardButton = document.getElementById("leaderbordIcon"); 
-    if (leaderboardButton) {
-        debugStream.log("Leaderboard button found.");
-        leaderboardButton.addEventListener("click", () => { // When you click on the leaderboard button, you are directed to leaderboard.php
-            debugStream.log("Leaderboard button clicked.");
-            window.location.href = "leaderboard.php";
-        });
-    } else {
-        debugStream.log("Leaderboard button not found.");
     }
 
     debugStream.log("<success");
@@ -133,18 +114,16 @@ function modalFeedback() {
     const container = document.querySelector('.modal');
 
     let feedback = 'NO PASSWORD GIVEN';
-    let succes = false;
+    let succes = false
 
     modalFeedback.innerHTML = feedback;
     container.classList.add('shake');
     modalFeedback.style.color = succes ? 'yellowgreen' : 'red';
     setTimeout(() => container.classList.remove('shake'), 500);
 }
-
 function handleLogin() {
     modalFeedback();
 }
-
 function handleRegister() {
     modalFeedback();
 }
