@@ -131,7 +131,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     debugStream.log("<success");
-});
 
 function handleSearchInput(event) {
     const searchValue = event.target.value.trim().toLowerCase();
