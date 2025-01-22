@@ -8,6 +8,8 @@ if (! checkLogin()) {
 }
 ?>
 
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,17 +25,6 @@ if (! checkLogin()) {
 
 <body>
     <div id="quiz-container">
-        <div id="time">
-            <div class="circle" style="--clr:#ff2972;">
-                <div class="dots sec_dot" id="sec_dot"></div>
-                <svg>
-                    <circle cx="70" cy="70" r="70"></circle>
-                    <circle cx="70" cy="70" r="70" id="ss"></circle>
-                </svg>
-                <div id="seconds">60</div>
-            </div>
-        </div>
-
         <div id="main-container">
             <div class="subcontainer-quiz">
                 <div class="textQuestionTitle" id="questionText"><?php echo $questionsData[0]['question'] ?></div>
@@ -44,18 +35,27 @@ if (! checkLogin()) {
                     <button class="answerTile" onClick="answered(1)" id="answerText-1"><?php echo $questionsData[0]['answers'][1] ?></button>
                 </div>
                 <div class="answerRow" id="answerRow">
-                    <?php if (isset($questionsData[0]['answers'][2])) { ?>
+                    <?php if (isset($questionsData[0]['answers'][2]))  {?>
                         <button class="answerTile" onClick="answered(2)" id="answerText-2"><?php echo $questionsData[0]['answers'][2] ?></button>
                     <?php } ?>
 
-                    <?php if (isset($questionsData[0]['answers'][3])) { ?>
+                    <?php if (isset($questionsData[0]['answers'][3]))  {?>
                         <button class="answerTile" onClick="answered(3)" id="answerText-3"><?php echo $questionsData[0]['answers'][3] ?></button>
                     <?php } ?>
+                </div>
+                <div id="time">
+                    <div class="circle" style="--clr:#ff2972;">
+                        <div class="dots sec_dot" id="sec_dot"></div>
+                        <svg>
+                            <circle cx="70" cy="70" r="70"></circle>
+                            <circle cx="70" cy="70" r="70" id="ss"></circle>
+                        </svg>
+                        <div id="seconds">60</div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
     <div id="bottomIconContainer"></div>
     <!-- Modal content -->
     <div id="feedbackModal-correct" class="modal" style="display:none">
@@ -65,6 +65,7 @@ if (! checkLogin()) {
         </div>
     </div>
     <div id="feedbackModal-incorrect" class="modal" style="display:none">
+        <!-- Modal content -->
         <div class="modal-content">
             <img src="media/incorrect.png" alt="">
             <p id="incorrectFeedback"></p>
@@ -72,89 +73,15 @@ if (! checkLogin()) {
     </div>
 
     <div id="endModal" class="modal" style="display:none">
+        <!-- Modal content -->
         <div class="modal-content">
             <p id="endFeedback">Feedback: 8/10</p>
         </div>
     </div>
-    
-    <!-- Pass PHP data to JS -->
-    <?php echo '<script> let questionsData = ' . json_encode($questionsData) . '</script>'; ?>
-
-    <script>
-        let currentQuestion = 0;
-        let currentStats = [
-            total = 0,
-            correct = 0,
-            incorrect = 0
-        ];
-
-        function answered(num) {
-            if (questionsData[currentQuestion].correctAnswer == questionsData[currentQuestion].answers[num]) {
-                currentStats[0]++;
-                currentStats[1]++;
-                let modal = document.getElementById("feedbackModal-correct");
-                modal.style.display = "block";
-                setTimeout(() => {
-                    modal.style.display = "none";
-                }, 5000);
-            } else {
-                currentStats[0]++;
-                currentStats[2]++;
-                let modal = document.getElementById("feedbackModal-incorrect");
-                modal.style.display = "block";
-                setTimeout(() => {
-                    modal.style.display = "none";
-                }, 5000);
-            }
-            currentQuestion++;
-
-            if (currentQuestion < questionsData.length) {
-                document.getElementById("answerText-0").innerHTML = questionsData[currentQuestion].answers[0];
-                document.getElementById("answerText-1").innerHTML = questionsData[currentQuestion].answers[1];
-                document.getElementById("answerText-2").innerHTML = questionsData[currentQuestion].answers[2];
-                document.getElementById("answerText-3").innerHTML = questionsData[currentQuestion].answers[3];
-                document.getElementsByClassName("textQuestionTitle")[0].innerHTML = questionsData[currentQuestion].question;
-            } else {
-                alert("Je hebt alle vragen ingevuld, je hebt " + currentStats[1] + " van de " + currentStats[0] + " vragen goed beantwoord.");
-                window.location.href = `index.php`;
-            }
-        }
-
-        window.onload = function() {
-            let secondsElement = document.getElementById('seconds');
-            let ss = document.getElementById('ss');
-            let secDot = document.getElementById('sec_dot');
-
-            if (!secDot) {
-                console.error('sec_dot element not found');
-                return; // Stop execution if sec_dot is not found
-            }
-
-            const fullDashArray = 440;
-
-            function startCountdown(totalSeconds) {
-                let remainingSeconds = totalSeconds;
-
-                const interval = setInterval(() => {
-                    secondsElement.innerHTML = remainingSeconds;
-                    const dashOffset = fullDashArray - (fullDashArray * remainingSeconds) / totalSeconds;
-                    ss.style.strokeDashoffset = dashOffset;
-
-                    const rotation = (remainingSeconds / totalSeconds) * 360;
-                    secDot.style.transform = `rotateZ(${rotation}deg)`; 
-
-                    remainingSeconds--;
-
-                    if (remainingSeconds < 0) {
-                        clearInterval(interval);
-                        secondsElement.innerHTML = "00"; 
-                    }
-                }, 1000);
-            }
-
-            startCountdown(60);
-        };
-    </script>
 </body>
 
 </html>
+
+<?php
+echo '<script> let questionsData = ' . json_encode($questionsData) . '</script>';
+?>

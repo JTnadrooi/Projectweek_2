@@ -827,3 +827,53 @@ textarea {
 .quizHeader-create {
   height: 200px;
 }
+
+#name {
+  background-color: white; /* Default background color */
+  position: relative;
+  padding-left: 15px; /* Space for the rank indicator */
+}
+
+/* Gold (1st place) */
+.rank-1::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 10px;
+  height: 100%;
+  background-color: #FFD700; /* Golden color */
+}
+
+/* Silver (2nd place) */
+.rank-2::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 10px;
+  height: 100%;
+  background-color: #C0C0C0; /* Silver color */
+}
+
+/* Bronze (3rd place) */
+.rank-3::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 10px;
+  height: 100%;
+  background-color: #CD7F32; /* Bronze color */
+}
+
+/* For rank 4 and beyond, you can apply a different style or default styling */
+.rank-4::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 10px;
+  height: 100%;
+  background-color: #ffffff; /* Grey color for 4th place */
+}

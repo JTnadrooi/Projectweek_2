@@ -30,7 +30,7 @@ $bots = [
 
 
 if ($elo !== false) {
-    $leaderboard = array_merge($bots, [['username' => 'Your ELO score', 'elo' => $elo]]);
+    $leaderboard = array_merge($bots, [['username' => 'elo', 'elo' => $elo]]);
 } else {
     $leaderboard = $bots;
 }
@@ -58,10 +58,13 @@ usort($leaderboard, function($a, $b) {
         <div id="mainDisplay">
             <div id="sideIconContainer"></div>
             <div id="masterQuizContainer">
-                <h1>Leaderboard</h1>
+                <h1 id="leaderboard_h1">RANKINGS</h1>
                 <div class="leaderboard-container">
-                    <?php foreach ($leaderboard as $entry): ?>
-                        <p><?php echo htmlspecialchars($entry['username']); ?> <?php echo htmlspecialchars($entry['elo']); ?></p>
+                     <?php foreach ($leaderboard as $index => $entry): ?>
+                        <p id="name" class="rank-<?php echo $index +    1; ?>">
+                            <?php echo htmlspecialchars($entry['username']); ?> 
+                            <?php echo htmlspecialchars($entry['elo']); ?>
+                        </p>
                     <?php endforeach; ?>
                 </div>
             </div>
@@ -71,6 +74,3 @@ usort($leaderboard, function($a, $b) {
     <script src="js/main.js"></script>
 </body>
 </html>
-
-
-
