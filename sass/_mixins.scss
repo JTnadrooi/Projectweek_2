@@ -14,3 +14,18 @@
         box-shadow: var(--soft-shadow);
     }
 }
+
+@mixin tile-style
+{
+    background-color: #ffffff;
+    box-shadow: var(--soft-shadow);
+    border-radius: 20px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+    display: flex;
+    margin: 10px;
+    box-sizing: border-box;
+    cursor: pointer;
+}

@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->execute(['email' => $email, 'password' => $password]);
         header('Location: ../index.php?registratieSucces');
     } else {
-        $stmt = $conn->prepare("select id, accountType from q_users where email = :email AND password = :password");
+        $stmt = $conn->prepare("select id, accountType, email from q_users where email = :email AND password = :password");
         $stmt->execute(['email' => $email, 'password' => $password]);
         $listArray = $stmt->fetchAll(); 
         if ($listArray) {
