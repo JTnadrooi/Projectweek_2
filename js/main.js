@@ -49,16 +49,10 @@ function createButtons() {
     debugStream.log("<success");
 };
 
-// function createQuiz() {
-//     let quizModal = document.getElementById("createQuiz");
-//     quizModal.style.display = "block";
-// }
-
 document.addEventListener("DOMContentLoaded", () => {
     debugStream.log("registered DOMLoad event.");
 
     createButtons();
-
 
     const quizButtons = document.querySelectorAll(".quizTile"); // Hier selecteer je alle knopjes, de quizzes dus.
     quizButtons.forEach(buttonQuizStart => { // Voor elke button voer je code uit
@@ -117,7 +111,6 @@ document.addEventListener("DOMContentLoaded", () => {
     logoutButton?.addEventListener('click', () => {
         window.location.href = "php/logout.php";
     });
-});
 
     const leaderboardButton = document.getElementById("leaderbordIcon"); 
     if (leaderboardButton) {
@@ -129,8 +122,9 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
         debugStream.log("Leaderboard button not found.");
     }
+});
 
-    debugStream.log("<success");
+debugStream.log("<success");
 
 function handleSearchInput(event) {
     const searchValue = event.target.value.trim().toLowerCase();
