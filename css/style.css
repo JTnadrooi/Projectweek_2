@@ -754,27 +754,8 @@ textarea {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  
-.leaderboard-container {
-  background: repeating-linear-gradient(
-    45deg,
-    #00b9be,
-    #00b9be 10px,
-    #00b9be 10px,
-    #555867 20px
-  );
-  backdrop-filter: blur(10px);
-  border: 2px solid var(--c6);
-  border-radius: 10px;
-  padding: 20px;
-  margin: 20px 0;
-  box-shadow: var(--soft-shadow);
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  max-width: 90%;  /* Keep Ivo's version */
+  max-width: 90%; 
 }
-  
 .shake {
   animation: shake 0.5s ease-out;
 } 
