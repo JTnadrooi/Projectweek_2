@@ -60,7 +60,6 @@ INSERT INTO `q_users` (`id`, `username`, `accountType`, `email`, `password`, `el
 	(93, NULL, 'user', '1@gmail.com', '2', 0, NULL),
 	(94, NULL, 'user', '2223@gmail.com', '1', 0, NULL),
 	(95, NULL, 'teacher', 'alemal569@gmail.com', '1', 0, NULL),
-	(196, NULL, 'user', 'nigger@gmail.com', 'Nigger', 0, NULL),
 	(197, NULL, 'user', 'sander@flopper.nl', 'sander', 0, NULL),
 	(198, NULL, 'user', 'salehn@nigger.com', '12345', 0, NULL),
 	(199, NULL, 'user', 'brandon@mail.com', 'brandon', 0, NULL),
