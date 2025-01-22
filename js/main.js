@@ -3,7 +3,6 @@ let currentQuizId = 0;
 debugStream.log("initializing page..");
 const buttons = [
     ["account", "top"],
-
     ["home", "side"],
     ["folderAdd", "side"],
     ["leaderbord", "side"],
@@ -54,14 +53,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     createButtons();
 
-    const quizButtons = document.querySelectorAll(".quizTile"); // Hier selecteer je alle knopjes, de quizzes dus.
-    quizButtons.forEach(buttonQuizStart => { // Voor elke button voer je code uit
-        buttonQuizStart.addEventListener("click", () => { // Als er op een knopje klikt word je gestuurd naar de php quiz pagina en wordt je quizid mee gegeven
-            const quizId = buttonQuizStart.id.replace("question-", ""); // Hier haal je de quizid uit de id van de knop
-            if (quizId === "create") {
-                window.location.href = "createQuiz.php";
-                return;
-            };
+    const quizButtons = document.querySelectorAll(".quizTile"); // Here you select all buttons, the quizzes.
+    quizButtons.forEach(buttonQuizStart => { // For each button, execute code
+        buttonQuizStart.addEventListener("click", () => { // When you click on a button, you are directed to the PHP quiz page and the quiz ID is passed
+            const quizId = buttonQuizStart.id.replace("question-", ""); // Here you extract the quiz ID from the button's ID
             window.location.href = `quiz.php?quizid=${quizId}`;
         });
     });
@@ -93,24 +88,17 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-
-    const homeButton = document.getElementById("homeIcon"); // Hier selecteer je de home knop
-    homeButton?.addEventListener("click", () => { // Als je op de home knop klikt word je naar de index.php gestuurd
-        window.location.href = "index.php";
-    });
-
-    const accountButton = document.getElementById("shareIcon"); // Hier selecteer je de share knop
-    accountButton?.addEventListener("click", () => { // Als je op de share knop klikt krijg je een pop-up met de link van de pagina
-        const url = window.location.href;
-        alert("De quiz link is gekopieerd naar je klembord!");
-        navigator.clipboard.writeText(url);
-    });
-    debugStream.log("<succes");
-
-    const logoutButton = document.getElementById('logoutButton');
-    logoutButton?.addEventListener('click', () => {
-        window.location.href = "php/logout.php";
-    });
+    // home button
+    const homeButton = document.getElementById("homeIcon"); 
+    if (homeButton) {
+        debugStream.log("Home button found.");
+        homeButton.addEventListener("click", () => { // When you click on the home button, you are directed to index.php
+            debugStream.log("Home button clicked.");
+            window.location.href = "index.php";
+        });
+    } else {
+        debugStream.log("Home button not found.");
+    }
 
     const leaderboardButton = document.getElementById("leaderbordIcon"); 
     if (leaderboardButton) {
@@ -122,9 +110,9 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
         debugStream.log("Leaderboard button not found.");
     }
-});
 
-debugStream.log("<success");
+    debugStream.log("<success");
+});
 
 function handleSearchInput(event) {
     const searchValue = event.target.value.trim().toLowerCase();
@@ -145,16 +133,18 @@ function modalFeedback() {
     const container = document.querySelector('.modal');
 
     let feedback = 'NO PASSWORD GIVEN';
-    let succes = false
+    let succes = false;
 
     modalFeedback.innerHTML = feedback;
     container.classList.add('shake');
     modalFeedback.style.color = succes ? 'yellowgreen' : 'red';
     setTimeout(() => container.classList.remove('shake'), 500);
 }
+
 function handleLogin() {
     modalFeedback();
 }
+
 function handleRegister() {
     modalFeedback();
 }
