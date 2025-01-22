@@ -33,7 +33,7 @@
                 <?php if (isset($_SESSION['accountData'])) { echo getEmailById($_SESSION['accountData']['id']); } ?>
             </h1>
 
-            <button class="accountDropDownButton">LOGOUT</button>
+            <button class="accountDropDownButton" id="logoutButton">LOGOUT</button>
         </div>
         <div id="mainDisplay">
             <div id="sideIconContainer"></div>

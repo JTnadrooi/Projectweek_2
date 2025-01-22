@@ -110,6 +110,11 @@ document.addEventListener("DOMContentLoaded", () => {
         navigator.clipboard.writeText(url);
     });
     debugStream.log("<succes");
+
+    const logoutButton = document.getElementById('logoutButton');
+    logoutButton?.addEventListener('click', () => {
+        window.location.href = "php/logout.php";
+    });
 });
 
 
