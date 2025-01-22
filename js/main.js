@@ -117,7 +117,6 @@ document.addEventListener("DOMContentLoaded", () => {
     logoutButton?.addEventListener('click', () => {
         window.location.href = "php/logout.php";
     });
-});
 
     const leaderboardButton = document.getElementById("leaderbordIcon"); 
     if (leaderboardButton) {
@@ -130,7 +129,7 @@ document.addEventListener("DOMContentLoaded", () => {
         debugStream.log("Leaderboard button not found.");
     }
 
-    debugStream.log("<success");
+    debugStream.log("<succes");
 });
 
 function handleSearchInput(event) {

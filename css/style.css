@@ -667,6 +667,27 @@ textarea {
   flex-direction: column;
 }
 
+#wait-container {
+  background-color: var(--c5);
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  text-align: center;
+}
+
+#wait-block {
+  background-color: var(--c1);
+  border-radius: 20px;
+  box-shadow: var(--soft-shadow);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  height: 300px;
+  width: 400px;
+}
+
 .quizTileContainer {
   display: flex;
   flex-direction: column;
@@ -749,7 +770,7 @@ textarea {
   flex-direction: column;
   gap: 10px;
   max-width: 90%; 
-=======
+}
 .shake {
   animation: shake 0.5s ease-out;
 } 

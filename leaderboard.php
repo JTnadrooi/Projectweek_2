@@ -19,22 +19,7 @@ $stmt->execute(['user_id' => $_SESSION['accountData']['id']]);
 $elo = $stmt->fetchColumn();
 
 
-$bots = [
-    ['username' => 'Ivo', 'elo' => 10000],
-    ['username' => 'Reda', 'elo' => 9000000000000000],
-    ['username' => 'Jordan', 'elo' => 200],
-    ['username' => 'BIGXTHAPLUG', 'elo' => 100],
-    ['username' => 'Alem', 'elo' => 10],
-    ['username' => 'Rik', 'elo' => 10000000000000],
-];
-
-
-if ($elo !== false) {
-    $leaderboard = array_merge($bots, [['username' => 'Your ELO score', 'elo' => $elo]]);
-} else {
-    $leaderboard = $bots;
-}
-
+$leaderboard = getLeaderboard();
 
 usort($leaderboard, function($a, $b) {
     return $b['elo'] - $a['elo'];
@@ -55,13 +40,20 @@ usort($leaderboard, function($a, $b) {
             <div id="logo">QUIZZA</div>
             <div id="iconsContainer"></div>
         </div>
+        <div id="accountContainer">
+            <img src="media/icons/account.png" alt="accountIcon" width="30px">
+            <h1>
+                <?php if (isset($_SESSION['accountData'])) { echo getEmailById($_SESSION['accountData']['id']); } ?>
+            </h1>
+
+            <button class="accountDropDownButton" id="logoutButton">LOGOUT</button>
+        </div>
         <div id="mainDisplay">
             <div id="sideIconContainer"></div>
             <div id="masterQuizContainer">
-                <h1>Leaderboard</h1>
                 <div class="leaderboard-container">
                     <?php foreach ($leaderboard as $entry): ?>
-                        <p><?php echo htmlspecialchars($entry['username']); ?> <?php echo htmlspecialchars($entry['elo']); ?></p>
+                        <p><?php echo htmlspecialchars($entry['email']); ?> <?php echo htmlspecialchars($entry['elo']); ?></p>
                     <?php endforeach; ?>
                 </div>
             </div>

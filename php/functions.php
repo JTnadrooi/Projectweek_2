@@ -70,4 +70,22 @@ function getEmailById($id) {
     return $listArray[0]['email'];
 }
 
+function getLeaderboard() {
+    include 'db-connect.php';
+    $stmt = $conn->prepare("select email, elo from q_users order by elo desc limit 10");
+    $stmt->execute();
+    $listArray = $stmt->fetchAll();
+    $conn = null;
+    return $listArray;
+}
+
+function getEloById($id) {
+    include 'db-connect.php';
+    $stmt = $conn->prepare("select elo from q_users where id = :id");
+    $stmt->execute(['id' => $id]);
+    $listArray = $stmt->fetchAll();
+    $conn = null;
+    return $listArray[0]['elo'];
+}
+
 ?>
