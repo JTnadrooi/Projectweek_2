@@ -70,9 +70,9 @@ if (! checkLogin()) {
             <div>
                 <h1 id="leaderHeader">Top 3</h1>
                 <div id="quizLeaderboard">
-                    <div id="quizLeaderboardEntry1" class="quizLeaderboardEntry">BOT1</div>
-                    <div id="quizLeaderboardEntry2" class="quizLeaderboardEntry">REALPLAYER</div>
-                    <div id="quizLeaderboardEntry3" class="quizLeaderboardEntry">NOTABOT</div>
+                    <div id="e1" class="quizLeaderboardEntry">BOT1</div>
+                    <div id="e2" class="quizLeaderboardEntry">REALPLAYER</div>
+                    <div id="e3" class="quizLeaderboardEntry">NOTABOT</div>
                 </div>
             </div>
         </div>

@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
         accountIcon.addEventListener('mouseleave', hideContainer);
         accountContainer.addEventListener('mouseenter', showContainer);
         accountContainer.addEventListener('mouseleave', hideContainer);
-        
+
         document.getElementById('accountIcon').addEventListener('click', () => {
             const accountContainer = document.getElementById('accountContainer');
             accountContainer.classList.add('shake');
