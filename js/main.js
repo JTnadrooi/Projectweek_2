@@ -1,9 +1,6 @@
-const debugStream = new AsitDebugStream(undefined, "QUIZZA");
-let currentQuizId = 0;
 debugStream.log("initializing page..");
 const buttons = [
     ["account", "top"],
-
     ["home", "side"],
     ["folderAdd", "side"],
     ["leaderbord", "side"],
@@ -51,24 +48,22 @@ function createButtons() {
 
 document.addEventListener("DOMContentLoaded", () => {
     debugStream.log("registered DOMLoad event.");
-
     createButtons();
 
-    const quizButtons = document.querySelectorAll(".quizTile"); // Hier selecteer je alle knopjes, de quizzes dus.
-    quizButtons.forEach(buttonQuizStart => { // Voor elke button voer je code uit
-        buttonQuizStart.addEventListener("click", () => { // Als er op een knopje klikt word je gestuurd naar de php quiz pagina en wordt je quizid mee gegeven
-            const quizId = buttonQuizStart.id.replace("question-", ""); // Hier haal je de quizid uit de id van de knop
+    const quizButtons = document.querySelectorAll(".quizTile"); 
+    quizButtons.forEach(buttonQuizStart => {
+        buttonQuizStart.addEventListener("click", () => {
+            const quizId = buttonQuizStart.id.replace("question-", "");
             if (quizId === "create") {
                 window.location.href = "createQuiz.php";
                 return;
-            };
+            }
             window.location.href = `quiz.php?quizid=${quizId}`;
         });
     });
 
-    // exit button
-    const exitButton = document.getElementById("exitIcon"); // Here you select the exit button
-    exitButton?.addEventListener("click", () => { // When you click on the exit button, you are directed to index.php
+    const exitButton = document.getElementById("exitIcon"); 
+    exitButton?.addEventListener("click", () => {
         window.location.href = "index.php";
     });
 
@@ -93,68 +88,33 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-
-    const homeButton = document.getElementById("homeIcon"); // Hier selecteer je de home knop
-    homeButton?.addEventListener("click", () => { // Als je op de home knop klikt word je naar de index.php gestuurd
+    const homeButton = document.getElementById("homeIcon");
+    homeButton?.addEventListener("click", () => {
         window.location.href = "index.php";
     });
 
-    const accountButton = document.getElementById("shareIcon"); // Hier selecteer je de share knop
-    accountButton?.addEventListener("click", () => { // Als je op de share knop klikt krijg je een pop-up met de link van de pagina
+    const shareButton = document.getElementById("shareIcon");
+    shareButton?.addEventListener("click", () => {
         const url = window.location.href;
         alert("De quiz link is gekopieerd naar je klembord!");
         navigator.clipboard.writeText(url);
     });
-    debugStream.log("<succes");
 
-    const logoutButton = document.getElementById('logoutButton');
-    logoutButton?.addEventListener('click', () => {
-        window.location.href = "php/logout.php";
-    });
-
-    const leaderboardButton = document.getElementById("leaderbordIcon"); 
+    const leaderboardButton = document.getElementById("leaderbordIcon");
     if (leaderboardButton) {
         debugStream.log("Leaderboard button found.");
-        leaderboardButton.addEventListener("click", () => { // When you click on the leaderboard button, you are directed to leaderboard.php
+        leaderboardButton.addEventListener("click", () => {
             debugStream.log("Leaderboard button clicked.");
             window.location.href = "leaderboard.php";
         });
     } else {
         debugStream.log("Leaderboard button not found.");
     }
+
+    const logoutButton = document.getElementById('logoutButton');
+    logoutButton?.addEventListener('click', () => {
+        window.location.href = "php/logout.php";
+    });
+
+    debugStream.log("<success");
 });
-
-debugStream.log("<success");
-
-function handleSearchInput(event) {
-    const searchValue = event.target.value.trim().toLowerCase();
-    const quizTiles = document.querySelectorAll('.quizTile');
-    quizTiles.forEach(tile => {
-        tile.style.display = tile.textContent.toLowerCase().includes(searchValue) ? 'flex' : 'none';
-    });
-    const subcontainers = document.querySelectorAll('.subcontainer');
-    subcontainers.forEach(container => {
-        const hasVisibleTile = Array.from(container.querySelectorAll('.quizTile'))
-            .some(tile => tile.style.display === 'flex');
-        container.style.display = hasVisibleTile ? 'flex' : 'none';
-    });
-}
-
-function modalFeedback() {
-    const modalFeedback = document.querySelector('#modalFeedback');
-    const container = document.querySelector('.modal');
-
-    let feedback = 'NO PASSWORD GIVEN';
-    let succes = false
-
-    modalFeedback.innerHTML = feedback;
-    container.classList.add('shake');
-    modalFeedback.style.color = succes ? 'yellowgreen' : 'red';
-    setTimeout(() => container.classList.remove('shake'), 500);
-}
-function handleLogin() {
-    modalFeedback();
-}
-function handleRegister() {
-    modalFeedback();
-}
