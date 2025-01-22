@@ -4,7 +4,7 @@ let currentStats = [
     total = 0,
     correct = 0,
     incorrect = 0
-]
+];
 
 function answered(num) {
     stopCountdown();
@@ -22,7 +22,7 @@ function answered(num) {
         currentStats[2]++;
         let modal = document.getElementById("feedbackModal-incorrect");
         incorrectFeedback = document.getElementById("incorrectFeedback");
-        incorrectFeedback.innerHTML = "Fout, " + questionsData[currentQuestion].correctAnswer;
+        incorrectFeedback.innerHTML = "False, " + questionsData[currentQuestion].correctAnswer;
         modal.style.display = "block";
         setTimeout(() => {
             modal.style.display = "none";
@@ -80,13 +80,13 @@ function answered(num) {
 
 
 let interval;
-const fullDashArray = 440; 
+const fullDashArray = 440;
 
 function startCountdown(totalSeconds) {
     let remainingSeconds = totalSeconds;
     let secondsElement = document.getElementById('seconds');
     let ss = document.getElementById('ss');
-    let secDot = document.getElementById('sec_dot');   
+    let secDot = document.getElementById('sec_dot');
     document.getElementById("time").style.opacity = "100%";
 
     interval = setInterval(() => {
@@ -102,7 +102,7 @@ function startCountdown(totalSeconds) {
             clearInterval(interval);
             answered(-1);
         }
-    }, 1000); 
+    }, 1000);
 }
 
 function stopCountdown() {
@@ -111,5 +111,5 @@ function stopCountdown() {
 }
 
 window.onload = function () {
-    startCountdown(60); 
+    startCountdown(60);
 };

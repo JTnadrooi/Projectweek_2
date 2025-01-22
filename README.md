@@ -8,7 +8,7 @@
   Welcome to the main repository for <strong>Quizza</strong>, a Kahoot-like multiplayer quiz platform developed as part of a school project.
 </p>
 
-> [IMPORTANT]
+> [!IMPORTANT]
 > All the CSS code gets generated from the SASS directory.
 
 ## Contributors

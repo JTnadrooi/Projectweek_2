@@ -1,11 +1,11 @@
 <?php
-    include 'php/functions.php';
-    $quizId = $_GET['quizid'];
-    $questionsData = getQuestionsData($quizId);
-    include 'php/db-connect.php';
-    if (! checkLogin()) {
-        header('Location: index.php');
-    }
+include 'php/functions.php';
+$quizId = $_GET['quizid'];
+$questionsData = getQuestionsData($quizId);
+include 'php/db-connect.php';
+if (! checkLogin()) {
+    header('Location: index.php');
+}
 ?>
 
 
@@ -53,7 +53,6 @@
                         <div id="seconds">60</div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
@@ -62,14 +61,14 @@
     <div id="feedbackModal-correct" class="modal" style="display:none">
         <div class="modal-content">
             <img src="media/correct.png" alt="">
-            <p>Vraag goed! </p>
+            <p>Splendid! </p>
         </div>
     </div>
     <div id="feedbackModal-incorrect" class="modal" style="display:none">
         <!-- Modal content -->
         <div class="modal-content">
             <img src="media/incorrect.png" alt="">
-            <p id="incorrectFeedback"></p>  
+            <p id="incorrectFeedback"></p>
         </div>
     </div>
 
@@ -86,4 +85,3 @@
 <?php
 echo '<script> let questionsData = ' . json_encode($questionsData) . '</script>';
 ?>
-

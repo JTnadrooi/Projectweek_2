@@ -76,6 +76,24 @@ document.addEventListener("DOMContentLoaded", () => {
         window.location.href = "index.php";
     });
 
+    const accountIcon = document.getElementById('accountIcon');
+    const accountContainer = document.getElementById('accountContainer');
+    const showContainer = () => {
+        accountContainer.classList.add('show');
+    };
+    const hideContainer = () => {
+        accountContainer.classList.remove('show');
+    };
+    accountIcon.addEventListener('mouseenter', showContainer);
+    accountIcon.addEventListener('mouseleave', hideContainer);
+    accountContainer.addEventListener('mouseenter', showContainer);
+    accountContainer.addEventListener('mouseleave', hideContainer);
+
+    document.getElementById('accountIcon').addEventListener('click', () => {
+        const accountContainer = document.getElementById('accountContainer');
+        accountContainer.classList.add('shake');
+        setTimeout(() => accountContainer.classList.remove('shake'), 500);
+    });
     const homeButton = document.getElementById("homeIcon"); // Hier selecteer je de home knop
     homeButton?.addEventListener("click", () => { // Als je op de home knop klikt word je naar de index.php gestuurd
         window.location.href = "index.php";
@@ -105,3 +123,21 @@ function handleSearchInput(event) {
     });
 }
 
+function modalFeedback() {
+    const modalFeedback = document.querySelector('#modalFeedback');
+    const container = document.querySelector('.modal');
+
+    let feedback = 'NO PASSWORD GIVEN';
+    let succes = false
+
+    modalFeedback.innerHTML = feedback;
+    container.classList.add('shake');
+    modalFeedback.style.color = succes ? 'yellowgreen' : 'red';
+    setTimeout(() => container.classList.remove('shake'), 500);
+}
+function handleLogin() {
+    modalFeedback();
+}
+function handleRegister() {
+    modalFeedback();
+}
