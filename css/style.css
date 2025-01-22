@@ -731,15 +731,21 @@ textarea {
   font-size: 24px;
   font-weight: bold;
 }
+#leaderboard_h1{
+  color: white;
+  font-size: 80px;
+  align-self: center;
+}
 
 .leaderboard-container {
   background: repeating-linear-gradient(
     45deg,
-    #ffffff,
-    #ffffff 10px,
-    #f0f0f0 10px,
-    #f0f0f0 20px
+    #00b9be,
+    #00b9be 10px,
+    #00b9be 10px,
+    #555867 20px
   );
+  backdrop-filter: blur(10  px);
   border: 2px solid var(--c6);
   border-radius: 10px;
   padding: 20px;
@@ -748,20 +754,27 @@ textarea {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  max-width: 90%;
-}
-
-.leaderboard-container p {
-  background-color: #ffffff;
-  padding: 10px;
-  border-radius: 5px;
+  
+.leaderboard-container {
+  background: repeating-linear-gradient(
+    45deg,
+    #00b9be,
+    #00b9be 10px,
+    #00b9be 10px,
+    #555867 20px
+  );
+  backdrop-filter: blur(10px);
+  border: 2px solid var(--c6);
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px 0;
   box-shadow: var(--soft-shadow);
-  margin: 5px 0;
-  font-size: 18px;
-  font-weight: bold;
-  color: var(--c6);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 90%;  /* Keep Ivo's version */
 }
-
+  
 .shake {
   animation: shake 0.5s ease-out;
 } 
@@ -826,4 +839,54 @@ textarea {
 
 .quizHeader-create {
   height: 200px;
+}
+
+#name {
+  background-color: white; /* Default background color */
+  position: relative;
+  padding-left: 15px; /* Space for the rank indicator */
+}
+
+/* Gold (1st place) */
+.rank-1::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 10px;
+  height: 100%;
+  background-color: #FFD700; /* Golden color */
+}
+
+/* Silver (2nd place) */
+.rank-2::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 10px;
+  height: 100%;
+  background-color: #C0C0C0; /* Silver color */
+}
+
+/* Bronze (3rd place) */
+.rank-3::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 10px;
+  height: 100%;
+  background-color: #CD7F32; /* Bronze color */
+}
+
+/* For rank 4 and beyond, you can apply a different style or default styling */
+.rank-4::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 10px;
+  height: 100%;
+  background-color: #ffffff; /* Grey color for 4th place */
 }
