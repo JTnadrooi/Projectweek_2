@@ -84,16 +84,20 @@ document.addEventListener("DOMContentLoaded", () => {
     const hideContainer = () => {
         accountContainer.classList.remove('show');
     };
-    accountIcon.addEventListener('mouseenter', showContainer);
-    accountIcon.addEventListener('mouseleave', hideContainer);
-    accountContainer.addEventListener('mouseenter', showContainer);
-    accountContainer.addEventListener('mouseleave', hideContainer);
+    if (accountIcon && accountContainer) {
+        accountIcon.addEventListener('mouseenter', showContainer);
+        accountIcon.addEventListener('mouseleave', hideContainer);
+        accountContainer.addEventListener('mouseenter', showContainer);
+        accountContainer.addEventListener('mouseleave', hideContainer);
+        
+        document.getElementById('accountIcon').addEventListener('click', () => {
+            const accountContainer = document.getElementById('accountContainer');
+            accountContainer.classList.add('shake');
+            setTimeout(() => accountContainer.classList.remove('shake'), 500);
+        });
+    }
 
-    document.getElementById('accountIcon').addEventListener('click', () => {
-        const accountContainer = document.getElementById('accountContainer');
-        accountContainer.classList.add('shake');
-        setTimeout(() => accountContainer.classList.remove('shake'), 500);
-    });
+
     const homeButton = document.getElementById("homeIcon"); // Hier selecteer je de home knop
     homeButton?.addEventListener("click", () => { // Als je op de home knop klikt word je naar de index.php gestuurd
         window.location.href = "index.php";
@@ -106,6 +110,11 @@ document.addEventListener("DOMContentLoaded", () => {
         navigator.clipboard.writeText(url);
     });
     debugStream.log("<succes");
+
+    const logoutButton = document.getElementById('logoutButton');
+    logoutButton?.addEventListener('click', () => {
+        window.location.href = "php/logout.php";
+    });
 });
 
 

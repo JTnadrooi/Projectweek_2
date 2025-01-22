@@ -275,6 +275,11 @@ textarea {
 #accountContainer.show {
   transform: translateX(0);
 }
+
+#accountContainer > h1 {
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%;
+}
+
 #accountContainer > .accountDropDownButton {
   all: unset;
   background-color: #ffffff;
@@ -451,19 +456,19 @@ textarea {
   box-sizing: border-box;
   overflow-y: auto;
 }
-#masterQuizContainer ::-webkit-scrollbar {
+#page ::-webkit-scrollbar {
   width: 12px;
 }
-#masterQuizContainer ::-webkit-scrollbar-track {
+#page ::-webkit-scrollbar-track {
   background: var(--c5);
   border-radius: 10px;
 }
-#masterQuizContainer ::-webkit-scrollbar-thumb {
+#page ::-webkit-scrollbar-thumb {
   background-color: var(--c3);
   border-radius: 10px;
   border: 3px solid var(--c5);
 }
-#masterQuizContainer ::-webkit-scrollbar-thumb {
+#page ::-webkit-scrollbar-thumb {
   background-color: var(--c3);
   border-radius: 10px;
   height: 60px;
@@ -540,7 +545,6 @@ textarea {
   justify-content: flex-start;
   width: 100%;
   margin: 0 auto;
-  max-height: 280px;
   box-sizing: border-box;
 }
 @media (max-width: 900px) {
@@ -655,8 +659,8 @@ textarea {
   box-shadow: var(--soft-shadow);
 }
 
-.main-container {
-  background-color: red;
+#main-container {
+  background-color: var(--c5);
   align-items: center;
   justify-content: center;
   display: flex;

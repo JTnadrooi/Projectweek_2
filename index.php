@@ -29,12 +29,11 @@ updateData();
         </div>
         <div id="accountContainer">
             <img src="media/icons/account.png" alt="accountIcon" width="30px">
-            <h1>USERNAME</h1>
-            <h2>DATA1</h2>
-            <h2>DATA2</h2>
-            <h2>DATA3</h2>
-            <h2>DATA4</h2>
-            <button class="accountDropDownButton">LOGOUT</button>
+            <h1>
+                <?php if (isset($_SESSION['accountData'])) { echo getEmailById($_SESSION['accountData']['id']); } ?>
+            </h1>
+
+            <button class="accountDropDownButton" id="logoutButton">LOGOUT</button>
         </div>
         <div id="mainDisplay">
             <div id="sideIconContainer"></div>
