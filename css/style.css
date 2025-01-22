@@ -732,6 +732,24 @@ textarea {
   font-weight: bold;
 }
 
+.leaderboard-container {
+  background: repeating-linear-gradient(
+    45deg,
+    #ffffff,
+    #ffffff 10px,
+    #f0f0f0 10px,
+    #f0f0f0 20px
+  );
+  border: 2px solid var(--c6);
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px 0;
+  box-shadow: var(--soft-shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 90%; 
+=======
 .shake {
   animation: shake 0.5s ease-out;
 } 
