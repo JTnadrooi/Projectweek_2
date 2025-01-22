@@ -49,25 +49,15 @@ function createButtons() {
     debugStream.log("<success");
 };
 
-// function createQuiz() {
-//     let quizModal = document.getElementById("createQuiz");
-//     quizModal.style.display = "block";
-// }
-
 document.addEventListener("DOMContentLoaded", () => {
     debugStream.log("registered DOMLoad event.");
 
     createButtons();
 
-
-    const quizButtons = document.querySelectorAll(".quizTile"); // Hier selecteer je alle knopjes, de quizzes dus.
-    quizButtons.forEach(buttonQuizStart => { // Voor elke button voer je code uit
-        buttonQuizStart.addEventListener("click", () => { // Als er op een knopje klikt word je gestuurd naar de php quiz pagina en wordt je quizid mee gegeven
-            const quizId = buttonQuizStart.id.replace("question-", ""); // Hier haal je de quizid uit de id van de knop
-            if (quizId === "create") {
-                window.location.href = "createQuiz.php";
-                return;
-            };
+    const quizButtons = document.querySelectorAll(".quizTile"); // Here you select all buttons, the quizzes.
+    quizButtons.forEach(buttonQuizStart => { // For each button, execute code
+        buttonQuizStart.addEventListener("click", () => { // When you click on a button, you are directed to the PHP quiz page and the quiz ID is passed
+            const quizId = buttonQuizStart.id.replace("question-", ""); // Here you extract the quiz ID from the button's ID
             window.location.href = `quiz.php?quizid=${quizId}`;
         });
     });
@@ -78,47 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
         window.location.href = "index.php";
     });
 
-    const accountIcon = document.getElementById('accountIcon');
-    const accountContainer = document.getElementById('accountContainer');
-    const showContainer = () => {
-        accountContainer.classList.add('show');
-    };
-    const hideContainer = () => {
-        accountContainer.classList.remove('show');
-    };
-    if (accountIcon && accountContainer) {
-        accountIcon.addEventListener('mouseenter', showContainer);
-        accountIcon.addEventListener('mouseleave', hideContainer);
-        accountContainer.addEventListener('mouseenter', showContainer);
-        accountContainer.addEventListener('mouseleave', hideContainer);
-        
-        document.getElementById('accountIcon').addEventListener('click', () => {
-            const accountContainer = document.getElementById('accountContainer');
-            accountContainer.classList.add('shake');
-            setTimeout(() => accountContainer.classList.remove('shake'), 500);
-        });
-    }
-
-
-    const homeButton = document.getElementById("homeIcon"); // Hier selecteer je de home knop
-    homeButton?.addEventListener("click", () => { // Als je op de home knop klikt word je naar de index.php gestuurd
-        window.location.href = "index.php";
-    });
-
-    const accountButton = document.getElementById("shareIcon"); // Hier selecteer je de share knop
-    accountButton?.addEventListener("click", () => { // Als je op de share knop klikt krijg je een pop-up met de link van de pagina
-        const url = window.location.href;
-        alert("De quiz link is gekopieerd naar je klembord!");
-        navigator.clipboard.writeText(url);
-    });
-    debugStream.log("<succes");
-
-    const logoutButton = document.getElementById('logoutButton');
-    logoutButton?.addEventListener('click', () => {
-        window.location.href = "php/logout.php";
-    });
-});
-
+    // leaderboard button
     const leaderboardButton = document.getElementById("leaderbordIcon"); 
     if (leaderboardButton) {
         debugStream.log("Leaderboard button found.");
@@ -130,7 +80,20 @@ document.addEventListener("DOMContentLoaded", () => {
         debugStream.log("Leaderboard button not found.");
     }
 
+    // home button
+    const homeButton = document.getElementById("homeIcon"); 
+    if (homeButton) {
+        debugStream.log("Home button found.");
+        homeButton.addEventListener("click", () => { // When you click on the home button, you are directed to index.php
+            debugStream.log("Home button clicked.");
+            window.location.href = "index.php";
+        });
+    } else {
+        debugStream.log("Home button not found.");
+    }
+
     debugStream.log("<success");
+});
 
 function handleSearchInput(event) {
     const searchValue = event.target.value.trim().toLowerCase();

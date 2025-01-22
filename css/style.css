@@ -748,8 +748,20 @@ textarea {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  max-width: 90%; 
-=======
+  max-width: 90%;
+}
+
+.leaderboard-container p {
+  background-color: #ffffff;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: var(--soft-shadow);
+  margin: 5px 0;
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--c6);
+}
+
 .shake {
   animation: shake 0.5s ease-out;
 } 
