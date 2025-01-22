@@ -29,17 +29,20 @@ if (! checkLogin()) {
             <div class="subcontainer-quiz">
                 <div class="textQuestionTitle" id="questionText"><?php echo $questionsData[0]['question'] ?></div>
             </div>
+            <div id="botsAnswered" title="Bots answered">
+                1029 ANSWERED
+            </div>
             <div class="quizTileContainer">
                 <div class="answerRow">
                     <button class="answerTile" onClick="answered(0)" id="answerText-0"><?php echo $questionsData[0]['answers'][0] ?></button>
                     <button class="answerTile" onClick="answered(1)" id="answerText-1"><?php echo $questionsData[0]['answers'][1] ?></button>
                 </div>
                 <div class="answerRow" id="answerRow">
-                    <?php if (isset($questionsData[0]['answers'][2]))  {?>
+                    <?php if (isset($questionsData[0]['answers'][2])) { ?>
                         <button class="answerTile" onClick="answered(2)" id="answerText-2"><?php echo $questionsData[0]['answers'][2] ?></button>
                     <?php } ?>
 
-                    <?php if (isset($questionsData[0]['answers'][3]))  {?>
+                    <?php if (isset($questionsData[0]['answers'][3])) { ?>
                         <button class="answerTile" onClick="answered(3)" id="answerText-3"><?php echo $questionsData[0]['answers'][3] ?></button>
                     <?php } ?>
                 </div>
@@ -62,7 +65,18 @@ if (! checkLogin()) {
         <div class="modal-content">
             <img src="media/correct.png" alt="">
             <p>Splendid! </p>
+
+            <!-- make this put here by js, so i dont hav to do some weird stuff with double ids  -->
+            <div>
+                <h1 id="leaderHeader">Top 3</h1>
+                <div id="quizLeaderboard">
+                    <div id="quizLeaderboardEntry1" class="quizLeaderboardEntry">BOT1</div>
+                    <div id="quizLeaderboardEntry2" class="quizLeaderboardEntry">REALPLAYER</div>
+                    <div id="quizLeaderboardEntry3" class="quizLeaderboardEntry">NOTABOT</div>
+                </div>
+            </div>
         </div>
+    </div>
     </div>
     <div id="feedbackModal-incorrect" class="modal" style="display:none">
         <!-- Modal content -->

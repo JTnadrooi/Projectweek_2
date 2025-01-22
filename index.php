@@ -30,7 +30,9 @@ updateData();
         <div id="accountContainer">
             <img src="media/icons/account.png" alt="accountIcon" width="30px">
             <h1>
-                <?php if (isset($_SESSION['accountData'])) { echo getEmailById($_SESSION['accountData']['id']); } ?>
+                <?php if (isset($_SESSION['accountData'])) {
+                    echo getEmailById($_SESSION['accountData']['id']);
+                } ?>
             </h1>
 
             <button class="accountDropDownButton" id="logoutButton">LOGOUT</button>

@@ -13,10 +13,6 @@ function answered(num) {
         currentStats[1]++;
         let modal = document.getElementById("feedbackModal-correct");
         modal.style.display = "block";
-        setTimeout(() => {
-            modal.style.display = "none";
-            startCountdown(60);
-        }, 5000);
     } else {
         currentStats[0]++;
         currentStats[2]++;
@@ -24,10 +20,6 @@ function answered(num) {
         incorrectFeedback = document.getElementById("incorrectFeedback");
         incorrectFeedback.innerHTML = "False, " + questionsData[currentQuestion].correctAnswer;
         modal.style.display = "block";
-        setTimeout(() => {
-            modal.style.display = "none";
-            startCountdown(60);
-        }, 5000);
     }
     currentQuestion++;
 
@@ -102,7 +94,7 @@ function startCountdown(totalSeconds) {
             clearInterval(interval);
             answered(-1);
         }
-    }, 1000);
+    }, 11000);
 }
 
 function stopCountdown() {

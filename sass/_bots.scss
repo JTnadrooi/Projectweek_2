@@ -1,0 +1,39 @@
+@use 'mixins';
+
+#botsAnswered
+{
+    @include mixins.tile-style;
+    position: absolute;
+    bottom: 6px;
+    left: calc(50vw - 200px);
+    width: 400px;
+    height: 60px;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    justify-content: flex-start;
+    flex-direction: column;
+    cursor: auto;
+    z-index: 100;
+}
+
+#leaderHeader
+{
+    @include mixins.tile-style;
+    padding: 0;
+    text-shadow: none;
+    background-color: var(--c2);
+}
+
+#quizLeaderboard
+{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.quizLeaderboardEntry
+{
+    @include mixins.tile-style;
+    background-color: var(--c3);
+}
