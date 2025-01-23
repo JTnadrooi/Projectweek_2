@@ -186,6 +186,7 @@ let botNames = [
     'Bram',
     'Boris',
     'Ali',
+
     'Achmed',
     'Abdullah',
     'Kees',
@@ -228,5 +229,5 @@ function initBots() {
                 document.getElementById('wait-container').style.display = "none";
             }, 2500);
         }
-    }, Math.floor(Math.random() * 100) + currentBotCount / 1000);
+    }, Math.floor(Math.random() * 1000) + currentBotCount / 1000);
 }
