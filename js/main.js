@@ -10,7 +10,8 @@ const buttons = [
     ["help", "side_bottom"],
     ["share", "bottom_left"],
     ["exit", "bottom_right"]
-]
+];
+
 function createButtons() {
     debugStream.log("creating buttons..");
     buttons.forEach(([buttonName, position]) => {
@@ -45,7 +46,7 @@ function createButtons() {
         if (Array.isArray(position)) position.forEach(pos => appendButtonToContainer(pos, baseButton));
         else appendButtonToContainer(position, baseButton);
     });
-    debugStream.log("<succes");
+    debugStream.log("<success");
 };
 
 // function createQuiz() {
@@ -57,6 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
     debugStream.log("registered DOMLoad event.");
 
     createButtons();
+
 
     const quizButtons = document.querySelectorAll(".quizTile"); // Hier selecteer je alle knopjes, de quizzes dus.
     quizButtons.forEach(buttonQuizStart => { // Voor elke button voer je code uit
@@ -71,8 +73,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // exit button
-    const exitButton = document.getElementById("exitIcon"); // Hier selecteer je de exit knop
-    exitButton?.addEventListener("click", () => { // Als je op de exit knop klikt word je naar de index.php gestuurd
+    const exitButton = document.getElementById("exitIcon"); // Here you select the exit button
+    exitButton?.addEventListener("click", () => { // When you click on the exit button, you are directed to index.php
         window.location.href = "index.php";
     });
 
@@ -115,8 +117,20 @@ document.addEventListener("DOMContentLoaded", () => {
     logoutButton?.addEventListener('click', () => {
         window.location.href = "php/logout.php";
     });
-});
 
+    const leaderboardButton = document.getElementById("leaderbordIcon"); 
+    if (leaderboardButton) {
+        debugStream.log("Leaderboard button found.");
+        leaderboardButton.addEventListener("click", () => { // When you click on the leaderboard button, you are directed to leaderboard.php
+            debugStream.log("Leaderboard button clicked.");
+            window.location.href = "leaderboard.php";
+        });
+    } else {
+        debugStream.log("Leaderboard button not found.");
+    }
+
+    debugStream.log("<succes");
+});
 
 function handleSearchInput(event) {
     const searchValue = event.target.value.trim().toLowerCase();

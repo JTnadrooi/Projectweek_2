@@ -25,7 +25,7 @@ if (! checkLogin()) {
 
 <body>
     <div id="quiz-container">
-        <div id="main-container">
+        <div id="main-container" style="display:none">
             <div class="subcontainer-quiz">
                 <div class="textQuestionTitle" id="questionText"><?php echo $questionsData[0]['question'] ?></div>
             </div>
@@ -56,6 +56,12 @@ if (! checkLogin()) {
                         <div id="seconds">60</div>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div id="wait-container">
+            <div id="wait-block">
+                <div id="wait-text">0 Players</div>
+                <div id="wait-description">Waiting for more players...</div>
             </div>
         </div>
     </div>
