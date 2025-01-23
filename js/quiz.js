@@ -13,6 +13,38 @@ let currentStats = [
     elo = 0
 ];
 
+let botsData = [];
+let botNames = [
+    'Quinten',
+    'Jesse',
+    'Jasper',
+    'Jelle',
+    'Joris',
+    'Jeroen',
+    'Jordy',
+    'Jordi',
+    'Johan',
+    'Jelle',
+    'Horsefighter',
+    'Bart',
+    'Kanye West',
+    'Amber',
+    'Bart',
+    'Bram',
+    'Boris',
+    'Ali',
+
+    'Achmed',
+    'Abdullah',
+    'Kees',
+    'Gerrit',
+    'Henk',
+    'Jan',
+    'Klaas',
+];
+
+const timeMultiplier = 0.02;
+
 function finishAnswer(num) {
     if (questionsData[currentQuestion].correctAnswer == questionsData[currentQuestion].answers[num]) {
         botsData[0].correct++;
@@ -84,6 +116,7 @@ function finishAnswer(num) {
         }, 2500);
     }
 }
+
 function answered(num) {
     stopCountdown();
     if (!hasAnswered) {
@@ -94,7 +127,6 @@ function answered(num) {
         oldNum = num;
     }
 }
-
 
 let interval;
 const fullDashArray = 440;
@@ -132,13 +164,13 @@ function startCountdown(totalSeconds) {
                     let personalWait = setInterval(() => {
                         if (hasAnswered) {
                             clearInterval(personalWait);
-                            document.getElementById("answerText-"+ oldNum +"").style.backgroundColor = "#ffffff";
+                            document.getElementById("answerText-" + oldNum + "").style.backgroundColor = "#ffffff";
                             finishAnswer(oldNum);
                         }
                     }, 500);
-                }, 2000); 
+                }, 2000);
             }
-        }, 200 + Math.random() * 900); 
+        }, 200 + Math.random() * 900);
     }, 3000);
     interval = setInterval(() => {
         remainingSeconds--;
@@ -166,35 +198,6 @@ window.onload = function () {
     initBots()
 };
 
-let botsData = [];
-let botNames = [
-    'Quinten',
-    'Jesse',
-    'Jasper',
-    'Jelle',
-    'Joris',
-    'Jeroen',
-    'Jordy',
-    'Jordi',
-    'Johan',
-    'Jelle',
-    'Horsefighter',
-    'Bart',
-    'Kanye West',
-    'Amber',
-    'Bart',
-    'Bram',
-    'Boris',
-    'Ali',
-
-    'Achmed',
-    'Abdullah',
-    'Kees',
-    'Gerrit',
-    'Henk',
-    'Jan',
-    'Klaas',
-]
 
 function initBots() {
     const randomCount = Math.floor(Math.random() * 10) + 15;
@@ -227,7 +230,7 @@ function initBots() {
                 startCountdown(60);
                 document.getElementById('main-container').style.display = "block";
                 document.getElementById('wait-container').style.display = "none";
-            }, 2500);
+            }, 2500 * timeMultiplier);
         }
-    }, Math.floor(Math.random() * 1000) + currentBotCount / 1000);
+    }, Math.floor(1000) * timeMultiplier);
 }
