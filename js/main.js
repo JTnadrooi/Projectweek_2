@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
         accountIcon.addEventListener('mouseleave', hideContainer);
         accountContainer.addEventListener('mouseenter', showContainer);
         accountContainer.addEventListener('mouseleave', hideContainer);
-        
+
         document.getElementById('accountIcon').addEventListener('click', () => {
             const accountContainer = document.getElementById('accountContainer');
             accountContainer.classList.add('shake');
@@ -150,8 +150,21 @@ function modalFeedback() {
     const modalFeedback = document.querySelector('#modalFeedback');
     const container = document.querySelector('.modal');
 
-    let feedback = 'NO PASSWORD GIVEN';
-    let succes = false
+    const emailInput = document.querySelector('#emailInput').value;
+    const passwordInput = document.querySelector('#passwordInput').value;
+    const STRING_EMPTY = '';
+
+    let feedback = [];
+    if (emailInput == STRING_EMPTY) {
+        feedback.push("Email input is missing");
+    }
+    if (passwordInput == STRING_EMPTY) {
+        feedback.push("Password input is missing");
+    }
+    feedback = feedback.join('\n');
+    alert(feedback);
+
+    let succes = false;
 
     modalFeedback.innerHTML = feedback;
     container.classList.add('shake');
