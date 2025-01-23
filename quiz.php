@@ -30,7 +30,7 @@ if (! checkLogin()) {
                 <div class="textQuestionTitle" id="questionText"><?php echo $questionsData[0]['question'] ?></div>
             </div>
             <div id="botsAnswered" title="Bots answered">
-                1029 ANSWERED
+                0 ANSWERED
             </div>
             <div class="quizTileContainer">
                 <div class="answerRow">

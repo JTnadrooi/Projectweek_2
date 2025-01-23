@@ -2,6 +2,7 @@
 
 let currentQuestion = 0;
 let hasAnswered = false;
+let botCount = 1
 let mostRecentAnswer = 1;
 let currentStats = [
     id = 1,
@@ -12,7 +13,6 @@ let currentStats = [
     elo = 0
 ];
 
-let botsData = [];
 let botNames = [
     'Quinten',
     'Jesse',
@@ -41,7 +41,7 @@ let botNames = [
     'Klaas',
 ];
 
-const timeMultiplier = 0.02;
+const timeMultiplier = 1;
 
 function finishAnswer(selectedAnswerIndex) {
     const currentData = questionsData[currentQuestion];
@@ -124,35 +124,23 @@ function startCountdown(totalSeconds) {
     let ss = document.getElementById('ss');
     let secDot = document.getElementById('sec_dot');
     document.getElementById("time").style.opacity = "100%";
-    let botIndex = 0;
+    let botsAnswered = 0;
     hasAnswered = false;
     let botAnswerInterveral = setInterval(() => {
-        if (botIndex < botsData.length) {
-            const bot = botsData[botIndex];
-
-            if (bot.name !== "Player") {
-                bot.total++;
-                if (Math.random() > 0.5) {
-                    bot.correct++;
-                } else {
-                    bot.incorrect++;
-                }
-
-                console.log(`${bot.name}: ${bot.correct > bot.total - bot.correct}`);
-            }
-
-            botIndex++;
+        if (botsAnswered < botCount) {
+            botsAnswered += organicIncrement(2);
+            botsAnswered = Math.max(0, Math.min(botsAnswered, botCount));
+            document.getElementById("botsAnswered").innerHTML = ((botsAnswered - ((hasAnswered || botsAnswered == 0) ? 0 : 1)) + "/" + botCount) + (botCount >= 1000 ? "" : " ANSWERS");
         } else {
             clearInterval(botAnswerInterveral);
-            setTimeout(() => {
-                let answerCheckInterval = setInterval(() => {
-                    if (hasAnswered) {
-                        clearInterval(answerCheckInterval);
-                        document.getElementById("answerText-" + mostRecentAnswer).style.backgroundColor = "#ffffff";
-                        finishAnswer(mostRecentAnswer);
-                    }
-                }, 500);
-            }, 2000);
+            let answerCheckInterval = setInterval(() => {
+                if (hasAnswered) {
+                    clearInterval(answerCheckInterval);
+                    document.getElementById("botsAnswered").innerHTML = "ANSWERED " + botCount + "/" + botCount;
+                    document.getElementById("answerText-" + mostRecentAnswer).style.backgroundColor = "#ffffff";
+                    finishAnswer(mostRecentAnswer);
+                }
+            }, 500);
         }
     }, Math.random() * 1000 * timeMultiplier);
 
@@ -169,7 +157,7 @@ function startCountdown(totalSeconds) {
             clearInterval(clockInterval);
             playerAnswer(-1);
         }
-    }, 11000);
+    }, 1000);
 }
 
 function stopCountdown() {
@@ -177,30 +165,17 @@ function stopCountdown() {
     clearInterval(clockInterval);
 }
 
-
+function organicIncrement(amountCoefficient = 1) {
+    return (Math.floor(Math.random() * 10) + (Math.random() > 0.99 ? 200 : 0)) * amountCoefficient * 2;
+}
 
 function initBots() {
-    const desiredBotCount = Math.floor(Math.random() * 10) + 15;
-    botsData.push({
-        id: 0,
-        name: "Player",
-        total: 0,
-        correct: 0,
-        incorrect: 0,
-        elo: 0
-    });
+    const desiredBotCount = 2000;
     const botInterval = setInterval(() => {
-        if (botsData.length < desiredBotCount) {
-            const randomName = botNames[Math.floor(Math.random() * botNames.length)];
-            botsData.push({
-                id: botsData.length,
-                name: randomName,
-                total: 0,
-                correct: 0,
-                incorrect: 0,
-                elo: 0
-            });
-            document.getElementById('wait-text').innerHTML = `${botsData.length} Players`;
+        if (botCount < desiredBotCount) {
+            botCount += organicIncrement(10);
+            botCount = Math.max(0, Math.min(botCount, desiredBotCount));
+            document.getElementById('wait-text').innerHTML = `${botCount} Players`;
         } else {
             document.getElementById('wait-description').innerHTML = "Quiz starting...";
             clearInterval(botInterval);
@@ -209,7 +184,7 @@ function initBots() {
                 document.getElementById('main-container').style.display = "block";
             }, 2500 * timeMultiplier);
         }
-    }, Math.floor(1000) * timeMultiplier);
+    }, Math.floor(100) * Math.random() * timeMultiplier);
 }
 
 window.onload = function () {
