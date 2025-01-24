@@ -158,7 +158,9 @@ function startCountdown(totalSeconds) {
                 if (hasAnswered) {
                     clearInterval(answerCheckInterval);
                     document.getElementById("botsAnswered").innerHTML = "ANSWERED " + botCount + "/" + botCount;
-                    // document.getElementById("answerText-" + mostRecentAnswer).style.backgroundColor = "#ffffff";
+                    if (mostRecentAnswer != -1) {
+                        document.getElementById("answerText-" + mostRecentAnswer).style.backgroundColor = "#ffffff";
+                    }
                     finishAnswer(mostRecentAnswer);
                 }
             }, 500);
