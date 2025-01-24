@@ -54,6 +54,8 @@ function finishAnswer(selectedAnswerIndex) {
     if (Math.random() > (0.1 * currentQuestion)) {
         const shuffledNames = botNames.slice().sort(() => Math.random() - 0.5);
 
+        // shuffledNames.push();
+
         [...document.getElementsByClassName("e1")].forEach((v) => v.innerHTML = shuffledNames[0]);
         [...document.getElementsByClassName("e2")].forEach((v) => v.innerHTML = shuffledNames[1]);
         [...document.getElementsByClassName("e3")].forEach((v) => v.innerHTML = shuffledNames[2]);
@@ -108,8 +110,7 @@ function endQuiz() {
         const modal = document.getElementById("endModal");
         modal.style.display = "block";
 
-        document.getElementById("endFeedback").innerHTML = `
-        `;
+        document.getElementById("endFeedback").innerHTML = ``;
 
         setTimeout(() => {
             // window.location.href = `php/updateStats.php?elo=${bot.elo}`;
@@ -124,9 +125,11 @@ function playerAnswer(num) {
 
     if (num === -1) {
         mostRecentAnswer = -1;
+        hasAnswered = true;
+        console.log("not answered");
         return;
     }
-    console.log("asnwered");
+    console.log("answered");
     document.getElementById("answerText-" + num).style.backgroundColor = "var(--c2)";
 
     hasAnswered = true;
@@ -155,7 +158,7 @@ function startCountdown(totalSeconds) {
                 if (hasAnswered) {
                     clearInterval(answerCheckInterval);
                     document.getElementById("botsAnswered").innerHTML = "ANSWERED " + botCount + "/" + botCount;
-                    document.getElementById("answerText-" + mostRecentAnswer).style.backgroundColor = "#ffffff";
+                    // document.getElementById("answerText-" + mostRecentAnswer).style.backgroundColor = "#ffffff";
                     finishAnswer(mostRecentAnswer);
                 }
             }, 500);
@@ -175,7 +178,7 @@ function startCountdown(totalSeconds) {
             clearInterval(clockInterval);
             playerAnswer(-1);
         }
-    }, 240);
+    }, 1000);
 }
 
 function stopCountdown() {
@@ -192,7 +195,8 @@ function initBots() {
     const botInterval = setInterval(() => {
         if (botCount < desiredBotCount) {
             botCount += organicIncrement(10);
-            botCount = Math.max(0, Math.min(botCount, desiredBotCount));
+            // botCount = Math.max(0, Math.min(botCount, desiredBotCount));
+            botCount = Math.max(0, botCount);
             document.getElementById('wait-text').innerHTML = `${botCount} Players`;
         } else {
             document.getElementById('wait-description').innerHTML = "Quiz starting...";
