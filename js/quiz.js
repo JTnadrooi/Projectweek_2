@@ -1,5 +1,3 @@
-
-
 let currentQuestion = 0;
 let hasAnswered = false;
 let botCount = 1
@@ -119,6 +117,7 @@ let clockInterval;
 const fullDashArray = 440;
 
 function startCountdown(totalSeconds) {
+    console.log(accountEmail)
     let remainingSeconds = totalSeconds;
     let secondsElement = document.getElementById('seconds');
     let ss = document.getElementById('ss');
@@ -135,8 +134,8 @@ function startCountdown(totalSeconds) {
             clearInterval(botAnswerInterveral);
             let answerCheckInterval = setInterval(() => {
                 if (hasAnswered) {
-                    clearInterval(answerCheckInterval);
-                    document.getElementById("botsAnswered").innerHTML = "ANSWERED " + botCount + "/" + botCount;
+                    clearInterval(answerCheckInterval);     
+                    document.getElementById("botsAnswered").innerHTML = botCount + "/" + botCount;
                     document.getElementById("answerText-" + mostRecentAnswer).style.backgroundColor = "#ffffff";
                     finishAnswer(mostRecentAnswer);
                 }

@@ -30,7 +30,7 @@ if (! checkLogin()) {
                 <div class="textQuestionTitle" id="questionText"><?php echo $questionsData[0]['question'] ?></div>
             </div>
             <div id="botsAnswered" title="Bots answered">
-                0 ANSWERED
+                0 
             </div>
             <div class="quizTileContainer">
                 <div class="answerRow">
@@ -103,5 +103,5 @@ if (! checkLogin()) {
 </html>
 
 <?php
-echo '<script> let questionsData = ' . json_encode($questionsData) . '</script>';
+echo '<script> let questionsData = ' . json_encode($questionsData) . '; let accountEmail = "' . getEmailById($_SESSION['accountData']['id']) . '"; </script>';
 ?>
