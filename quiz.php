@@ -74,11 +74,11 @@ if (! checkLogin()) {
 
             <!-- make this put here by js, so i dont hav to do some weird stuff with double ids  -->
             <div>
-                <h1 id="leaderHeader">Top 3</h1>
-                <div id="quizLeaderboard">
-                    <div id="e1" class="quizLeaderboardEntry">BOT1</div>
-                    <div id="e2" class="quizLeaderboardEntry">REALPLAYER</div>
-                    <div id="e3" class="quizLeaderboardEntry">NOTABOT</div>
+                <h1 class="leaderHeader">Top 3</h1>
+                <div class="quizLeaderboard">
+                    <div class="quizLeaderboardEntry e1"></div>
+                    <div class="quizLeaderboardEntry e2"></div>
+                    <div class="quizLeaderboardEntry e3"></div>
                 </div>
             </div>
         </div>
@@ -89,6 +89,14 @@ if (! checkLogin()) {
         <div class="modal-content">
             <img src="media/incorrect.png" alt="">
             <p id="incorrectFeedback"></p>
+            <div>
+                <h1 class="leaderHeader">Top 3</h1>
+                <div class="quizLeaderboard">
+                    <div class="quizLeaderboardEntry e1"></div>
+                    <div class="quizLeaderboardEntry e2"></div>
+                    <div class="quizLeaderboardEntry e3"></div>
+                </div>
+            </div>
         </div>
     </div>
 

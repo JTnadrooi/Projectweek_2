@@ -46,7 +46,19 @@ const timeMultiplier = 1;
 function finishAnswer(selectedAnswerIndex) {
     const currentData = questionsData[currentQuestion];
     const correctAnswer = currentData.correctAnswer;
-    const isCorrect = correctAnswer === currentData.answers[selectedAnswerIndex];
+    let isCorrect;
+    if (selectedAnswerIndex == -1) {
+        isCorrect == false;
+    }
+    else isCorrect = correctAnswer === currentData.answers[selectedAnswerIndex];
+    if (Math.random() > (0.1 * currentQuestion)) {
+        const shuffledNames = botNames.slice().sort(() => Math.random() - 0.5);
+
+        [...document.getElementsByClassName("e1")].forEach((v) => v.innerHTML = shuffledNames[0]);
+        [...document.getElementsByClassName("e2")].forEach((v) => v.innerHTML = shuffledNames[1]);
+        [...document.getElementsByClassName("e3")].forEach((v) => v.innerHTML = shuffledNames[2]);
+    }
+
     showModal(isCorrect ? "feedbackModal-correct" : "feedbackModal-incorrect", isCorrect ? null : correctAnswer);
     currentQuestion++;
     if (currentQuestion < questionsData.length) updateQuestionContent(currentQuestion);
@@ -108,10 +120,16 @@ function endQuiz() {
 
 function playerAnswer(num) {
     stopCountdown();
-    hasAnswered = true;
     for (let index = 0; index < 4; index++) document.getElementById("answerText-" + index).style.backgroundColor = "var(--c1)";
+
+    if (num === -1) {
+        mostRecentAnswer = -1;
+        return;
+    }
+    console.log("asnwered");
     document.getElementById("answerText-" + num).style.backgroundColor = "var(--c2)";
 
+    hasAnswered = true;
     mostRecentAnswer = num;
 }
 
@@ -128,7 +146,7 @@ function startCountdown(totalSeconds) {
     hasAnswered = false;
     let botAnswerInterveral = setInterval(() => {
         if (botsAnswered < botCount) {
-            botsAnswered += organicIncrement(2);
+            botsAnswered += organicIncrement(12);
             botsAnswered = Math.max(0, Math.min(botsAnswered, botCount));
             document.getElementById("botsAnswered").innerHTML = ((botsAnswered - ((hasAnswered || botsAnswered == 0) ? 0 : 1)) + "/" + botCount) + (botCount >= 1000 ? "" : " ANSWERS");
         } else {
@@ -157,7 +175,7 @@ function startCountdown(totalSeconds) {
             clearInterval(clockInterval);
             playerAnswer(-1);
         }
-    }, 1000);
+    }, 240);
 }
 
 function stopCountdown() {
@@ -182,7 +200,7 @@ function initBots() {
             setTimeout(() => {
                 startCountdown(60);
                 document.getElementById('main-container').style.display = "block";
-            }, 2500 * timeMultiplier);
+            }, 1200 * timeMultiplier);
         }
     }, Math.floor(100) * Math.random() * timeMultiplier);
 }

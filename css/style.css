@@ -212,6 +212,14 @@ textarea {
   font-size: 20px;
 }
 
+#feedbackModal-incorrect {
+  margin-top: -100px;
+}
+
+#feedbackModal-correct {
+  margin-top: -100px;
+}
+
 #accountContainer {
   background-color: #ffffff;
   box-shadow: var(--soft-shadow);
